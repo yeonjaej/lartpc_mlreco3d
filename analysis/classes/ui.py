@@ -409,7 +409,10 @@ class FullChainPredictor:
             min_particle_voxel_count = self.min_particle_voxel_count
 
         point_cloud = self.data_blob['input_data'][entry][:, 1:4]
-        depositions = self.result['input_rescaled'][entry][:, 4]
+        if (self.deghosting):
+            depositions = self.result['input_rescaled'][entry][:, 4]
+        else:
+            depositions = self.data_blob['input_data'][entry][:, 4]
         fragments = self.result['fragments'][entry]
         fragments_seg = self.result['fragments_seg'][entry]
 
@@ -537,7 +540,10 @@ class FullChainPredictor:
             min_particle_voxel_count = self.min_particle_voxel_count
 
         point_cloud      = self.data_blob['input_data'][entry][:, 1:4]
-        depositions      = self.result['input_rescaled'][entry][:, 4]
+        if (self.deghosting):
+            depositions      = self.result['input_rescaled'][entry][:, 4]
+        else:
+            depositions      = self.data_blob['input_data'][entry][:, 4]
         particles        = self.result['particles'][entry]
         # inter_group_pred = self.result['inter_group_pred'][entry]
         #print(point_cloud.shape, depositions.shape, len(particles))
@@ -821,8 +827,10 @@ class FullChainEvaluator(FullChainPredictor):
         # Both are "adapted" labels
         labels = self.data_blob['cluster_label'][entry]
         segment_label = self.data_blob['segment_label'][entry][:, -1]
-        rescaled_input_charge = self.result['input_rescaled'][entry][:, 4]
-
+        if(self.deghosting):
+            rescaled_input_charge = self.result['input_rescaled'][entry][:, 4]
+        else:
+            rescaled_input_charge = self.data_blob['input_data'][entry][:, 4]
         fragment_ids = set(list(np.unique(labels[:, 5]).astype(int)))
         fragments = []
 
@@ -923,7 +931,10 @@ class FullChainEvaluator(FullChainPredictor):
             labels_noghost = self.data_blob['cluster_label_noghost'][entry]
         segment_label = self.data_blob['segment_label'][entry][:, -1]
         particle_ids = set(list(np.unique(labels[:, 6]).astype(int)))
-        rescaled_input_charge = self.result['input_rescaled'][entry][:, 4]
+        if (self.deghosting):
+            rescaled_input_charge = self.result['input_rescaled'][entry][:, 4]
+        else:
+            rescaled_input_charge = self.data_blob['input_data'][entry][:, 4]
 
         particles = []
         exclude_ids = set([])
