@@ -27,7 +27,7 @@ class MomentumNet(nn.Module):
 
     def forward(self, x):
         if x.shape[0] > 1:
-            self.norm1(x)
+            x = self.norm1(x)
         x = self.linear1(x)
         x = self.lrelu(x)
         if x.shape[0] > 1:
@@ -43,23 +43,27 @@ class VertexNet(MomentumNet):
     '''
     Small MLP for handling vertex regression and particle primary prediction.
     '''
-    def __init__(self, num_input, num_output=1, num_hidden=128):
-        super(VertexNet, self).__init__(num_input, num_output=num_output, 
-                                                   num_hidden=num_hidden, 
-                                                   positive_outputs=False)
+    def __init__(self, num_input, num_output=1, num_hidden=128, positive_outputs=False, batch_norm=False):
+        super(VertexNet, self).__init__(num_input, num_output, num_hidden, positive_outputs)
+        self.num_output = num_output
+        self.batch_norm = batch_norm
+
     def forward(self, x):
-        # if x.shape[0] > 1:
-        #     self.norm1(x)
+        if self.batch_norm and x.shape[0] > 1:
+            x = self.norm1(x)
         x = self.linear1(x)
         x = self.lrelu(x)
-        # if x.shape[0] > 1:
-        #     x = self.norm2(x)
+        if self.batch_norm and x.shape[0] > 1:
+            x = self.norm2(x)
         x = self.linear2(x)
         x = self.lrelu(x)
         x = self.linear3(x)
-        vtx_pred = self.final(x[:, :3])
-        out = torch.cat([vtx_pred, x[:, 3:]], dim=1)
-        return out
+        if self.num_output == 5:
+            vtx_pred = self.final(x[:, :3])
+            out = torch.cat([vtx_pred, x[:, 3:]], dim=1)
+            return out
+        else:
+            return x
 
 
 class DeepVertexNet(nn.Module):
@@ -72,9 +76,9 @@ class DeepVertexNet(nn.Module):
         node_y = torch.randn(16, 5)
         edge_feature_x2y = net(node_x, node_y) # (16, 5)
     '''
-    def __init__(self, num_input, num_output=1, num_hidden=512, num_layers=5, 
-                 positive_outputs=False):
+    def __init__(self, num_input, num_output=1, num_hidden=512, num_layers=5, positive_outputs=False):
         super(DeepVertexNet, self).__init__()
+        self.num_output = num_output
         self.linear = nn.ModuleList()
         self.norm = nn.ModuleList()
         self.num_layers = num_layers
@@ -97,14 +101,17 @@ class DeepVertexNet(nn.Module):
             x = self.norm[i](x)
             x = self.lrelu(x)
             x = self.linear[i](x)
-        vtx_pred = self.final(x[:, :3])
-        out = torch.cat([vtx_pred, x[:, 3:]], dim=1)
-        return out
+        if self.num_output == 5:
+            vtx_pred = self.final(x[:, :3])
+            out = torch.cat([vtx_pred, x[:, 3:]], dim=1)
+            return out
+        else:
+            return x
 
 
 class EvidentialMomentumNet(nn.Module):
 
-    def __init__(self, num_input, num_output=4, 
+    def __init__(self, num_input, num_output=4,
                  num_hidden=128, eps=0.0, logspace=False):
         super(EvidentialMomentumNet, self).__init__()
         self.linear1 = nn.Linear(num_input, num_hidden)
@@ -116,7 +123,6 @@ class EvidentialMomentumNet(nn.Module):
         self.elu = nn.LeakyReLU(negative_slope=0.33)
 
         self.softplus = nn.Softplus()
-        print("logspace = ", logspace)
         self.logspace = logspace
         if logspace:
             self.gamma = nn.Identity()
@@ -137,10 +143,10 @@ class EvidentialMomentumNet(nn.Module):
         vab = self.softplus(x[:, :3]) + self.eps
         alpha = torch.clamp(vab[:, 1] + 1.0, min=1.0).view(-1, 1)
         gamma = 2.0 * self.gamma(x[:, 3]).view(-1, 1)
-        out = torch.cat([gamma, vab[:, 0].view(-1, 1), 
+        out = torch.cat([gamma, vab[:, 0].view(-1, 1),
                          alpha, vab[:, 2].view(-1, 1)], dim=1)
         if not self.logspace:
             evidence = torch.clamp(out, min=self.eps)
         else:
-            evidence = out 
+            evidence = out
         return evidence

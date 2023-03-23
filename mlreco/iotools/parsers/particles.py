@@ -4,89 +4,105 @@ from mlreco.utils.ppn import get_ppn_info
 from mlreco.utils.groups import type_labels as TYPE_LABELS
 
 
-def parse_particle_asis(particle_event, cluster_event):
+def parse_particles(particle_event, cluster_event=None, voxel_coordinates=True):
     """
-    A function to copy construct & return an array of larcv::Particle
+    A function to copy construct & return an array of larcv::Particle.
+
+    If `voxel_coordinates` is set to `True`, the parser rescales the truth
+    positions (start, end, etc.) to voxel coordinates.
 
     .. code-block:: yaml
 
         schema:
-          particle_asis:
-            parser: parse_particle_asis
+          particles:
+            parser: parse_particles
             args:
               particle_event: particle_pcluster
               cluster_event: cluster3d_pcluster
+              voxel_coordinates: True
 
     Configuration
     -------------
     particle_event: larcv::EventParticle
     cluster_event: larcv::EventClusterVoxel3D
         to translate coordinates
+    voxel_coordinates: bool
 
     Returns
     -------
     list
-        a python list of larcv::Particle object
+        a python list of larcv::Particle objects
     """
     particles = [larcv.Particle(p) for p in particle_event.as_vector()]
-    meta = cluster_event.meta()
-    funcs = ['first_step', 'last_step', 'position', 'end_position', 'ancestor_position']
-    for p in particles:
-        for f in funcs:
-            pos = getattr(p,f)()
-            x = (pos.x() - meta.min_x()) / meta.size_voxel_x()
-            y = (pos.y() - meta.min_y()) / meta.size_voxel_y()
-            z = (pos.z() - meta.min_z()) / meta.size_voxel_z()
-            # x = (pos.x() - meta.origin().x) / meta.size_voxel_x()
-            # y = (pos.y() - meta.origin().y) / meta.size_voxel_y()
-            # z = (pos.z() - meta.origin().z) / meta.size_voxel_z()
-            # x = pos.x() * meta.size_voxel_x() + meta.origin().x
-            # y = pos.y() * meta.size_voxel_y() + meta.origin().y
-            # z = pos.z() * meta.size_voxel_z() + meta.origin().z
-            getattr(p,f)(x,y,z,pos.t())
+    if voxel_coordinates:
+        assert cluster_event is not None
+        meta = cluster_event.meta()
+        funcs = ['first_step', 'last_step', 'position', 'end_position', 'ancestor_position']
+        for p in particles:
+            for f in funcs:
+                pos = getattr(p,f)()
+                x = (pos.x() - meta.min_x()) / meta.size_voxel_x()
+                y = (pos.y() - meta.min_y()) / meta.size_voxel_y()
+                z = (pos.z() - meta.min_z()) / meta.size_voxel_z()
+                # x = (pos.x() - meta.origin().x) / meta.size_voxel_x()
+                # y = (pos.y() - meta.origin().y) / meta.size_voxel_y()
+                # z = (pos.z() - meta.origin().z) / meta.size_voxel_z()
+                # x = pos.x() * meta.size_voxel_x() + meta.origin().x
+                # y = pos.y() * meta.size_voxel_y() + meta.origin().y
+                # z = pos.z() * meta.size_voxel_z() + meta.origin().z
+                getattr(p,f)(x,y,z,pos.t())
+
     return particles
 
 
-def parse_neutrino_asis(neutrino_event, cluster_event):
+def parse_neutrinos(neutrino_event, cluster_event=None, voxel_coordinates=True):
     """
-    A function to copy construct & return an array of larcv::Neutrino
+    A function to copy construct & return an array of larcv::Neutrino.
+
+    If `voxel_coordinates` is set to `True`, the parser rescales the truth
+    position information to voxel coordinates.
 
     .. code-block:: yaml
 
         schema:
-          neutrino_asis:
-            parser: parse_neutrino_asis
-            particle_asis:
+          neutrinos:
+            parser: parse_neutrinos
+            args:
               neutrino_event: neutrino_mpv
               cluster_event: cluster3d_pcluster
+              voxel_coordinates: True
 
     Configuration
     -------------
     neutrino_pcluster: larcv::EventNeutrino
     cluster3d_pcluster: larcv::EventClusterVoxel3D
         to translate coordinates
+    voxel_coordinates: bool
 
     Returns
     -------
     list
-        a python list of larcv::Neutrino object
+        a python list of larcv::Neutrino objects
     """
     neutrinos = [larcv.Neutrino(p) for p in neutrino_event.as_vector()]
-    meta = cluster_event.meta()
-    funcs = ['position']
-    for p in neutrinos:
-        for f in funcs:
-            pos = getattr(p,f)()
-            x = (pos.x() - meta.min_x()) / meta.size_voxel_x()
-            y = (pos.y() - meta.min_y()) / meta.size_voxel_y()
-            z = (pos.z() - meta.min_z()) / meta.size_voxel_z()
-            # x = (pos.x() - meta.origin().x) / meta.size_voxel_x()
-            # y = (pos.y() - meta.origin().y) / meta.size_voxel_y()
-            # z = (pos.z() - meta.origin().z) / meta.size_voxel_z()
-            # x = pos.x() * meta.size_voxel_x() + meta.origin().x
-            # y = pos.y() * meta.size_voxel_y() + meta.origin().y
-            # z = pos.z() * meta.size_voxel_z() + meta.origin().z
-            getattr(p,f)(x,y,z,pos.t())
+    if voxel_coordinates:
+        assert cluster_event is not None
+        meta = cluster_event.meta()
+        funcs = ['position']
+        for p in neutrinos:
+            for f in funcs:
+                pos = getattr(p,f)()
+                x = (pos.x() - meta.min_x()) / meta.size_voxel_x()
+                y = (pos.y() - meta.min_y()) / meta.size_voxel_y()
+                z = (pos.z() - meta.min_z()) / meta.size_voxel_z()
+                # x = (pos.x() - meta.origin().x) / meta.size_voxel_x()
+                # y = (pos.y() - meta.origin().y) / meta.size_voxel_y()
+                # z = (pos.z() - meta.origin().z) / meta.size_voxel_z()
+                # x = pos.x() * meta.size_voxel_x() + meta.origin().x
+                # y = pos.y() * meta.size_voxel_y() + meta.origin().y
+                # z = pos.z() * meta.size_voxel_z() + meta.origin().z
+                getattr(p,f)(x,y,z,pos.t())
+
     return neutrinos
 
 
@@ -166,7 +182,7 @@ def parse_particle_coords(particle_event, cluster_event):
         last_step_x, last_step_y, last_step_z, first_step_t, shape_id]
     '''
     # Scale particle coordinates to image size
-    particles = parse_particle_asis(particle_event, cluster_event)
+    particles = parse_particles(particle_event, cluster_event)
 
     # Make features
     particle_feats = []
@@ -320,15 +336,3 @@ def parse_particle_singlep_einit(particle_event):
         if not p.track_id() == 1: continue
         return p.energy_init()
     return -1
-
-
-def parse_particle_points_with_tagging(sparse_event, particle_event):
-    from warnings import warn
-    warn("Deprecated: parse_particle_points_with_tagging deprecated, use parse_particle_points instead", DeprecationWarning)
-    return parse_particle_points(sparse_event, particle_event, include_point_tagging=True)
-
-
-def parse_particle_graph_corrected(particle_event, cluster_event):
-    from warnings import warn
-    warn("Deprecated: parse_particle_graph_corrected deprecated, use parse_particle_graph instead", DeprecationWarning)
-    return parse_particle_graph(particle_event, cluster_event)

@@ -1,6 +1,5 @@
 import numpy as np
 import torch
-from mlreco.models.layers.common.dbscan import distances
 from scipy.spatial.distance import cdist
 from sklearn.cluster import DBSCAN
 from torch_cluster import knn
@@ -124,9 +123,6 @@ def adapt_labels_knn(result, label_seg, label_clustering,
         assert true_mask.shape[0] == label_seg[0].shape[0]
     c3 = max(c2, batch_column+1)
 
-    indices = "2762  2763  2767  2769  4821  4822  4831  4832  4833  4834  4835  4844  4857  6617 12095 12096 12097".split()
-    indices = np.array([int(i) for i in indices])
-
     for i in range(len(label_seg)):
         coords = label_seg[i][:, :c3]
         label_c = []
@@ -154,7 +150,7 @@ def adapt_labels_knn(result, label_seg, label_clustering,
                 semantic_pred = argmax(result['segmentation'][i][batch_mask])
             else: # adapt_labels was called from analysis tools (see below deghost_labels_and_predictions)
                 # the problem in this case is that `segmentation` has already been deghosted
-                semantic_pred = argmax(result['segmentation_noghost'][i][batch_mask])
+                semantic_pred = argmax(result['segmentation_true_nonghost'][i][batch_mask])
 
             # Include true nonghost voxels by default when they have the right semantic prediction
             true_pred = label_seg[i][batch_mask, -1]
@@ -215,7 +211,7 @@ def adapt_labels_knn(result, label_seg, label_clustering,
         # for which cluster id and group id columns are 5 and 6 respectively.
         cluster_id_col = 5
         track_label = 1
-        dbscan = DBSCAN(eps=np.sqrt(3), min_samples=1)
+        dbscan = DBSCAN(eps=1.1, min_samples=1, metric='chebyshev')
         track_mask = label_c[:, -1] == track_label
         for batch_id in unique(coords[:, batch_column]):
             batch_mask = label_c[:, batch_column] == batch_id
@@ -298,10 +294,10 @@ def deghost_labels_and_predictions(data_blob, result):
             data_blob['segment_label'][i][:, -1] < 5 \
                 for i in range(len(data_blob['segment_label']))]
 
-    data_blob['input_data_noghost'] = data_blob['input_data']
+    data_blob['input_data_pre_deghost'] = data_blob['input_data']
 
     if 'segment_label' in data_blob:
-        data_blob['input_data_trueghost'] = [data_blob['input_data'][i][mask] \
+        data_blob['input_data_true_nonghost'] = [data_blob['input_data'][i][mask] \
             for i, mask in enumerate(data_blob['true_ghost_mask'])]
 
     data_blob['input_data'] = [data_blob['input_data'][i][mask] \
@@ -311,7 +307,7 @@ def deghost_labels_and_predictions(data_blob, result):
     if 'cluster_label' in data_blob \
         and data_blob['cluster_label'] is not None:
         # Save the clust_data before deghosting
-        data_blob['cluster_label_noghost'] = data_blob['cluster_label']
+        data_blob['cluster_label_true_nonghost'] = data_blob['cluster_label']
         data_blob['cluster_label'] = adapt_labels_numpy(
             result,
             data_blob['segment_label'],
@@ -325,13 +321,14 @@ def deghost_labels_and_predictions(data_blob, result):
 
     if 'segmentation' in result \
         and result['segmentation'] is not None:
-        result['segmentation_noghost'] = result['segmentation']
+        result['segmentation_true_nonghost'] = result['segmentation']
         result['segmentation'] = [
             result['segmentation'][i][result['ghost_mask'][i]] \
                 for i in range(len(result['segmentation']))]
 
     if 'kinematics_label' in data_blob \
         and data_blob['kinematics_label'] is not None:
+        data_blob['kinematics_label_true_nonghost'] = data_blob['kinematics_label']
         data_blob['kinematics_label'] = adapt_labels_numpy(
             result,
             data_blob['segment_label'],
@@ -340,7 +337,7 @@ def deghost_labels_and_predictions(data_blob, result):
     # This needs to come last - in adapt_labels seg_label is the original one
     if 'segment_label' in data_blob \
         and data_blob['segment_label'] is not None:
-        data_blob['segment_label_noghost'] = data_blob['segment_label']
+        data_blob['segment_label_true_nonghost'] = data_blob['segment_label']
         data_blob['segment_label'] = [
             data_blob['segment_label'][i][result['ghost_mask'][i]] \
                 for i in range(len(data_blob['segment_label']))]

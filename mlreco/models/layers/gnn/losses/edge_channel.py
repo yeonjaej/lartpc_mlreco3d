@@ -160,9 +160,9 @@ class EdgeChannelLoss(torch.nn.Module):
                 # Increment the loss, balance classes if requested
                 if self.balance_classes:
                     vals, counts = torch.unique(edge_assn, return_counts=True)
-                    weights = np.array([float(counts[k])/len(edge_assn) for k in range(len(vals))])
+                    weights = len(edge_assn)/len(counts)/counts
                     for k, v in enumerate(vals):
-                        total_loss += (1./weights[k])*self.lossfn(edge_pred[edge_assn==v], edge_assn[edge_assn==v])
+                        total_loss += weights[k] * self.lossfn(edge_pred[edge_assn==v], edge_assn[edge_assn==v])
                 else:
                     total_loss += self.lossfn(edge_pred, edge_assn)
 
@@ -172,16 +172,8 @@ class EdgeChannelLoss(torch.nn.Module):
                 # Increment the number of edges
                 n_edges += len(edge_pred)
 
-        # Handle the case where no cluster/edge were found
-        if not n_edges:
-            return {
-                'accuracy': 0.,
-                'loss': torch.tensor(0., requires_grad=True, device=clusters[0].device),
-                'n_edges': n_edges
-            }
-
         return {
-            'accuracy': total_acc/n_edges,
-            'loss': total_loss/n_edges,
+            'accuracy': total_acc/n_edges if n_edges else 1.,
+            'loss': total_loss/n_edges if n_edges else torch.tensor(0., requires_grad=True, device=clusters[0].device),
             'n_edges': n_edges
         }

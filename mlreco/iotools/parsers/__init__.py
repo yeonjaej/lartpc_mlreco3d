@@ -24,8 +24,8 @@ List of existing parsers
 .. csv-table:: Particle parsers
     :header: Parser name, Description
 
-    ``parse_particle_asis``, Retrieve array of larcv::Particle
-    ``parse_neutrino_asis``, Retrieve array of larcv::Neutrino
+    ``parse_particles``, Retrieve array of larcv::Particle
+    ``parse_neutrinos``, Retrieve array of larcv::Neutrino
     ``parse_particle_points``, Retrieve array of larcv::Particle ground truth points tensor
     ``parse_particle_coords``, Retrieve array of larcv::Particle coordinates (start and end) and start time
     ``parse_particle_graph``, Construct edges between particles (i.e. clusters) from larcv::EventParticle
@@ -75,31 +75,29 @@ from mlreco.iotools.parsers.sparse import (
     parse_sparse2d,
     parse_sparse3d,
     parse_sparse3d_ghost,
-    parse_sparse2d_scn, # Deprecated
-    parse_sparse3d_scn # Depreacted
+    parse_sparse3d_charge_rescaled # TEMPORARY
 )
 
 from mlreco.iotools.parsers.cluster import (
     parse_cluster2d,
     parse_cluster3d,
-    parse_cluster3d_kinematics_clean, # Deprecated
-    parse_cluster3d_clean_full # Depreacted
+    parse_cluster3d_charge_rescaled # TEMPORARY
 )
 
 from mlreco.iotools.parsers.particles import (
-    parse_particle_asis,
-    parse_neutrino_asis,
+    parse_particles,
+    parse_neutrinos,
     parse_particle_points,
     parse_particle_coords,
     parse_particle_graph,
     parse_particle_singlep_pdg,
-    parse_particle_singlep_einit,
-    parse_particle_points_with_tagging, # Deprecated
-    parse_particle_graph_corrected # Deprecated
+    parse_particle_singlep_einit
 )
 
 from mlreco.iotools.parsers.misc import (
     parse_meta2d,
     parse_meta3d,
-    parse_run_info
+    parse_run_info,
+    parse_opflash,
+    parse_crthits
 )
