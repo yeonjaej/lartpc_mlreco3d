@@ -1,10 +1,10 @@
 import numpy as np
 from larcv import larcv
-from mlreco.utils.ppn import get_ppn_info
-from mlreco.utils.groups import type_labels as TYPE_LABELS
 
+from mlreco.utils.globals import PDG_TO_PID
+from mlreco.utils.ppn import get_ppn_labels
 
-def parse_particles(particle_event, cluster_event=None, voxel_coordinates=True):
+def parse_particles(particle_event, sparse_event=None, cluster_event=None, voxel_coordinates=True):
     """
     A function to copy construct & return an array of larcv::Particle.
 
@@ -24,6 +24,7 @@ def parse_particles(particle_event, cluster_event=None, voxel_coordinates=True):
     Configuration
     -------------
     particle_event: larcv::EventParticle
+    sparse_event: larcv::EventSparseTensor3D
     cluster_event: larcv::EventClusterVoxel3D
         to translate coordinates
     voxel_coordinates: bool
@@ -35,27 +36,21 @@ def parse_particles(particle_event, cluster_event=None, voxel_coordinates=True):
     """
     particles = [larcv.Particle(p) for p in particle_event.as_vector()]
     if voxel_coordinates:
-        assert cluster_event is not None
-        meta = cluster_event.meta()
-        funcs = ['first_step', 'last_step', 'position', 'end_position', 'ancestor_position']
+        assert (sparse_event is not None) ^ (cluster_event is not None)
+        meta = sparse_event.meta() if sparse_event is not None else cluster_event.meta()
+        funcs = ['first_step', 'last_step', 'position', 'end_position', 'parent_position', 'ancestor_position']
         for p in particles:
             for f in funcs:
                 pos = getattr(p,f)()
                 x = (pos.x() - meta.min_x()) / meta.size_voxel_x()
                 y = (pos.y() - meta.min_y()) / meta.size_voxel_y()
                 z = (pos.z() - meta.min_z()) / meta.size_voxel_z()
-                # x = (pos.x() - meta.origin().x) / meta.size_voxel_x()
-                # y = (pos.y() - meta.origin().y) / meta.size_voxel_y()
-                # z = (pos.z() - meta.origin().z) / meta.size_voxel_z()
-                # x = pos.x() * meta.size_voxel_x() + meta.origin().x
-                # y = pos.y() * meta.size_voxel_y() + meta.origin().y
-                # z = pos.z() * meta.size_voxel_z() + meta.origin().z
                 getattr(p,f)(x,y,z,pos.t())
 
     return particles
 
 
-def parse_neutrinos(neutrino_event, cluster_event=None, voxel_coordinates=True):
+def parse_neutrinos(neutrino_event, sparse_event=None, cluster_event=None, voxel_coordinates=True):
     """
     A function to copy construct & return an array of larcv::Neutrino.
 
@@ -75,6 +70,7 @@ def parse_neutrinos(neutrino_event, cluster_event=None, voxel_coordinates=True):
     Configuration
     -------------
     neutrino_pcluster: larcv::EventNeutrino
+    sparse_event: larcv::EventSparseTensor3D
     cluster3d_pcluster: larcv::EventClusterVoxel3D
         to translate coordinates
     voxel_coordinates: bool
@@ -86,8 +82,8 @@ def parse_neutrinos(neutrino_event, cluster_event=None, voxel_coordinates=True):
     """
     neutrinos = [larcv.Neutrino(p) for p in neutrino_event.as_vector()]
     if voxel_coordinates:
-        assert cluster_event is not None
-        meta = cluster_event.meta()
+        assert (sparse_event is not None) ^ (cluster_event is not None)
+        meta = sparse_event.meta() if sparse_event is not None else cluster_event.meta()
         funcs = ['position']
         for p in neutrinos:
             for f in funcs:
@@ -95,12 +91,6 @@ def parse_neutrinos(neutrino_event, cluster_event=None, voxel_coordinates=True):
                 x = (pos.x() - meta.min_x()) / meta.size_voxel_x()
                 y = (pos.y() - meta.min_y()) / meta.size_voxel_y()
                 z = (pos.z() - meta.min_z()) / meta.size_voxel_z()
-                # x = (pos.x() - meta.origin().x) / meta.size_voxel_x()
-                # y = (pos.y() - meta.origin().y) / meta.size_voxel_y()
-                # z = (pos.z() - meta.origin().z) / meta.size_voxel_z()
-                # x = pos.x() * meta.size_voxel_x() + meta.origin().x
-                # y = pos.y() * meta.size_voxel_y() + meta.origin().y
-                # z = pos.z() * meta.size_voxel_z() + meta.origin().z
                 getattr(p,f)(x,y,z,pos.t())
 
     return neutrinos
@@ -138,20 +128,10 @@ def parse_particle_points(sparse_event, particle_event, include_point_tagging=Tr
         and the particle data index in this order. (optionally: end/start tagging)
     """
     particles_v = particle_event.as_vector()
-    part_info = get_ppn_info(particles_v, sparse_event.meta())
-    # For open data - to reproduce
-    # part_info = get_ppn_info(particles_v, sparse_event.meta(), min_voxel_count=7, min_energy_deposit=10, use_particle_shape=False)
-    # part_info = get_ppn_info(particles_v, sparse_event.meta(), min_voxel_count=5, min_energy_deposit=10, use_particle_shape=False)
-    np_values = np.column_stack([part_info[:, 3], part_info[:, 8]]) if part_info.shape[0] > 0 else np.empty(shape=(0, 2), dtype=np.float32)
-    if include_point_tagging:
-        np_values = np.column_stack([part_info[:, 3], part_info[:, 8], part_info[:, 9]]) if part_info.shape[0] > 0 else np.empty(shape=(0, 3), dtype=np.float32)
+    part_labels = get_ppn_labels(particles_v, sparse_event.meta(),
+            include_point_tagging=include_point_tagging)
 
-    if part_info.shape[0] > 0:
-        #return part_info[:, :3], part_info[:, 3][:, None]
-        return part_info[:, :3], np_values
-    else:
-        #return np.empty(shape=(0, 3), dtype=np.int32), np.empty(shape=(0, 1), dtype=np.float32)
-        return np.empty(shape=(0, 3), dtype=np.int32), np_values
+    return part_labels[:,:3], part_labels[:,3:]
 
 
 def parse_particle_coords(particle_event, cluster_event):
@@ -302,8 +282,8 @@ def parse_particle_singlep_pdg(particle_event):
     pdg = -1
     for p in particle_event.as_vector():
         if not p.track_id() == 1: continue
-        if int(p.pdg_code()) in TYPE_LABELS.keys():
-            pdg = TYPE_LABELS[int(p.pdg_code())]
+        if int(p.pdg_code()) in PDG_TO_PID.keys():
+            pdg = PDG_TO_PID[int(p.pdg_code())]
         else: pdg = -1
         return np.asarray([pdg])
 
@@ -331,8 +311,11 @@ def parse_particle_singlep_einit(particle_event):
     np.ndarray
         List of true initial energy for each particle in TTree.
     """
+    einits = []
+    einit = -1
     for p in particle_event.as_vector():
         is_primary = p.track_id() == p.parent_track_id()
         if not p.track_id() == 1: continue
-        return p.energy_init()
-    return -1
+        return np.asarray([p.energy_init()])
+
+    return np.asarray([einit])

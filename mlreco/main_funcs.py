@@ -8,7 +8,8 @@ try:
 except ImportError:
     pass
 
-from mlreco.iotools.factories import loader_factory
+from mlreco.iotools.factories import loader_factory, writer_factory
+from collections import OrderedDict
 # Important: do not import here anything that might
 # trigger cuda initialization through PyTorch.
 # We need to set CUDA_VISIBLE_DEVICES first, which
@@ -22,8 +23,8 @@ class Handlers:
     data_io_iter = None
     csv_logger   = None
     weight_io    = None
-    train_logger = None
     watch        = None
+    writer       = None
     iteration    = 0
 
     def keys(self):
@@ -64,30 +65,6 @@ def process_config(cfg, verbose=True):
         # Set MinkowskiEngine number of threads
         os.environ['OMP_NUM_THREADS'] = '16' # default value
 
-        # Set default concat_result
-        default_concat_result = ['input_edge_features', 'input_node_features','points', 'coordinates',
-                                 'particle_node_features', 'particle_edge_features',
-                                 'track_node_features', 'shower_node_features',
-                                 'ppn_coords', 'mask_ppn', 'ppn_layers', 'classify_endpoints',
-                                 'vertex_layers', 'vertex_coords', 'primary_label_scales', 'segment_label_scales',
-                                 'seediness', 'margins', 'embeddings', 'fragments',
-                                 'fragments_seg', 'shower_fragments', 'shower_edge_index',
-                                 'shower_edge_pred','shower_node_pred','shower_group_pred','track_fragments',
-                                 'track_edge_index', 'track_node_pred', 'track_edge_pred', 'track_group_pred',
-                                 'particle_fragments', 'particle_edge_index', 'particle_node_pred',
-                                 'particle_edge_pred', 'particle_group_pred', 'particles',
-                                 'inter_edge_index', 'inter_node_pred', 'inter_edge_pred', 'inter_group_pred',
-                                 'inter_particles', 'node_pred_p', 'node_pred_type',
-                                 'vtx_labels', 'vtx_anchors', 'grappa_inter_vtx_labels', 'grappa_inter_vtx_anchors',
-                                 'kinematics_node_pred_p', 'kinematics_node_pred_type',
-                                 'flow_edge_pred', 'kinematics_particles', 'kinematics_edge_index',
-                                 'clust_fragments', 'clust_frag_seg', 'interactions', 'inter_cosmic_pred',
-                                 'node_pred_vtx', 'total_num_points', 'total_nonghost_points',
-                                 'spatial_embeddings', 'occupancy', 'hypergraph_features', 'logits',
-                                 'features', 'feature_embeddings', 'covariance', 'clusts','edge_index','edge_pred','node_pred']
-        if 'concat_result' not in cfg['trainval']:
-            cfg['trainval']['concat_result'] = default_concat_result
-
     if 'iotool' in cfg:
 
         # Update IO seed
@@ -99,10 +76,11 @@ def process_config(cfg, verbose=True):
                 cfg['iotool']['sampler']['seed'] = int(cfg['iotool']['sampler']['seed'])
 
         # Batch size checker
-        if cfg['iotool'].get('minibatch_size',None) is None:
+        if cfg['iotool'].get('minibatch_size', None) is None:
             cfg['iotool']['minibatch_size'] = -1
         if cfg['iotool']['batch_size'] < 0 and cfg['iotool']['minibatch_size'] < 0:
             raise ValueError('Cannot have both BATCH_SIZE (-bs) and MINIBATCH_SIZE (-mbs) negative values!')
+
         # Assign non-default values
         num_gpus = 1
         if 'trainval' in cfg:
@@ -111,6 +89,7 @@ def process_config(cfg, verbose=True):
             cfg['iotool']['batch_size'] = int(cfg['iotool']['minibatch_size'] * num_gpus)
         if cfg['iotool']['minibatch_size'] < 0:
             cfg['iotool']['minibatch_size'] = int(cfg['iotool']['batch_size'] / num_gpus)
+
         # Check consistency
         if not (cfg['iotool']['batch_size'] % (cfg['iotool']['minibatch_size'] * num_gpus)) == 0:
             raise ValueError('BATCH_SIZE (-bs) must be multiples of MINIBATCH_SIZE (-mbs) and GPU count (--gpus)!')
@@ -128,7 +107,7 @@ def process_config(cfg, verbose=True):
 
 
 def make_directories(cfg, loaded_iteration, handlers=None):
-    from mlreco.utils import CSVData
+    from mlreco.iotools.writers import CSVWriter
     if 'trainval' in cfg:
         # Weight save directory
         if cfg['trainval']['weight_prefix']:
@@ -144,9 +123,7 @@ def make_directories(cfg, loaded_iteration, handlers=None):
             if not cfg['trainval']['train']:
                 logname = '%s/inference_log-%07d.csv' % (cfg['trainval']['log_dir'], loaded_iteration)
             if handlers is not None:
-                if hasattr(handlers,'csv_logger') and handlers.csv_logger:
-                    handlers.csv_logger.close()
-                handlers.csv_logger = CSVData(logname)
+                handlers.csv_logger = CSVWriter(logname)
 
 
 def prepare(cfg, event_list=None):
@@ -169,6 +146,11 @@ def prepare(cfg, event_list=None):
     # IO iterator
     handlers.data_io_iter = iter(cycle(handlers.data_io))
 
+    # IO writer
+    handlers.writer = None
+    if 'writer' in cfg['iotool']:
+        handlers.writer = writer_factory(cfg['iotool']['writer'])
+
     if 'trainval' in cfg:
         # Set random seed for reproducibility
         np.random.seed(cfg['trainval']['seed'])
@@ -187,17 +169,19 @@ def prepare(cfg, event_list=None):
         # Clear cache
         handlers.empty_cuda_cache = cfg['trainval'].get('empty_cuda_cache', False)
 
+        # If the number of iterations is negative, run over the whole dataset once
+        if cfg['trainval']['iterations'] < 0:
+            cfg['trainval']['iterations'] = len(handlers.data_io)
+
         # Restore weights if necessary
         loaded_iteration = handlers.trainer.initialize()
-        if cfg['trainval']['train']:
-            handlers.iteration = loaded_iteration
-
+        handlers.iteration = loaded_iteration
         make_directories(cfg, loaded_iteration, handlers=handlers)
 
     return handlers
 
 
-def apply_event_filter(handlers,event_list=None):
+def apply_event_filter(handlers, event_list=None):
     """
     Reconfigures IO to apply an event filter
     INPUT:
@@ -218,7 +202,6 @@ def log(handlers, tstamp_iteration, #tspent_io, tspent_iteration,
     Log relevant information to CSV files and stdout.
     """
     import torch
-    from mlreco.utils import utils
 
     report_step  = cfg['trainval']['report_step'] and \
                 ((handlers.iteration+1) % cfg['trainval']['report_step'] == 0)
@@ -239,46 +222,60 @@ def log(handlers, tstamp_iteration, #tspent_io, tspent_iteration,
 
     mem = 0.
     if torch.cuda.is_available():
-        mem = utils.round_decimals(torch.cuda.max_memory_allocated()/1.e9, 3)
+        mem = round(torch.cuda.max_memory_allocated()/1.e9, 3)
 
     # Organize time info
     t_iter  = handlers.watch.time('iteration')
     t_io    = handlers.watch.time('io')
     t_save  = handlers.watch.time('save')
     t_net   = handlers.watch.time('train' if cfg['trainval']['train'] else 'forward')
-    t_forward_cpu = handlers.watch.time_cputime('forward_cpu')
-    t_backward_cpu = handlers.watch.time_cputime('backward_cpu')
+    t_forward_cpu = handlers.watch.time_cpu('forward_cpu')
+    t_backward_cpu = handlers.watch.time_cpu('backward_cpu')
 
     # Report (logger)
     if handlers.csv_logger:
 
+        # Record timing
         tsum_map = handlers.trainer.tspent_sum
-
-        handlers.csv_logger.record(('iter', 'first_id', 'epoch', 'titer', 'tsumiter'),
-                                   (handlers.iteration, first_id, epoch, t_iter, tsum))
-        handlers.csv_logger.record(('tio', 'tsumio'), (t_io,tsum_map['io']))
-        handlers.csv_logger.record(('mem', ), (mem, ))
-        handlers.csv_logger.record(('tforwardcpu', ), (t_forward_cpu, ))
-        handlers.csv_logger.record(('tbackwardcpu', ), (t_backward_cpu, ))
+        log_dict = {
+            'iter': handlers.iteration,
+            'first_id': first_id,
+            'epoch': epoch,
+            'titer': t_iter,
+            'tsum': tsum,
+            'tio': t_io,
+            'tsumio': tsum_map['io'],
+            'mem': mem,
+            'tforwardcpu': t_forward_cpu,
+            'tbackwardcpu': t_backward_cpu
+        }
 
         if cfg['trainval']['train']:
-            handlers.csv_logger.record(('ttrain', 'tsave', 'tsumtrain', 'tsumsave'),
-                                       (t_net, t_save, tsum_map['train'], tsum_map['save']))
+            log_dict.update({
+                'ttrain': t_net,
+                'tsave': t_save,
+                'tsumtrain': tsum_map['train'],
+                'tsumsave': tsum_map['save']
+            })
         else:
-            handlers.csv_logger.record(('tforward', 'tsumforward'), (t_net, tsum_map['forward']))
+            log_dict.update({
+                'tforward': t_net,
+                'tsumforward': tsum_map['forward'],
+            })
 
+        # Update with res_dict
+        log_dict.update(res_dict)
 
-        for key in res_dict:
-            handlers.csv_logger.record((key,), (res_dict[key],))
-        handlers.csv_logger.write()
+        # Record
+        handlers.csv_logger.append(log_dict)
 
     # Report (stdout)
     if report_step:
-        acc   = utils.round_decimals(np.mean(res.get('accuracy',-1)), 4)
-        loss  = utils.round_decimals(np.mean(res.get('loss',    -1)), 4)
-        tfrac = utils.round_decimals(t_net/t_iter*100., 2)
-        tabs  = utils.round_decimals(t_net, 3)
-        epoch = utils.round_decimals(epoch, 2)
+        acc   = round(np.mean(res.get('accuracy',-1)), 4)
+        loss  = round(np.mean(res.get('loss',    -1)), 4)
+        tfrac = round(t_net/t_iter*100., 2)
+        tabs  = round(t_net, 3)
+        epoch = round(epoch, 2)
 
         if cfg['trainval']['train']:
             msg = 'Iter. %d (epoch %g) @ %s ... train time %g%% (%g [s]) mem. %g GB \n'
@@ -289,8 +286,6 @@ def log(handlers, tstamp_iteration, #tspent_io, tspent_iteration,
         msg += '   loss %g accuracy %g\n' % (loss, acc)
         print(msg)
         sys.stdout.flush()
-        if handlers.csv_logger: handlers.csv_logger.flush()
-        if handlers.train_logger: handlers.train_logger.flush()
 
 
 def train_loop(handlers):
@@ -298,12 +293,18 @@ def train_loop(handlers):
     Trainval loop. With optional minibatching as determined by the parameters
     cfg['iotool']['batch_size'] vs cfg['iotool']['minibatch_size'].
     """
-    import mlreco.post_processing as post_processing
-
     cfg=handlers.cfg
     tsum = 0.
+    epoch_counter = 0
+    clear_epoch = cfg['trainval'].get('clear_gpu_cache_at_epoch', False)
     while handlers.iteration < cfg['trainval']['iterations']:
         epoch = handlers.iteration / float(len(handlers.data_io))
+        epoch_counter += 1.0 /  float(len(handlers.data_io))
+        if clear_epoch and (epoch_counter >= clear_epoch):
+            epoch_counter = 0
+            if torch.cuda.is_available():
+                torch.cuda.empty_cache()
+
         tstamp_iteration = datetime.datetime.fromtimestamp(time.time()).strftime('%Y-%m-%d %H:%M:%S')
         handlers.watch.start('iteration')
 
@@ -319,15 +320,10 @@ def train_loop(handlers):
             data_blob, result_blob = handlers.trainer.train_step(handlers.data_io_iter)
 
         # Save snapshot
+        handlers.watch.start('save')
         if checkpt_step:
             handlers.trainer.save_state(handlers.iteration)
-
-        # Store output if requested
-        if 'post_processing' in cfg:
-            for processor_name,processor_cfg in cfg['post_processing'].items():
-                processor_name = processor_name.split('+')[0]
-                processor = getattr(post_processing,str(processor_name))
-                processor(cfg,processor_cfg,data_blob,result_blob,cfg['trainval']['log_dir'],handlers.iteration)
+        handlers.watch.stop('save')
 
         handlers.watch.stop('iteration')
         tsum += handlers.watch.time('iteration')
@@ -343,10 +339,6 @@ def train_loop(handlers):
         # Increment iteration counter
         handlers.iteration += 1
 
-    # Finalize
-    if handlers.csv_logger:
-        handlers.csv_logger.close()
-
 
 def inference_loop(handlers):
     """
@@ -356,20 +348,24 @@ def inference_loop(handlers):
     Note: Accuracy/loss will be per batch in the CSV log file, not per event.
     Write an analysis function to do per-event analysis (TODO).
     """
-    import mlreco.post_processing as post_processing
 
     tsum = 0.
     # Metrics for each event
     # global_metrics = {}
-    weights = glob.glob(handlers.cfg['trainval']['model_path'])
-    # if len(weights) > 0:
-    print("Looping over weights: ", len(weights))
-    for w in weights: print('  -',w)
+    preloaded = os.path.isfile(handlers.cfg['trainval']['model_path'])
+    weights = sorted(glob.glob(handlers.cfg['trainval']['model_path']))
+    if not preloaded and len(weights):
+        print("Looping over weights: ", len(weights))
+        for w in weights: print('  -',w)
+    if not len(weights):
+        weights = [None]
     for weight in weights:
-        print('Setting weights',weight)
-        handlers.cfg['trainval']['model_path'] = weight
-        loaded_iteration = handlers.trainer.initialize()
-        make_directories(handlers.cfg,loaded_iteration,handlers)
+        if weight is not None and not preloaded:
+            print('Setting weights', weight)
+            handlers.cfg['trainval']['model_path'] = weight
+            loaded_iteration = handlers.trainer.initialize()
+            make_directories(handlers.cfg,loaded_iteration,handlers)
+
         handlers.iteration = 0
         handlers.data_io_iter = iter(cycle(handlers.data_io))
         while handlers.iteration < handlers.cfg['trainval']['iterations']:
@@ -384,12 +380,6 @@ def inference_loop(handlers):
 
             # Run inference
             data_blob, result_blob = handlers.trainer.forward(handlers.data_io_iter)
-            # Store output if requested
-            if 'post_processing' in handlers.cfg:
-                for processor_name,processor_cfg in handlers.cfg['post_processing'].items():
-                    processor_name = processor_name.split('+')[0]
-                    processor = getattr(post_processing,str(processor_name))
-                    processor(handlers.cfg,processor_cfg,data_blob,result_blob,handlers.cfg['trainval']['log_dir'],handlers.iteration)
 
             handlers.watch.stop('iteration')
             tsum += handlers.watch.time('iteration')
@@ -397,10 +387,7 @@ def inference_loop(handlers):
             log(handlers, tstamp_iteration,
                 tsum, result_blob, handlers.cfg, epoch, data_blob['index'][0])
 
-            handlers.iteration += 1
+            if handlers.writer:
+                handlers.writer.append(data_blob, result_blob, handlers.cfg)
 
-    # Metrics
-    # TODO
-    # Finalize
-    if handlers.csv_logger:
-        handlers.csv_logger.close()
+            handlers.iteration += 1

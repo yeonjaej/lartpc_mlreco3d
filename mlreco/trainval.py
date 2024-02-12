@@ -1,13 +1,18 @@
-import os, re, warnings
+import os, re, glob, warnings
+import numpy as np
 import torch
+from collections import defaultdict
 
-from mlreco.models import construct
-from mlreco.models.experimental.bayes.calibration import calibrator_construct, calibrator_loss_construct
+from .iotools.data_parallel import DataParallel
+from .iotools.parsers.unwrap_rules import input_unwrap_rules
 
-import mlreco.utils as utils
-from mlreco.utils.data_parallel import DataParallel
-from mlreco.utils.utils import to_numpy
-from mlreco.utils.adabound import AdaBound, AdaBoundW
+from .models import construct
+from .models.experimental.bayes.calibration import calibrator_construct, calibrator_loss_construct
+
+from .utils import to_numpy
+from .utils.stopwatch import Stopwatch
+from .utils.adabound import AdaBound, AdaBoundW
+from .utils.unwrap import Unwrapper
 
 
 class trainval(object):
@@ -15,7 +20,7 @@ class trainval(object):
     Groups all relevant functions for forward/backward of a network.
     """
     def __init__(self, cfg):
-        self._watch = utils.stopwatch()
+        self._watch = Stopwatch()
         self.tspent_sum = {}
         self._model_config = cfg['model']
         self._trainval_config = cfg['trainval']
@@ -25,6 +30,7 @@ class trainval(object):
         self._gpus = self._trainval_config.get('gpus', [])
         self._batch_size = self._iotool_config.get('batch_size', 1)
         self._minibatch_size = self._iotool_config.get('minibatch_size')
+        self._boundaries = self._iotool_config.get('collate', {}).get('boundaries', None)
         self._input_keys  = self._model_config.get('network_input', [])
         self._output_keys = self._model_config.get('keep_output',[])
         self._ignore_keys = self._model_config.get('ignore_keys', [])
@@ -91,7 +97,6 @@ class trainval(object):
             self._net.module.update_buffers()
 
     def save_state(self, iteration):
-        self._watch.start('save')
         if len(self._weight_prefix) > 0:
             filename = '%s-%d.ckpt' % (self._weight_prefix, iteration)
             torch.save({
@@ -99,7 +104,6 @@ class trainval(object):
                 'state_dict': self._net.state_dict(),
                 'optimizer': self._optimizer.state_dict()
             }, filename)
-        self._watch.stop('save')
 
 
     def get_data_minibatched(self,data_iter):
@@ -176,13 +180,13 @@ class trainval(object):
         It is a dictionary where data_blob[key] = list of length
         BATCH_SIZE / (MINIBATCH_SIZE * len(GPUS))
         """
-        self._watch.start_cputime('train_step_cputime')
+        self._watch.start_cpu('train_step_cpu')
         self._watch.start('train')
         self._loss = []  # Initialize loss accumulator
         data_blob,res_combined = self.forward(data_iter, iteration=iteration)
         # print(data_blob['index'])
         # Run backward once for all the previous forward
-        self._watch.start_cputime('backward_cpu')
+        self._watch.start_cpu('backward_cpu')
         self.backward()
         if log_time:
             self._watch.stop('train')
@@ -192,63 +196,51 @@ class trainval(object):
 
     def forward(self, data_iter, iteration=None):
         """
-        Run forward for
-        flags.BATCH_SIZE / (flags.MINIBATCH_SIZE * len(flags.GPUS)) times
+        Run forward flags.BATCH_SIZE / (flags.MINIBATCH_SIZE * len(flags.GPUS)) times
         """
+        # Start the clock for the training/forward set
         self._watch.start('train')
         self._watch.start('forward')
-        res_combined  = {}
-        data_combined = {}
-        num_forward = int(self._batch_size / (self._minibatch_size * max(1,len(self._gpus))))
 
+        # Initialize unwrapper (TODO: Move to __init__)
+        unwrap = self._trainval_config.get('unwrap', False) or bool(self._trainval_config.get('unwrapper', None))
+        if unwrap:
+            rules = input_unwrap_rules(self._iotool_config['dataset']['schema'])
+            if hasattr(self._net.module, 'RETURNS'): rules.update(self._net.module.RETURNS)
+            if hasattr(self._criterion, 'RETURNS'): rules.update(self._criterion.RETURNS)
+            unwrapper = Unwrapper(max(1, len(self._gpus)), self._batch_size, rules, self._boundaries, remove_batch_col=False) # TODO: make True
+
+        # If batch_size > mini_batch_size * n_gpus, run forward more than once per iteration
+        data_combined, res_combined  = defaultdict(list), defaultdict(list)
+        num_forward = int(self._batch_size / (self._minibatch_size * max(1,len(self._gpus))))
         for idx in range(num_forward):
+            # Get the batched data
             self._watch.start('io')
             input_data = self.get_data_minibatched(data_iter)
             input_train, input_loss = self.make_input_forward(input_data)
-
             self._watch.stop('io')
             self.tspent_sum['io'] += self._watch.time('io')
 
+            # Run forward
+            self._model.batch_size = len(input_data['index'][0]) * self._num_volumes
             res = self._forward(input_train, input_loss, iteration=iteration)
 
-            # Here, contruct the unwrapped input and output
-            # First, handle the case of a simple list concat
-            concat_keys = self._trainval_config.get('concat_result', [])
-            if len(concat_keys):
-                avoid_keys  = [k for k,v in input_data.items() if not k in concat_keys]
-                avoid_keys += [k for k,v in res.items()        if not k in concat_keys]
-                input_data,res = utils.list_concat(input_data,res,avoid_keys=avoid_keys)
-
-            # Below for more sophisticated unwrapping functions
-            # should call a single function that returns a list which can be "extended" in res_combined and data_combined.
-            # inside the unwrapper function, find all unique batch ids.
-            # unwrap the outcome
-            unwrapper = self._trainval_config.get('unwrapper', None)
-            if unwrapper:
-                try:
-                    unwrapper = getattr(utils.unwrap, unwrapper)
-                except ImportError:
-                    msg = 'model.output specifies an unwrapper "%s" which is not available under mlreco.utils'
-                    print(msg % self._trainval_config['unwrapper'])
-                    raise ImportError
-                # print(input_data['index'])
-                input_data, res = unwrapper(input_data, res, avoid_keys=concat_keys)
+            # Unwrap output, if requested
+            if unwrap:
+                unwrapper.batch_size = len(input_data['index'][0])
+                input_data, res = unwrapper(input_data, res)
             else:
                 if 'index' in input_data:
                     input_data['index'] = input_data['index'][0]
 
+            # Append results to the existing list
+            for key in input_data.keys():
+                data_combined[key].extend(input_data[key])
             for key in res.keys():
-                if key not in res_combined:
-                    res_combined[key] = []
                 res_combined[key].extend(res[key])
 
-            for key in input_data.keys():
-                if key not in data_combined:
-                    data_combined[key] = []
-                data_combined[key].extend(input_data[key])
-
         self._watch.stop('forward')
-        return data_combined, res_combined
+        return dict(data_combined), dict(res_combined)
 
 
     def _forward(self, train_blob, loss_blob, iteration=None):
@@ -276,11 +268,10 @@ class trainval(object):
             #    data.append([data_blob[key][i] for key in input_keys])
 
             self._watch.start('forward')
-            self._watch.start_cputime('forward_cpu')
+            self._watch.start_cpu('forward_cpu')
 
             if not len(self._gpus):
                 train_blob = train_blob[0]
-            #print(not self._net.device_ids)
             result = self._net(train_blob)
 
             if not len(self._gpus):
@@ -293,13 +284,11 @@ class trainval(object):
                     loss_acc = self._criterion(result, *tuple(loss_blob), iteration=iteration)
                 else:
                     loss_acc = self._criterion(result, *tuple(loss_blob))
-                    #print('hello')
-                    #loss_acc['loss'].backward()
                 if self._train:
                     self._loss.append(loss_acc['loss'])
 
             self._watch.stop('forward')
-            self._watch.stop_cputime('forward_cpu')
+            self._watch.stop_cpu('forward_cpu')
             self.tspent_sum['forward'] += self._watch.time('forward')
 
             # Record results
@@ -314,12 +303,17 @@ class trainval(object):
                 if len(result[key]) == 0: continue
                 if isinstance(result[key][0], list):
                     res[key] = [[to_numpy(s) for s in x] for x in result[key]]
-                # elif isinstance(result[key][0], Batch):
-                #     res[key] = result[key]
+                elif isinstance(result[key], list) and np.isscalar(result[key][0]):
+                    res[key] = result[key]
                 else:
-                    res[key] = [to_numpy(s) for s in result[key]]
+                    try:
+                        res[key] = [to_numpy(s) for s in result[key]]
+                    except:
+                        print(type(result[key][0]))
+                        raise Exception(f'Could not convert result {key}: {str(result[key])} of type "{type(result[key][0])}" to numpy array')
 
             return res
+        
 
     def initialize_calibrator(self, model, module_config):
 
@@ -368,8 +362,11 @@ class trainval(object):
                 model_name = config.get('model_name', module)
                 model_path = config.get('model_path', None)
 
-                # Make sure BN and DO layers are set to eval mode
-                getattr(self._model, model_name).eval()
+                # Make sure BN and DO layers are set to eval mode when the weights are frozen
+                model = self._model
+                for m in module.split('.'):
+                    model = getattr(model, m)
+                model.eval()
 
                 # Freeze all weights
                 count = 0
@@ -411,10 +408,10 @@ class trainval(object):
             #print(self._net.state_dict().keys())
             for module, model_path, model_name in model_paths:
                 if not os.path.isfile(model_path):
-                    if self._train:
-                        raise ValueError('File not found: %s for module %s\n' % (model_path, module))
-                    else:
+                    if len(glob.glob(model_path)):
                         continue
+                    else:
+                        raise ValueError('File not found: %s for module %s\n' % (model_path, module))
                 print('Restoring weights for %s from %s...' % (module,model_path))
                 with open(model_path, 'rb') as f:
                     checkpoint = torch.load(f, map_location='cpu')
@@ -491,6 +488,9 @@ class trainval(object):
         self.tspent_sum['forward'] = self.tspent_sum['train'] = self.tspent_sum['io'] = self.tspent_sum['save'] = 0.
 
         self._model = model(module_config)
+
+        self._num_volumes = 1 if not self._boundaries else np.prod([len(b)+1 for b in self._boundaries if b != 'None'])
+        self._model.batch_size = self._minibatch_size * self._num_volumes
 
         self._net = DataParallel(self._model, device_ids=self._gpus)
 

@@ -9,9 +9,10 @@ from mlreco.models.layers.cluster_cnn.graph_spice_embedder import GraphSPICEEmbe
 
 from pprint import pprint
 from mlreco.utils.cluster.cluster_graph_constructor import ClusterGraphConstructor
+from mlreco.utils.cluster.fragmenter import GraphSPICEFragmentManager
+from mlreco.utils.globals import SHAPE_COL
 
-
-class MinkGraphSPICE(nn.Module):
+class GraphSPICE(nn.Module):
     '''
     Neighbor-graph embedding based particle clustering.
 
@@ -118,7 +119,6 @@ class MinkGraphSPICE(nn.Module):
     graph:
     graph_info:
     coordinates:
-    batch_indices:
     hypergraph_features:
 
     See Also
@@ -128,8 +128,34 @@ class MinkGraphSPICE(nn.Module):
 
     MODULES = ['constructor_cfg', 'embedder_cfg', 'kernel_cfg', 'gspice_fragment_manager']
 
+    RETURNS = {
+        'image_id'     : ['tensor'],
+        'coordinates'  : ['tensor'],
+        'batch'        : ['tensor', 'image_id'],
+        'x'            : ['tensor', 'image_id'],
+        'pos'          : ['tensor', 'image_id'],
+        'node_truth'   : ['tensor', 'image_id'],
+        'voxel_id'     : ['tensor', 'image_id'],
+        'graph_key'    : ['tensor'],
+        'graph_id'     : ['tensor', 'graph_key'],
+        'semantic_id'  : ['tensor', 'image_id'],
+        'full_edge_index'   : ['edge_tensor', ['full_edge_index', 'image_id']],
+        'edge_index'   : ['edge_tensor', ['full_edge_index', 'image_id']],
+        'edge_batch'   : ['edge_tensor', ['full_edge_index', 'image_id']],
+        'edge_image_id': ['edge_tensor', ['full_edge_index', 'image_id']],
+        'edge_label'   : ['edge_tensor', ['full_edge_index', 'image_id']],
+        'edge_attr'    : ['edge_tensor', ['full_edge_index', 'image_id']],
+        'edge_pred'    : ['edge_tensor', ['full_edge_index', 'image_id']],
+        'edge_prob'    : ['edge_tensor', ['full_edge_index', 'image_id']],
+        'filtered_input': ['tensor'],
+        'gspice_output': ['tensor'],
+        'fragment_batch_ids' : ['tensor'],
+        'fragment_clusts': ['tensor', 'fragment_batch_ids'],
+        'fragment_seg' : ['tensor', 'fragment_batch_ids'],
+    }
+
     def __init__(self, cfg, name='graph_spice'):
-        super(MinkGraphSPICE, self).__init__()
+        super(GraphSPICE, self).__init__()
         self.model_config = cfg.get(name, {})
         self.skip_classes = self.model_config.get('skip_classes', [2, 3, 4])
         self.dimension = self.model_config.get('dimension', 3)
@@ -139,6 +165,7 @@ class MinkGraphSPICE(nn.Module):
 
         self.kernel_cfg = self.model_config.get('kernel_cfg', {})
         self.kernel_fn = gs_kernel_construct(self.kernel_cfg)
+        self.invert = self.model_config.get('invert', True)
 
         constructor_cfg = self.model_config.get('constructor_cfg', {})
 
@@ -147,8 +174,16 @@ class MinkGraphSPICE(nn.Module):
         # Cluster Graph Manager
         # `training` needs to be set at forward time.
         # Before that, self.training is always True.
-        self.gs_manager = ClusterGraphConstructor(constructor_cfg,
-                                                batch_col=0)
+        self.gs_manager = ClusterGraphConstructor(constructor_cfg)
+        
+        self.make_fragments = self.model_config.get('make_fragments', False)
+        self.batch_col = 0
+        if self.make_fragments:
+            self._gspice_fragment_manager = GraphSPICEFragmentManager(
+                cfg.get('graph_spice', {}).get('gspice_fragment_manager', {}), 
+                batch_col=self.batch_col)
+
+        self.RETURNS.update(self.embedder.RETURNS)
 
 
     def weight_initialization(self):
@@ -168,30 +203,58 @@ class MinkGraphSPICE(nn.Module):
         mask = ~np.isin(label[:, -1].detach().cpu().numpy(), self.skip_classes)
         x = [point_cloud[mask], label[mask]]
         return x
+    
+
+    def construct_fragments(self, input):
+        
+        frags = {}
+        
+        device = input[0].device
+        semantic_labels = input[1][:, SHAPE_COL]
+        filtered_semantic = ~(semantic_labels[..., None] == \
+                                torch.tensor(self.skip_classes, device=device)).any(-1)
+        graphs = self.gs_manager.fit_predict()
+        perm = torch.argsort(graphs.voxel_id)
+        cluster_predictions = graphs.node_pred[perm]
+        filtered_input = torch.cat([input[0][filtered_semantic][:, :4],
+                                    semantic_labels[filtered_semantic].view(-1, 1),
+                                    cluster_predictions.view(-1, 1)], dim=1)
+
+        fragments = self._gspice_fragment_manager(filtered_input, input[0], filtered_semantic)
+        frags['filtered_input'] = [filtered_input]
+        frags['fragment_batch_ids'] = [np.array(fragments[1])]
+        frags['fragment_clusts'] = [np.array(fragments[0])]
+        frags['fragment_seg'] = [np.array(fragments[2]).astype(int)]
+        
+        return frags
 
 
     def forward(self, input):
         '''
 
         '''
+        # Pass input through the model
         self.gs_manager.training = self.training
         point_cloud, labels = self.filter_class(input)
         res = self.embedder([point_cloud])
 
-        coordinates = point_cloud[:, 1:4]
-        batch_indices = point_cloud[:, 0].int()
-
-        res['coordinates'] = [coordinates]
-        res['batch_indices'] = [batch_indices]
-
+        res['coordinates'] = [point_cloud[:, :4]]
         if self.use_raw_features:
             res['hypergraph_features'] = res['features']
 
+        # Build the graph
         graph = self.gs_manager(res,
                                 self.kernel_fn,
-                                labels)
-        res['graph'] = [graph]
-        res['graph_info'] = [self.gs_manager.info]
+                                labels,
+                                invert=self.invert)
+        
+        if self.make_fragments:
+            frags = self.construct_fragments(input)
+            res.update(frags)
+        
+        graph_state = self.gs_manager.save_state(unwrapped=False)
+        res.update(graph_state)
+
         return res
 
 
@@ -230,8 +293,11 @@ class GraphSPICELoss(nn.Module):
 
     See Also
     --------
-    MinkGraphSPICE
+    GraphSPICE
     """
+
+    RETURNS = {}
+
     def __init__(self, cfg, name='graph_spice_loss'):
         super(GraphSPICELoss, self).__init__()
         self.model_config = cfg.get('graph_spice', {})
@@ -245,11 +311,13 @@ class GraphSPICELoss(nn.Module):
         # self.eval_mode = self.loss_config.get('eval', False)
         self.loss_fn = spice_loss_construct(self.loss_name)(self.loss_config)
 
+        self.RETURNS.update(self.loss_fn.RETURNS)
+
         constructor_cfg = self.model_config.get('constructor_cfg', {})
-        self.gs_manager = ClusterGraphConstructor(constructor_cfg,
-                                                  batch_col=0)
+        self.gs_manager = ClusterGraphConstructor(constructor_cfg)
 
         self.invert = self.loss_config.get('invert', True)
+        self.evaluate_true_accuracy = self.loss_config.get('evaluate_true_accuracy', False)
         # print("LOSS FN = ", self.loss_fn)
 
     def filter_class(self, segment_label, cluster_label):
@@ -266,15 +334,8 @@ class GraphSPICELoss(nn.Module):
         '''
 
         '''
-        slabel, clabel = self.filter_class(segment_label, cluster_label)
-
-        graph = result['graph'][0]
-        graph_info = result['graph_info'][0]
-        self.gs_manager.replace_state(graph, graph_info)
-        result['edge_score'] = [graph.edge_attr]
-        result['edge_index'] = [graph.edge_index]
-        if self.gs_manager.use_cluster_labels:
-            result['edge_truth'] = [graph.edge_truth]
+        # self.gs_manager.replace_state(result)
+        self.gs_manager.load_state(result, unwrapped=False)
 
         # if self.invert:
         #     pred_labels = result['edge_score'][0] < 0.0
@@ -290,5 +351,12 @@ class GraphSPICELoss(nn.Module):
         #     edge_diff.shape[0]))
 
 
+        slabel, clabel = self.filter_class(segment_label, cluster_label)
         res = self.loss_fn(result, slabel, clabel)
+        
+        if self.evaluate_true_accuracy:
+            self.gs_manager.fit_predict()
+            acc_out = self.gs_manager.evaluate()
+            for key, val in acc_out.items():
+                res[key] = val
         return res

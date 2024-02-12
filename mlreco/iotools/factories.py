@@ -1,15 +1,23 @@
-"""
-These factories instantiate `torch.utils.data.DataLoader`
-based on the YAML configuration that was provided.
-"""
+from copy import deepcopy
 from torch.utils.data import DataLoader
 
 
-def dataset_factory(cfg,event_list=None):
+def dataset_factory(cfg, event_list=None):
     """
     Instantiates dataset based on type specified in configuration under
     `iotool.dataset.name`. The name must match the name of a class under
-    mlreco.iotools.datasets.
+    `mlreco.iotools.datasets`.
+
+    Parameters
+    ----------
+    cfg : dict
+        Configuration dictionary. Expects a field `iotool`.
+    event_list: list, optional
+        List of tree idx.
+
+    Returns
+    -------
+    dataset: torch.utils.data.Dataset
 
     Note
     ----
@@ -22,7 +30,7 @@ def dataset_factory(cfg,event_list=None):
     return getattr(mlreco.iotools.datasets, params['name']).create(params)
 
 
-def loader_factory(cfg,event_list=None):
+def loader_factory(cfg, event_list=None):
     """
     Instantiates a DataLoader based on configuration.
 
@@ -41,9 +49,9 @@ def loader_factory(cfg,event_list=None):
     """
     params = cfg['iotool']
     minibatch_size = int(params['minibatch_size'])
-    shuffle      = True if not 'shuffle' in params     else bool(params['shuffle'    ])
-    num_workers  = 1    if not 'num_workers' in params else int (params['num_workers'])
-    collate_fn   = None if not 'collate_fn' in params  else str (params['collate_fn' ])
+    shuffle      = False if not 'shuffle' in params     else bool(params['shuffle'    ])
+    num_workers  = 1     if not 'num_workers' in params else int (params['num_workers'])
+    collate_fn   = None  if not 'collate_fn' in params  else str (params['collate_fn' ])
     collate_kwargs = {}
 
     if collate_fn is None:
@@ -80,3 +88,55 @@ def loader_factory(cfg,event_list=None):
                             sampler     = sampler,
                             num_workers = num_workers)
     return loader
+
+
+def reader_factory(cfg):
+    """
+    Instantiates writer based on type specified in configuration under
+    `iotool.reader.name`. The name must match the name of a class under
+    `mlreco.iotools.readers`.
+
+    Parameters
+    ----------
+    cfg : dict
+        Configuration dictionary. Expects a field `iotool`.
+
+    Returns
+    -------
+    reader
+
+    Note
+    ----
+    Currently the choice is limited to `HDF5Reader` only.
+    """
+    import mlreco.iotools.readers
+    params = deepcopy(cfg)
+    name   = params.pop('name')
+    reader = getattr(mlreco.iotools.readers, name)(**params)
+    return reader
+
+
+def writer_factory(cfg):
+    """
+    Instantiates writer based on type specified in configuration under
+    `iotool.writer.name`. The name must match the name of a class under
+    `mlreco.iotools.writers`.
+
+    Parameters
+    ----------
+    cfg : dict
+        Configuration dictionary. Expects a field `iotool`.
+
+    Returns
+    -------
+    writer
+
+    Note
+    ----
+    Currently the choice is limited to `HDF5Writer` only.
+    """
+    import mlreco.iotools.writers
+    params = deepcopy(cfg)
+    name   = params.pop('name')
+    writer = getattr(mlreco.iotools.writers, name)(**params)
+    return writer

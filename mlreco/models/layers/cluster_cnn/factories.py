@@ -43,10 +43,10 @@ def cluster_model_dict():
     '''
     # from mlreco.models.scn.cluster_cnn import spatial_embeddings
     # from mlreco.models.scn.cluster_cnn import graph_spice
-    from mlreco.models.layers.cluster_cnn.embeddings import SPICE as MinkSPICE
+    from mlreco.models.layers.cluster_cnn.embeddings import SPICE
     models = {
         # "spice_cnn": spatial_embeddings.SpatialEmbeddings,
-        "spice_cnn_me": MinkSPICE,
+        "spice_cnn_me": SPICE,
         # "graph_spice_embedder": graph_spice.GraphSPICEEmbedder,
         # "graph_spice_geo_embedder": graph_spice.GraphSPICEGeoEmbedder
         # "graphgnn_spice": graphgnn_spice.SparseOccuSegGNN
@@ -82,7 +82,8 @@ def spice_loss_dict():
         'se_vectorized_inter': losses.spatial_embeddings_fast.SPICEInterLoss,
         'se_vectorized_inter_attractor': losses.spatial_embeddings_fast.SPICEAttractorLoss,
         'graph_spice_edge_loss': losses.gs_embeddings.NodeEdgeHybridLoss,
-        'graph_spice_loss': losses.gs_embeddings.GraphSPICEEmbeddingLoss
+        'graph_spice_loss': losses.gs_embeddings.GraphSPICEEmbeddingLoss,
+        'graph_spice_edge_only_loss': losses.gs_embeddings.EdgeOnlyLoss
         # 'graphgnn_spice_loss': SparseOccuSegGNNLoss
     }
     return loss

@@ -6,6 +6,8 @@ from .misc import *
 from collections import defaultdict
 from torch_scatter import scatter_mean
 
+from mlreco.utils.globals import SHAPE_LABELS
+
 class WeightedEdgeLoss(nn.Module):
 
     def __init__(self, loss_type='BCE', reduction='mean', invert=False):
@@ -45,6 +47,7 @@ class WeightedEdgeLoss(nn.Module):
         #     w = 1.0 / (1.0 - float(num_pos) / num_edges)
         #     weight[~y.bool()] = w
         # print(logits.shape, logits.max())
+        
         loss = self.loss_fn(logits, y.float(), weight=weight)
         return loss
 
@@ -88,6 +91,17 @@ class GraphSPICEEmbeddingLoss(nn.Module):
     Loss function for Sparse Spatial Embeddings Model, with fixed
     centroids and symmetric gaussian kernels.
     '''
+
+    RETURNS = {
+        'loss' : ['scalar'],
+        'accuracy': ['scalar'],
+        'ft_inter_loss': ['scalar'],
+        'ft_intra_loss': ['scalar'],
+        'ft_reg_loss': ['scalar'],
+        'sp_inter_loss': ['scalar'],
+        'sp_intra_loss': ['scalar'],
+    }
+
     def __init__(self, cfg, name='graph_spice_loss'):
         super(GraphSPICEEmbeddingLoss, self).__init__()
         self.loss_config = cfg #[name]
@@ -219,9 +233,18 @@ class GraphSPICEEmbeddingLoss(nn.Module):
         '''
         loss = defaultdict(list)
         loss['loss'] = []
+        loss['ft_intra_loss'] = []
+        loss['ft_inter_loss'] = []
+        loss['ft_reg_loss'] = []
+        loss['sp_intra_loss'] = []
+        loss['sp_inter_loss'] = []
+        loss['cov_loss'] = []
+        loss['occ_loss'] = []
 
         accuracy = defaultdict(float)
         accuracy['accuracy'] = 0.
+        for i in range(5):
+            accuracy[f'accuracy_{i}'] = 0.
 
         semantic_classes = slabels.unique()
         counts = 0
@@ -259,35 +282,25 @@ class GraphSPICEEmbeddingLoss(nn.Module):
                 sp_centroids, ft_centroids, eps=self.eps)
             occ_loss = self.occupancy_loss(occ, groups_unique)
             # TODO: Combine loss with weighting, keep track for logging
-            loss['ft_intra'].append(ft_out['intracluster_loss'])
-            loss['ft_inter'].append(ft_out['intercluster_loss'])
-            loss['ft_reg'].append(ft_out['regularization_loss'])
-            loss['sp_intra'].append(sp_out['intracluster_loss'])
-            loss['sp_inter'].append(sp_out['intercluster_loss'])
+            loss['ft_intra_loss'].append(ft_out['intracluster_loss'])
+            loss['ft_inter_loss'].append(ft_out['intercluster_loss'])
+            loss['ft_reg_loss'].append(ft_out['regularization_loss'])
+            loss['sp_intra_loss'].append(sp_out['intracluster_loss'])
+            loss['sp_inter_loss'].append(sp_out['intercluster_loss'])
             loss['cov_loss'].append(float(cov_loss))
             loss['occ_loss'].append(float(occ_loss))
             loss['loss'].append(
                 ft_out['loss'] + sp_out['loss'] + cov_loss + occ_loss)
             # TODO: Implement train-time accuracy estimation
-            accuracy['acc_{}'.format(int(sc))] = acc
+            accuracy['accuracy_{}'.format(int(sc))] = acc
             accuracy['accuracy'] += acc
             counts += 1
 
-            # for key, val in ft_out.items():
-            #     if val != val:
-            #         print('ft_loss: {} = NaN ({})'.format(key, val))
-            #
-            # for key, val in sp_out.items():
-            #     if val != val:
-            #         print('sp_loss: {} = NaN ({})'.format(key, val))
-            #
-            # if cov_loss != cov_loss:
-            #     print('cov_loss: {}'.format(cov_loss))
-            #
-            # if occ_loss != occ_loss:
-            #     print('occ_loss: {}'.format(occ_loss))
         if counts > 0:
             accuracy['accuracy'] /= counts
+            for i in range(5):
+                accuracy[f'accuracy_{i}'] /= counts
+                
         return loss, accuracy
 
     def forward(self, out, segment_label, cluster_label):
@@ -348,11 +361,17 @@ class GraphSPICEEmbeddingLoss(nn.Module):
         acc_avg = defaultdict(float)
 
         for key, val in loss.items():
-            loss_avg[key] = sum(val) / len(val)
+            if sum(val) > 0:
+                loss_avg[key] = sum(val) / len(val)
+            else:
+                loss_avg[key] = 0.0
         if segmentationLayer:
             loss_avg['loss'] += loss_avg['gs_loss_seg']
         for key, val in accuracy.items():
-            acc_avg[key] = sum(val) / len(val)
+            if sum(val) > 0:
+                acc_avg[key] = sum(val) / len(val)
+            else:
+                acc_avg[key] = 1.0
 
         res = {}
         res.update(loss_avg)
@@ -365,6 +384,11 @@ class NodeEdgeHybridLoss(torch.nn.modules.loss._Loss):
     '''
     Combined Node + Edge Loss
     '''
+
+    RETURNS = {
+        'edge_accuracy' : ['scalar']
+    }
+
     def __init__(self, cfg, name='graph_spice_loss'):
         super(NodeEdgeHybridLoss, self).__init__()
         # print("CFG + ", cfg)
@@ -376,6 +400,9 @@ class NodeEdgeHybridLoss(torch.nn.modules.loss._Loss):
         # self.is_eval = cfg['eval']
         self.acc_fn = IoUScore()
         self.use_cluster_labels = cfg.get('use_cluster_labels', True)
+        self.embedding_loss_weight = cfg.get('embedding_loss_weight', 1.0)
+
+        self.RETURNS.update(self.loss_fn.RETURNS)
 
     def forward(self, result, segment_label, cluster_label):
 
@@ -383,15 +410,17 @@ class NodeEdgeHybridLoss(torch.nn.modules.loss._Loss):
 
         res = self.loss_fn(result, segment_label, group_label)
         # print(result)
-        edge_score = result['edge_score'][0].squeeze()
-        x = edge_score.squeeze()
+        # edge_score = result['edge_score'][0].squeeze()
+        edge_score = result['edge_attr'][0].squeeze()
+        x = edge_score
         pred = x >= 0
 
         iou, edge_loss = 0, 0
 
         if self.use_cluster_labels:
-            edge_truth = result['edge_truth'][0]
-            edge_loss = self.edge_loss(edge_score.squeeze(), edge_truth.float())
+            edge_truth = result['edge_label'][0].squeeze()
+            # print(edge_score.squeeze(), edge_truth, edge_score.shape, edge_truth.shape)
+            edge_loss = self.edge_loss(edge_score, edge_truth.float())
             edge_loss = edge_loss.mean()
 
             if self.invert:
@@ -402,8 +431,62 @@ class NodeEdgeHybridLoss(torch.nn.modules.loss._Loss):
 
         res['edge_accuracy'] = iou
         if 'loss' in res:
-            res['loss'] += edge_loss
+            res['loss'] = res['loss'] * self.embedding_loss_weight + edge_loss
         else:
             res['loss'] = edge_loss
         res['edge_loss'] = float(edge_loss)
+        
+        return res
+
+
+class EdgeOnlyLoss(torch.nn.modules.loss._Loss):
+    '''
+    Combined Node + Edge Loss
+    '''
+
+    RETURNS = {
+        'edge_accuracy' : ['scalar']
+    }
+
+    def __init__(self, cfg, name='graph_spice_loss'):
+        super(EdgeOnlyLoss, self).__init__()
+        # print("CFG + ", cfg)
+        self.loss_config = cfg #[name]
+        # self.loss_fn = GraphSPICEEmbeddingLoss(cfg)
+        self.edge_loss_cfg = self.loss_config.get('edge_loss_cfg', {})
+        self.invert = cfg.get('invert', True)
+        self.edge_loss = WeightedEdgeLoss(invert=self.invert, **self.edge_loss_cfg)
+        # self.is_eval = cfg['eval']
+        self.acc_fn = IoUScore()
+        self.use_cluster_labels = cfg.get('use_cluster_labels', True)
+        # self.embedding_loss_weight = cfg.get('embedding_loss_weight', 1.0)
+
+    def forward(self, result, segment_label, cluster_label):
+
+        group_label = [cluster_label[0][:, [0, 1, 2, 3, 5]]]
+        
+        res = {}
+        
+        edge_score = result['edge_attr'][0].squeeze()
+        x = edge_score
+        pred = x >= 0
+
+        iou, edge_loss = 0, 0
+
+        if self.use_cluster_labels:
+            edge_truth = result['edge_label'][0].squeeze()
+            # print(edge_score.squeeze(), edge_truth, edge_score.shape, edge_truth.shape)
+            edge_loss = self.edge_loss(edge_score, edge_truth.float())
+            edge_loss = edge_loss.mean()
+
+            if self.invert:
+                edge_truth = torch.logical_not(edge_truth.long())
+
+            iou = self.acc_fn(pred, edge_truth)
+
+        res['edge_accuracy'] = iou
+        res['accuracy'] = iou
+        res['loss'] = edge_loss
+        res['edge_loss'] = float(edge_loss)
+        
         return res
