@@ -1,0 +1,5062 @@
+hello. nue200
+
+Config processed at: Linux ampt019 3.10.0-1160.42.2.el7.x86_64 #1 SMP Tue Sep 7 14:49:57 UTC 2021 x86_64 x86_64 x86_64 GNU/Linux
+
+$CUDA_VISIBLE_DEVICES="0"
+
+Loading file: /sdf/group/neutrino/ldomine/numu_052022_v06/all_filtered.root
+Loading file: /sdf/group/neutrino/ldomine/numu_052022_v05/all_filtered.root
+Loading tree sparse3d_reco
+Loading tree sparse3d_reco_chi2
+Loading tree sparse3d_reco_nhits
+Loading tree sparse3d_reco_hit_charge0
+Loading tree sparse3d_reco_hit_charge1
+Loading tree sparse3d_reco_hit_charge2
+Loading tree sparse3d_reco_hit_key0
+Loading tree sparse3d_reco_hit_key1
+Loading tree sparse3d_reco_hit_key2
+Loading tree sparse3d_pcluster_semantics_ghost
+Loading tree cluster3d_pcluster
+Loading tree particle_pcluster
+Loading tree sparse3d_pcluster_semantics
+Loading tree sparse3d_pcluster
+Loading tree particle_corrected
+Loading tree cluster3d_sed
+Found 15401 events in file(s)
+Shower GNN: True
+Track GNN: True
+Particle GNN: False
+Interaction GNN: True
+Kinematics GNN: False
+Cosmic GNN: False
+
+            Since one of the GNNs are turned on, process_fragments is turned ON.
+            
+
+        Fragment processing is turned ON. When training CNN models from
+         scratch, we recommend turning fragment processing OFF as without
+         reliable segmentation and/or cnn clustering outputs this could take
+         prohibitively large training iterations.
+        
+Shower GNN: True
+Track GNN: True
+Particle GNN: False
+Interaction GNN: True
+Kinematics GNN: False
+Cosmic GNN: False
+
+            Since one of the GNNs are turned on, process_fragments is turned ON.
+            
+
+        Fragment processing is turned ON. When training CNN models from
+         scratch, we recommend turning fragment processing OFF as without
+         reliable segmentation and/or cnn clustering outputs this could take
+         prohibitively large training iterations.
+        
+Restoring weights for  from /sdf/group/neutrino/drielsma/me/train/icarus_newk/weights/full_chain/grappa_inter_fix/snapshot-14749.ckpt...
+Done.
+Restoring weights for ppn from /sdf/group/neutrino/drielsma/me/train/icarus_newk/weights/full_chain/uresnet_ppn_3feats/snapshot-57499.ckpt...
+Done.
+Restoring weights for uresnet_lonely from /sdf/group/neutrino/drielsma/me/train/icarus_newk/weights/full_chain/uresnet_ppn_3feats/snapshot-57499.ckpt...
+Done.
+Restoring weights for uresnet_deghost from /sdf/group/neutrino/drielsma/me/train/icarus_newk/weights/full_chain/uresnet_ppn_3feats/snapshot-57499.ckpt...
+Done.
+0
+Deghosting Accuracy: 0.9832
+Segmentation Accuracy: 0.9889
+PPN Accuracy: 0.7906
+Shower fragment clustering accuracy: 1.0000
+Shower primary prediction accuracy: 1.0000
+Track fragment clustering accuracy: 1.0000
+Interaction grouping accuracy: 0.6667
+Particle ID accuracy: 1.0000
+Primary particle score accuracy: 1.0000
+1
+Deghosting Accuracy: 0.9834
+Segmentation Accuracy: 1.0000
+PPN Accuracy: 0.9055
+Shower fragment clustering accuracy: 1.0000
+Shower primary prediction accuracy: 1.0000
+Track fragment clustering accuracy: 0.6667
+Interaction grouping accuracy: 1.0000
+Particle ID accuracy: 1.0000
+Primary particle score accuracy: 0.0000
+2
+Deghosting Accuracy: 0.9799
+Segmentation Accuracy: 0.9944
+PPN Accuracy: 0.9389
+Shower fragment clustering accuracy: 1.0000
+Shower primary prediction accuracy: 1.0000
+Track fragment clustering accuracy: 0.9643
+Interaction grouping accuracy: 1.0000
+Particle ID accuracy: 0.6667
+Primary particle score accuracy: 1.0000
+3
+Deghosting Accuracy: 0.9800
+Segmentation Accuracy: 0.9985
+PPN Accuracy: 0.8535
+Shower fragment clustering accuracy: 1.0000
+Shower primary prediction accuracy: 1.0000
+Track fragment clustering accuracy: 0.8000
+Interaction grouping accuracy: 1.0000
+Particle ID accuracy: 0.5000
+Primary particle score accuracy: 1.0000
+4
+Deghosting Accuracy: 0.9835
+Segmentation Accuracy: 0.9938
+PPN Accuracy: 0.7335
+Shower fragment clustering accuracy: 1.0000
+Shower primary prediction accuracy: 1.0000
+Track fragment clustering accuracy: 1.0000
+Interaction grouping accuracy: 0.8929
+Particle ID accuracy: 1.0000
+Primary particle score accuracy: 0.6250
+5
+Deghosting Accuracy: 0.9669
+Segmentation Accuracy: 0.9937
+PPN Accuracy: 0.8386
+Shower fragment clustering accuracy: 0.7121
+Shower primary prediction accuracy: 1.0000
+Track fragment clustering accuracy: 0.6667
+Interaction grouping accuracy: 0.7917
+Particle ID accuracy: 0.5000
+Primary particle score accuracy: 1.0000
+6
+Deghosting Accuracy: 0.9731
+Segmentation Accuracy: 0.9968
+PPN Accuracy: 0.8976
+Shower fragment clustering accuracy: 1.0000
+Shower primary prediction accuracy: 1.0000
+Track fragment clustering accuracy: 1.0000
+Interaction grouping accuracy: 1.0000
+Particle ID accuracy: 1.0000
+Primary particle score accuracy: 0.8000
+7
+Deghosting Accuracy: 0.9615
+Segmentation Accuracy: 0.9868
+PPN Accuracy: 0.4685
+Shower fragment clustering accuracy: 1.0000
+Shower primary prediction accuracy: 1.0000
+Track fragment clustering accuracy: 1.0000
+Interaction grouping accuracy: 0.6667
+Particle ID accuracy: 1.0000
+Primary particle score accuracy: 0.6000
+8
+Deghosting Accuracy: 0.9730
+Segmentation Accuracy: 0.9893
+PPN Accuracy: 0.9033
+Shower fragment clustering accuracy: 1.0000
+Shower primary prediction accuracy: 1.0000
+Track fragment clustering accuracy: 0.0000
+Interaction grouping accuracy: 1.0000
+Particle ID accuracy: 1.0000
+Primary particle score accuracy: 1.0000
+9
+Deghosting Accuracy: 0.9758
+Segmentation Accuracy: 0.9981
+PPN Accuracy: 0.8514
+Shower fragment clustering accuracy: 1.0000
+Shower primary prediction accuracy: 1.0000
+Track fragment clustering accuracy: 1.0000
+Interaction grouping accuracy: 1.0000
+Particle ID accuracy: 1.0000
+Primary particle score accuracy: 1.0000
+10
+Deghosting Accuracy: 0.9830
+Segmentation Accuracy: 1.0000
+PPN Accuracy: 0.8465
+Shower fragment clustering accuracy: 1.0000
+Shower primary prediction accuracy: 1.0000
+Track fragment clustering accuracy: 0.6667
+Interaction grouping accuracy: 1.0000
+Particle ID accuracy: 1.0000
+Primary particle score accuracy: 1.0000
+11
+Deghosting Accuracy: 0.9901
+Segmentation Accuracy: 0.8644
+PPN Accuracy: 0.8750
+Shower fragment clustering accuracy: 1.0000
+Shower primary prediction accuracy: 1.0000
+Track fragment clustering accuracy: 1.0000
+Interaction grouping accuracy: 1.0000
+Particle ID accuracy: 0.0000
+Primary particle score accuracy: 1.0000
+12
+Deghosting Accuracy: 0.9851
+Segmentation Accuracy: 1.0000
+PPN Accuracy: 0.9179
+Shower fragment clustering accuracy: 1.0000
+Shower primary prediction accuracy: 1.0000
+Track fragment clustering accuracy: 0.9444
+Interaction grouping accuracy: 0.9556
+Particle ID accuracy: 1.0000
+Primary particle score accuracy: 0.6000
+13
+Deghosting Accuracy: 0.9713
+Segmentation Accuracy: 0.9980
+PPN Accuracy: 0.8082
+Shower fragment clustering accuracy: 1.0000
+Shower primary prediction accuracy: 1.0000
+Track fragment clustering accuracy: 0.6667
+Interaction grouping accuracy: 0.7500
+Particle ID accuracy: 1.0000
+Primary particle score accuracy: 0.0000
+14
+Deghosting Accuracy: 0.9709
+Segmentation Accuracy: 0.9642
+PPN Accuracy: 0.6930
+Shower fragment clustering accuracy: 0.0476
+Shower primary prediction accuracy: 1.0000
+Track fragment clustering accuracy: 0.0000
+Interaction grouping accuracy: 1.0000
+Particle ID accuracy: 1.0000
+Primary particle score accuracy: 1.0000
+15
+Deghosting Accuracy: 0.9773
+Segmentation Accuracy: 1.0000
+PPN Accuracy: 0.9525
+Shower fragment clustering accuracy: 1.0000
+Shower primary prediction accuracy: 1.0000
+Track fragment clustering accuracy: 1.0000
+Interaction grouping accuracy: 1.0000
+Particle ID accuracy: 0.0000
+Primary particle score accuracy: 0.0000
+16
+Deghosting Accuracy: 0.9793
+Segmentation Accuracy: 0.9940
+PPN Accuracy: 0.8143
+Shower fragment clustering accuracy: 0.8333
+Shower primary prediction accuracy: 1.0000
+Track fragment clustering accuracy: 1.0000
+Interaction grouping accuracy: 0.7679
+Particle ID accuracy: 1.0000
+Primary particle score accuracy: 1.0000
+17
+Deghosting Accuracy: 0.9764
+Segmentation Accuracy: 0.9996
+PPN Accuracy: 0.9091
+Shower fragment clustering accuracy: 1.0000
+Shower primary prediction accuracy: 1.0000
+Track fragment clustering accuracy: 1.0000
+Interaction grouping accuracy: 0.5000
+Particle ID accuracy: 1.0000
+Primary particle score accuracy: 1.0000
+18
+Deghosting Accuracy: 0.9796
+Segmentation Accuracy: 0.8891
+PPN Accuracy: 0.8634
+Shower fragment clustering accuracy: 0.7470
+Shower primary prediction accuracy: 1.0000
+Track fragment clustering accuracy: 0.8333
+Interaction grouping accuracy: 0.8333
+Particle ID accuracy: 0.7500
+Primary particle score accuracy: 0.8571
+19
+Deghosting Accuracy: 0.9771
+Segmentation Accuracy: 0.9920
+PPN Accuracy: 0.8462
+Shower fragment clustering accuracy: 1.0000
+Shower primary prediction accuracy: 1.0000
+Track fragment clustering accuracy: 1.0000
+Interaction grouping accuracy: 1.0000
+Particle ID accuracy: 1.0000
+Primary particle score accuracy: 0.8333
+20
+Deghosting Accuracy: 0.9784
+Segmentation Accuracy: 0.9980
+PPN Accuracy: 0.8396
+Shower fragment clustering accuracy: 1.0000
+Shower primary prediction accuracy: 1.0000
+Track fragment clustering accuracy: 1.0000
+Interaction grouping accuracy: 0.7000
+Particle ID accuracy: 1.0000
+Primary particle score accuracy: 1.0000
+21
+Deghosting Accuracy: 0.9714
+Segmentation Accuracy: 0.5126
+PPN Accuracy: 0.5840
+Shower fragment clustering accuracy: 1.0000
+Shower primary prediction accuracy: 1.0000
+Track fragment clustering accuracy: 0.7000
+Interaction grouping accuracy: 1.0000
+Particle ID accuracy: 1.0000
+Primary particle score accuracy: 1.0000
+22
+Deghosting Accuracy: 0.9845
+Segmentation Accuracy: 0.9837
+PPN Accuracy: 0.6299
+Shower fragment clustering accuracy: 1.0000
+Shower primary prediction accuracy: 1.0000
+Track fragment clustering accuracy: 0.6667
+Interaction grouping accuracy: 1.0000
+Particle ID accuracy: 0.0000
+Primary particle score accuracy: 0.5000
+23
+Deghosting Accuracy: 0.9884
+Segmentation Accuracy: 0.9976
+PPN Accuracy: 0.8924
+Shower fragment clustering accuracy: 1.0000
+Shower primary prediction accuracy: 1.0000
+Track fragment clustering accuracy: 0.9333
+Interaction grouping accuracy: 0.7143
+Particle ID accuracy: 0.0000
+Primary particle score accuracy: 1.0000
+24
+Deghosting Accuracy: 0.9761
+Segmentation Accuracy: 0.9604
+PPN Accuracy: 0.8338
+Shower fragment clustering accuracy: 1.0000
+Shower primary prediction accuracy: 1.0000
+Track fragment clustering accuracy: 0.9524
+Interaction grouping accuracy: 0.6818
+Particle ID accuracy: 1.0000
+Primary particle score accuracy: 1.0000
+25
+Deghosting Accuracy: 0.9670
+Segmentation Accuracy: 0.9943
+PPN Accuracy: 0.8176
+Shower fragment clustering accuracy: 1.0000
+Shower primary prediction accuracy: 1.0000
+Track fragment clustering accuracy: 1.0000
+Interaction grouping accuracy: 0.8889
+Particle ID accuracy: 1.0000
+Primary particle score accuracy: 1.0000
+26
+Deghosting Accuracy: 0.9606
+Segmentation Accuracy: 0.9754
+PPN Accuracy: 0.7628
+Shower fragment clustering accuracy: 1.0000
+Shower primary prediction accuracy: 1.0000
+Track fragment clustering accuracy: 0.9667
+Interaction grouping accuracy: 1.0000
+Particle ID accuracy: 0.5000
+Primary particle score accuracy: 0.5000
+27
+Deghosting Accuracy: 0.9546
+Segmentation Accuracy: 0.9834
+PPN Accuracy: 0.8022
+Shower fragment clustering accuracy: 1.0000
+Shower primary prediction accuracy: 1.0000
+Track fragment clustering accuracy: 1.0000
+Interaction grouping accuracy: 0.6667
+Particle ID accuracy: 1.0000
+Primary particle score accuracy: 0.0000
+28
+Deghosting Accuracy: 0.9730
+Segmentation Accuracy: 0.9558
+PPN Accuracy: 0.6299
+Shower fragment clustering accuracy: 1.0000
+Shower primary prediction accuracy: 1.0000
+Track fragment clustering accuracy: 1.0000
+Interaction grouping accuracy: 1.0000
+Particle ID accuracy: 0.7500
+Primary particle score accuracy: 0.7500
+29
+Deghosting Accuracy: 0.9320
+Segmentation Accuracy: 0.9708
+PPN Accuracy: 0.6425
+Shower fragment clustering accuracy: 1.0000
+Shower primary prediction accuracy: 1.0000
+Track fragment clustering accuracy: 1.0000
+Interaction grouping accuracy: 0.0000
+Particle ID accuracy: 0.0000
+Primary particle score accuracy: 0.5000
+30
+Deghosting Accuracy: 0.9725
+Segmentation Accuracy: 1.0000
+PPN Accuracy: 0.7907
+Shower fragment clustering accuracy: 1.0000
+Shower primary prediction accuracy: 1.0000
+Track fragment clustering accuracy: 1.0000
+Interaction grouping accuracy: 1.0000
+Particle ID accuracy: 1.0000
+Primary particle score accuracy: 1.0000
+31
+Deghosting Accuracy: 0.9690
+Segmentation Accuracy: 0.9872
+PPN Accuracy: 0.8426
+Shower fragment clustering accuracy: 0.5879
+Shower primary prediction accuracy: 1.0000
+Track fragment clustering accuracy: 1.0000
+Interaction grouping accuracy: 0.4500
+Particle ID accuracy: 1.0000
+Primary particle score accuracy: 1.0000
+32
+Deghosting Accuracy: 0.9744
+Segmentation Accuracy: 0.9763
+PPN Accuracy: 0.7066
+Shower fragment clustering accuracy: 1.0000
+Shower primary prediction accuracy: 1.0000
+Track fragment clustering accuracy: 0.0000
+Interaction grouping accuracy: 0.3333
+Particle ID accuracy: 1.0000
+Primary particle score accuracy: 1.0000
+33
+Deghosting Accuracy: 0.9861
+Segmentation Accuracy: 0.8636
+PPN Accuracy: 0.7742
+Shower fragment clustering accuracy: 1.0000
+Shower primary prediction accuracy: 1.0000
+Track fragment clustering accuracy: 1.0000
+Interaction grouping accuracy: 1.0000
+Particle ID accuracy: 1.0000
+Primary particle score accuracy: 0.0000
+34
+Deghosting Accuracy: 0.9784
+Segmentation Accuracy: 1.0000
+PPN Accuracy: 0.8289
+Shower fragment clustering accuracy: 0.9889
+Shower primary prediction accuracy: 1.0000
+Track fragment clustering accuracy: 1.0000
+Interaction grouping accuracy: 0.5000
+Particle ID accuracy: 0.5000
+Primary particle score accuracy: 1.0000
+35
+Deghosting Accuracy: 0.9625
+Segmentation Accuracy: 0.9902
+PPN Accuracy: 0.8011
+Shower fragment clustering accuracy: 1.0000
+Shower primary prediction accuracy: 1.0000
+Track fragment clustering accuracy: 1.0000
+Interaction grouping accuracy: 0.8571
+Particle ID accuracy: 0.7500
+Primary particle score accuracy: 0.3333
+36
+Deghosting Accuracy: 0.9737
+Segmentation Accuracy: 0.9617
+PPN Accuracy: 0.7993
+Shower fragment clustering accuracy: 1.0000
+Shower primary prediction accuracy: 1.0000
+Track fragment clustering accuracy: 1.0000
+Interaction grouping accuracy: 0.9000
+Particle ID accuracy: 1.0000
+Primary particle score accuracy: 0.8000
+37
+Deghosting Accuracy: 0.9779
+Segmentation Accuracy: 1.0000
+PPN Accuracy: 0.9216
+Shower fragment clustering accuracy: 1.0000
+Shower primary prediction accuracy: 1.0000
+Track fragment clustering accuracy: 1.0000
+Interaction grouping accuracy: 1.0000
+Particle ID accuracy: 1.0000
+Primary particle score accuracy: 1.0000
+38
+Deghosting Accuracy: 0.9928
+Segmentation Accuracy: 0.9863
+PPN Accuracy: 0.9246
+Shower fragment clustering accuracy: 1.0000
+Shower primary prediction accuracy: 1.0000
+Track fragment clustering accuracy: 0.9722
+Interaction grouping accuracy: 0.8000
+Particle ID accuracy: 1.0000
+Primary particle score accuracy: 1.0000
+39
+Deghosting Accuracy: 0.9837
+Segmentation Accuracy: 1.0000
+PPN Accuracy: 0.9143
+Shower fragment clustering accuracy: 1.0000
+Shower primary prediction accuracy: 1.0000
+Track fragment clustering accuracy: 1.0000
+Interaction grouping accuracy: 1.0000
+Particle ID accuracy: 1.0000
+Primary particle score accuracy: 0.0000
+40
+Deghosting Accuracy: 0.9766
+Segmentation Accuracy: 0.9971
+PPN Accuracy: 0.6719
+Shower fragment clustering accuracy: 1.0000
+Shower primary prediction accuracy: 1.0000
+Track fragment clustering accuracy: 1.0000
+Interaction grouping accuracy: 1.0000
+Particle ID accuracy: 0.5000
+Primary particle score accuracy: 0.0000
+41
+Deghosting Accuracy: 0.9650
+Segmentation Accuracy: 0.9776
+PPN Accuracy: 0.7660
+Shower fragment clustering accuracy: 1.0000
+Shower primary prediction accuracy: 1.0000
+Track fragment clustering accuracy: 1.0000
+Interaction grouping accuracy: 0.8214
+Particle ID accuracy: 1.0000
+Primary particle score accuracy: 0.6000
+42
+Deghosting Accuracy: 0.9874
+Segmentation Accuracy: 0.9905
+PPN Accuracy: 0.8966
+Shower fragment clustering accuracy: 1.0000
+Shower primary prediction accuracy: 1.0000
+Track fragment clustering accuracy: 0.6364
+Interaction grouping accuracy: 0.5727
+Particle ID accuracy: 1.0000
+Primary particle score accuracy: 1.0000
+43
+Deghosting Accuracy: 0.9833
+Segmentation Accuracy: 0.9973
+PPN Accuracy: 0.7213
+Shower fragment clustering accuracy: 1.0000
+Shower primary prediction accuracy: 1.0000
+Track fragment clustering accuracy: 1.0000
+Interaction grouping accuracy: 1.0000
+Particle ID accuracy: 1.0000
+Primary particle score accuracy: 0.8000
+44
+Deghosting Accuracy: 0.9877
+Segmentation Accuracy: 0.9869
+PPN Accuracy: 0.7900
+Shower fragment clustering accuracy: 1.0000
+Shower primary prediction accuracy: 1.0000
+Track fragment clustering accuracy: 1.0000
+Interaction grouping accuracy: 1.0000
+Particle ID accuracy: 1.0000
+Primary particle score accuracy: 1.0000
+45
+Deghosting Accuracy: 0.9833
+Segmentation Accuracy: 0.7160
+PPN Accuracy: 0.6102
+Shower fragment clustering accuracy: 1.0000
+Shower primary prediction accuracy: 0.0000
+Track fragment clustering accuracy: 1.0000
+Interaction grouping accuracy: 0.6667
+Particle ID accuracy: 1.0000
+Primary particle score accuracy: 0.6667
+46
+Deghosting Accuracy: 0.9745
+Segmentation Accuracy: 0.9905
+PPN Accuracy: 0.5270
+Shower fragment clustering accuracy: 1.0000
+Shower primary prediction accuracy: 1.0000
+Track fragment clustering accuracy: 1.0000
+Interaction grouping accuracy: 0.6667
+Particle ID accuracy: 0.0000
+Primary particle score accuracy: 0.6667
+47
+Deghosting Accuracy: 0.9825
+Segmentation Accuracy: 1.0000
+PPN Accuracy: 0.9587
+Shower fragment clustering accuracy: 1.0000
+Shower primary prediction accuracy: 1.0000
+Track fragment clustering accuracy: 0.9000
+Interaction grouping accuracy: 1.0000
+Particle ID accuracy: 1.0000
+Primary particle score accuracy: 0.0000
+48
+Deghosting Accuracy: 0.9754
+Segmentation Accuracy: 1.0000
+PPN Accuracy: 0.8623
+Shower fragment clustering accuracy: 1.0000
+Shower primary prediction accuracy: 1.0000
+Track fragment clustering accuracy: 0.6667
+Interaction grouping accuracy: 1.0000
+Particle ID accuracy: 1.0000
+Primary particle score accuracy: 0.0000
+49
+Deghosting Accuracy: 0.9737
+Segmentation Accuracy: 0.9911
+PPN Accuracy: 0.6800
+Shower fragment clustering accuracy: 1.0000
+Shower primary prediction accuracy: 1.0000
+Track fragment clustering accuracy: 1.0000
+Interaction grouping accuracy: 0.5000
+Particle ID accuracy: 1.0000
+Primary particle score accuracy: 1.0000
+50
+Deghosting Accuracy: 0.9754
+Segmentation Accuracy: 0.9726
+PPN Accuracy: 0.8933
+Shower fragment clustering accuracy: 1.0000
+Shower primary prediction accuracy: 1.0000
+Track fragment clustering accuracy: 1.0000
+Interaction grouping accuracy: 1.0000
+Particle ID accuracy: 1.0000
+Primary particle score accuracy: 0.5000
+51
+Deghosting Accuracy: 0.9720
+Segmentation Accuracy: 0.9851
+PPN Accuracy: 0.8409
+Shower fragment clustering accuracy: 1.0000
+Shower primary prediction accuracy: 1.0000
+Track fragment clustering accuracy: 1.0000
+Interaction grouping accuracy: 1.0000
+Particle ID accuracy: 0.0000
+Primary particle score accuracy: 0.5000
+52
+Deghosting Accuracy: 0.9924
+Segmentation Accuracy: 0.9996
+PPN Accuracy: 0.9048
+Shower fragment clustering accuracy: 1.0000
+Shower primary prediction accuracy: 1.0000
+Track fragment clustering accuracy: 0.9848
+Interaction grouping accuracy: 1.0000
+Particle ID accuracy: 0.5000
+Primary particle score accuracy: 0.5000
+53
+Deghosting Accuracy: 0.9798
+Segmentation Accuracy: 0.9944
+PPN Accuracy: 0.8453
+Shower fragment clustering accuracy: 0.9286
+Shower primary prediction accuracy: 1.0000
+Track fragment clustering accuracy: 0.5000
+Interaction grouping accuracy: 1.0000
+Particle ID accuracy: 1.0000
+Primary particle score accuracy: 0.8000
+54
+Deghosting Accuracy: 0.9635
+Segmentation Accuracy: 0.9604
+PPN Accuracy: 0.6184
+Shower fragment clustering accuracy: 1.0000
+Shower primary prediction accuracy: 1.0000
+Track fragment clustering accuracy: 1.0000
+Interaction grouping accuracy: 0.2500
+Particle ID accuracy: 1.0000
+Primary particle score accuracy: 0.5000
+55
+Deghosting Accuracy: 0.9968
+Segmentation Accuracy: 0.9937
+PPN Accuracy: 0.8738
+Shower fragment clustering accuracy: 1.0000
+Shower primary prediction accuracy: 1.0000
+Track fragment clustering accuracy: 1.0000
+Interaction grouping accuracy: 0.4000
+Particle ID accuracy: 1.0000
+Primary particle score accuracy: 1.0000
+56
+Deghosting Accuracy: 0.9651
+Segmentation Accuracy: 0.9876
+PPN Accuracy: 0.7927
+Shower fragment clustering accuracy: 0.4250
+Shower primary prediction accuracy: 1.0000
+Track fragment clustering accuracy: 1.0000
+Interaction grouping accuracy: 0.8333
+Particle ID accuracy: 0.0000
+Primary particle score accuracy: 1.0000
+57
+Deghosting Accuracy: 0.9806
+Segmentation Accuracy: 1.0000
+PPN Accuracy: 0.7656
+Shower fragment clustering accuracy: 1.0000
+Shower primary prediction accuracy: 0.5000
+Track fragment clustering accuracy: 0.7000
+Interaction grouping accuracy: 0.8000
+Particle ID accuracy: 0.0000
+Primary particle score accuracy: 1.0000
+58
+Deghosting Accuracy: 0.9721
+Segmentation Accuracy: 1.0000
+PPN Accuracy: 0.8936
+Shower fragment clustering accuracy: 1.0000
+Shower primary prediction accuracy: 1.0000
+Track fragment clustering accuracy: 1.0000
+Interaction grouping accuracy: 1.0000
+Particle ID accuracy: 1.0000
+Primary particle score accuracy: 0.5000
+59
+Deghosting Accuracy: 0.9773
+Segmentation Accuracy: 0.8611
+PPN Accuracy: 0.7810
+Shower fragment clustering accuracy: 1.0000
+Shower primary prediction accuracy: 1.0000
+Track fragment clustering accuracy: 1.0000
+Interaction grouping accuracy: 1.0000
+Particle ID accuracy: 0.0000
+Primary particle score accuracy: 1.0000
+60
+Deghosting Accuracy: 0.9733
+Segmentation Accuracy: 0.9845
+PPN Accuracy: 0.8607
+Shower fragment clustering accuracy: 1.0000
+Shower primary prediction accuracy: 1.0000
+Track fragment clustering accuracy: 0.9333
+Interaction grouping accuracy: 0.7500
+Particle ID accuracy: 0.0000
+Primary particle score accuracy: 1.0000
+61
+Deghosting Accuracy: 0.9800
+Segmentation Accuracy: 0.9986
+PPN Accuracy: 0.9502
+Shower fragment clustering accuracy: 1.0000
+Shower primary prediction accuracy: 1.0000
+Track fragment clustering accuracy: 0.7778
+Interaction grouping accuracy: 0.5000
+Particle ID accuracy: 1.0000
+Primary particle score accuracy: 0.0000
+62
+Deghosting Accuracy: 0.9709
+Segmentation Accuracy: 0.9854
+PPN Accuracy: 0.7543
+Shower fragment clustering accuracy: 0.7778
+Shower primary prediction accuracy: 1.0000
+Track fragment clustering accuracy: 1.0000
+Interaction grouping accuracy: 1.0000
+Particle ID accuracy: 1.0000
+Primary particle score accuracy: 0.8333
+63
+Deghosting Accuracy: 0.9786
+Segmentation Accuracy: 0.9930
+PPN Accuracy: 0.8525
+Shower fragment clustering accuracy: 1.0000
+Shower primary prediction accuracy: 1.0000
+Track fragment clustering accuracy: 0.8333
+Interaction grouping accuracy: 0.9500
+Particle ID accuracy: 1.0000
+Primary particle score accuracy: 0.6667
+64
+Deghosting Accuracy: 0.9684
+Segmentation Accuracy: 0.9980
+PPN Accuracy: 0.8425
+Shower fragment clustering accuracy: 1.0000
+Shower primary prediction accuracy: 1.0000
+Track fragment clustering accuracy: 1.0000
+Interaction grouping accuracy: 1.0000
+Particle ID accuracy: 0.5000
+Primary particle score accuracy: 1.0000
+65
+Deghosting Accuracy: 0.9761
+Segmentation Accuracy: 1.0000
+PPN Accuracy: 0.8919
+Shower fragment clustering accuracy: 0.6667
+Shower primary prediction accuracy: 1.0000
+Track fragment clustering accuracy: 1.0000
+Interaction grouping accuracy: 0.6000
+Particle ID accuracy: 1.0000
+Primary particle score accuracy: 0.6667
+66
+Deghosting Accuracy: 0.9618
+Segmentation Accuracy: 0.9633
+PPN Accuracy: 0.7321
+Shower fragment clustering accuracy: 1.0000
+Shower primary prediction accuracy: 1.0000
+Track fragment clustering accuracy: 0.6667
+Interaction grouping accuracy: 0.5000
+Particle ID accuracy: 0.5000
+Primary particle score accuracy: 0.5000
+67
+Deghosting Accuracy: 0.9728
+Segmentation Accuracy: 0.9980
+PPN Accuracy: 0.8064
+Shower fragment clustering accuracy: 0.9500
+Shower primary prediction accuracy: 1.0000
+Track fragment clustering accuracy: 1.0000
+Interaction grouping accuracy: 1.0000
+Particle ID accuracy: 1.0000
+Primary particle score accuracy: 1.0000
+68
+Deghosting Accuracy: 0.9754
+Segmentation Accuracy: 0.9463
+PPN Accuracy: 0.8692
+Shower fragment clustering accuracy: 1.0000
+Shower primary prediction accuracy: 0.0000
+Track fragment clustering accuracy: 0.7619
+Interaction grouping accuracy: 0.8667
+Particle ID accuracy: 0.5000
+Primary particle score accuracy: 0.6667
+69
+Deghosting Accuracy: 0.9825
+Segmentation Accuracy: 1.0000
+PPN Accuracy: 0.7983
+Shower fragment clustering accuracy: 1.0000
+Shower primary prediction accuracy: 1.0000
+Track fragment clustering accuracy: 1.0000
+Interaction grouping accuracy: 0.5000
+Particle ID accuracy: 1.0000
+Primary particle score accuracy: 0.5000
+70
+Deghosting Accuracy: 0.9870
+Segmentation Accuracy: 0.9857
+PPN Accuracy: 0.7583
+Shower fragment clustering accuracy: 0.9333
+Shower primary prediction accuracy: 1.0000
+Track fragment clustering accuracy: 0.9636
+Interaction grouping accuracy: 0.8660
+Particle ID accuracy: 1.0000
+Primary particle score accuracy: 0.6250
+71
+Deghosting Accuracy: 0.9268
+Segmentation Accuracy: 0.9792
+PPN Accuracy: 0.9421
+Shower fragment clustering accuracy: 1.0000
+Shower primary prediction accuracy: 1.0000
+Track fragment clustering accuracy: 1.0000
+Interaction grouping accuracy: 0.0000
+Particle ID accuracy: 1.0000
+Primary particle score accuracy: 0.5000
+72
+Deghosting Accuracy: 0.9802
+Segmentation Accuracy: 1.0000
+PPN Accuracy: 0.8697
+Shower fragment clustering accuracy: 1.0000
+Shower primary prediction accuracy: 1.0000
+Track fragment clustering accuracy: 1.0000
+Interaction grouping accuracy: 0.9167
+Particle ID accuracy: 1.0000
+Primary particle score accuracy: 0.6667
+73
+Deghosting Accuracy: 0.9716
+Segmentation Accuracy: 0.9987
+PPN Accuracy: 0.7830
+Shower fragment clustering accuracy: 1.0000
+Shower primary prediction accuracy: 1.0000
+Track fragment clustering accuracy: 1.0000
+Interaction grouping accuracy: 0.6889
+Particle ID accuracy: 1.0000
+Primary particle score accuracy: 1.0000
+74
+Deghosting Accuracy: 0.9851
+Segmentation Accuracy: 0.9989
+PPN Accuracy: 0.6490
+Shower fragment clustering accuracy: 1.0000
+Shower primary prediction accuracy: 1.0000
+Track fragment clustering accuracy: 0.8333
+Interaction grouping accuracy: 1.0000
+Particle ID accuracy: 1.0000
+Primary particle score accuracy: 1.0000
+75
+Deghosting Accuracy: 0.9731
+Segmentation Accuracy: 0.9953
+PPN Accuracy: 0.9669
+Shower fragment clustering accuracy: 1.0000
+Shower primary prediction accuracy: 1.0000
+Track fragment clustering accuracy: 0.8333
+Interaction grouping accuracy: 0.5000
+Particle ID accuracy: 1.0000
+Primary particle score accuracy: 1.0000
+76
+Deghosting Accuracy: 0.9755
+Segmentation Accuracy: 0.9916
+PPN Accuracy: 0.8444
+Shower fragment clustering accuracy: 0.9365
+Shower primary prediction accuracy: 0.8000
+Track fragment clustering accuracy: 1.0000
+Interaction grouping accuracy: 0.8333
+Particle ID accuracy: 1.0000
+Primary particle score accuracy: 0.8571
+77
+Deghosting Accuracy: 0.9732
+Segmentation Accuracy: 0.9842
+PPN Accuracy: 0.7383
+Shower fragment clustering accuracy: 0.9470
+Shower primary prediction accuracy: 1.0000
+Track fragment clustering accuracy: 1.0000
+Interaction grouping accuracy: 0.7747
+Particle ID accuracy: 1.0000
+Primary particle score accuracy: 1.0000
+78
+Deghosting Accuracy: 0.9818
+Segmentation Accuracy: 0.9886
+PPN Accuracy: 0.9156
+Shower fragment clustering accuracy: 1.0000
+Shower primary prediction accuracy: 1.0000
+Track fragment clustering accuracy: 0.6667
+Interaction grouping accuracy: 1.0000
+Particle ID accuracy: 0.0000
+Primary particle score accuracy: 0.0000
+79
+Deghosting Accuracy: 0.9987
+Segmentation Accuracy: 1.0000
+PPN Accuracy: 0.0000
+Shower fragment clustering accuracy: 1.0000
+Shower primary prediction accuracy: 1.0000
+Track fragment clustering accuracy: 1.0000
+Interaction grouping accuracy: 1.0000
+pixels 13
+80
+Deghosting Accuracy: 0.9947
+Segmentation Accuracy: 0.9771
+PPN Accuracy: 0.7824
+Shower fragment clustering accuracy: 0.9818
+Shower primary prediction accuracy: 1.0000
+Track fragment clustering accuracy: 0.9038
+Interaction grouping accuracy: 0.8590
+Particle ID accuracy: 0.0000
+Primary particle score accuracy: 1.0000
+81
+Deghosting Accuracy: 0.9780
+Segmentation Accuracy: 0.9911
+PPN Accuracy: 0.7418
+Shower fragment clustering accuracy: 1.0000
+Shower primary prediction accuracy: 1.0000
+Track fragment clustering accuracy: 1.0000
+Interaction grouping accuracy: 1.0000
+Particle ID accuracy: 1.0000
+Primary particle score accuracy: 1.0000
+82
+Deghosting Accuracy: 0.9840
+Segmentation Accuracy: 0.9957
+PPN Accuracy: 0.9289
+Shower fragment clustering accuracy: 0.9524
+Shower primary prediction accuracy: 1.0000
+Track fragment clustering accuracy: 1.0000
+Interaction grouping accuracy: 0.6455
+Particle ID accuracy: 1.0000
+Primary particle score accuracy: 1.0000
+83
+Deghosting Accuracy: 0.9754
+Segmentation Accuracy: 0.9860
+PPN Accuracy: 0.7726
+Shower fragment clustering accuracy: 1.0000
+Shower primary prediction accuracy: 1.0000
+Track fragment clustering accuracy: 0.6000
+Interaction grouping accuracy: 0.9286
+Particle ID accuracy: 1.0000
+Primary particle score accuracy: 0.6667
+84
+Deghosting Accuracy: 0.9718
+Segmentation Accuracy: 0.9917
+PPN Accuracy: 0.8409
+Shower fragment clustering accuracy: 1.0000
+Shower primary prediction accuracy: 1.0000
+Track fragment clustering accuracy: 1.0000
+Interaction grouping accuracy: 0.3333
+Particle ID accuracy: 0.0000
+Primary particle score accuracy: 1.0000
+85
+Deghosting Accuracy: 0.9722
+Segmentation Accuracy: 1.0000
+PPN Accuracy: 0.7691
+Shower fragment clustering accuracy: 0.3333
+Shower primary prediction accuracy: 1.0000
+Track fragment clustering accuracy: 1.0000
+Interaction grouping accuracy: 1.0000
+Particle ID accuracy: 0.0000
+Primary particle score accuracy: 1.0000
+86
+Deghosting Accuracy: 0.9691
+Segmentation Accuracy: 0.9967
+PPN Accuracy: 0.8062
+Shower fragment clustering accuracy: 0.5714
+Shower primary prediction accuracy: 1.0000
+Track fragment clustering accuracy: 1.0000
+Interaction grouping accuracy: 1.0000
+Particle ID accuracy: 0.6667
+Primary particle score accuracy: 1.0000
+87
+Deghosting Accuracy: 0.9796
+Segmentation Accuracy: 0.9764
+PPN Accuracy: 0.8067
+Shower fragment clustering accuracy: 0.9746
+Shower primary prediction accuracy: 0.8333
+Track fragment clustering accuracy: 0.9824
+Interaction grouping accuracy: 0.6737
+Particle ID accuracy: 0.7500
+Primary particle score accuracy: 0.3077
+88
+Deghosting Accuracy: 0.9651
+Segmentation Accuracy: 0.9769
+PPN Accuracy: 0.7444
+Shower fragment clustering accuracy: 1.0000
+Shower primary prediction accuracy: 0.5000
+Track fragment clustering accuracy: 1.0000
+Interaction grouping accuracy: 0.9333
+Particle ID accuracy: 1.0000
+Primary particle score accuracy: 1.0000
+89
+Deghosting Accuracy: 0.9675
+Segmentation Accuracy: 0.9419
+PPN Accuracy: 0.7368
+Shower fragment clustering accuracy: 1.0000
+Shower primary prediction accuracy: 1.0000
+Track fragment clustering accuracy: 1.0000
+Interaction grouping accuracy: 1.0000
+Particle ID accuracy: 0.0000
+Primary particle score accuracy: 0.5000
+90
+Deghosting Accuracy: 0.9747
+Segmentation Accuracy: 1.0000
+PPN Accuracy: 0.7710
+Shower fragment clustering accuracy: 1.0000
+Shower primary prediction accuracy: 1.0000
+Track fragment clustering accuracy: 1.0000
+Interaction grouping accuracy: 0.3333
+Particle ID accuracy: 1.0000
+Primary particle score accuracy: 0.5000
+91
+Deghosting Accuracy: 0.9955
+Segmentation Accuracy: 0.6000
+PPN Accuracy: 0.2727
+Shower fragment clustering accuracy: 1.0000
+Shower primary prediction accuracy: 1.0000
+Track fragment clustering accuracy: 1.0000
+Interaction grouping accuracy: 1.0000
+Particle ID accuracy: 1.0000
+Primary particle score accuracy: 1.0000
+92
+Deghosting Accuracy: 0.9830
+Segmentation Accuracy: 0.9922
+PPN Accuracy: 0.7884
+Shower fragment clustering accuracy: 0.7947
+Shower primary prediction accuracy: 1.0000
+Track fragment clustering accuracy: 1.0000
+Interaction grouping accuracy: 1.0000
+Particle ID accuracy: 1.0000
+Primary particle score accuracy: 0.7500
+93
+Deghosting Accuracy: 0.9807
+Segmentation Accuracy: 0.9972
+PPN Accuracy: 0.8529
+Shower fragment clustering accuracy: 1.0000
+Shower primary prediction accuracy: 1.0000
+Track fragment clustering accuracy: 0.6333
+Interaction grouping accuracy: 0.8810
+Particle ID accuracy: 1.0000
+Primary particle score accuracy: 0.6667
+94
+Deghosting Accuracy: 0.9583
+Segmentation Accuracy: 0.9875
+PPN Accuracy: 0.6977
+Shower fragment clustering accuracy: 1.0000
+Shower primary prediction accuracy: 1.0000
+Track fragment clustering accuracy: 0.8333
+Interaction grouping accuracy: 0.8667
+Particle ID accuracy: 0.5000
+Primary particle score accuracy: 1.0000
+95
+Deghosting Accuracy: 0.9789
+Segmentation Accuracy: 0.9964
+PPN Accuracy: 0.8551
+Shower fragment clustering accuracy: 1.0000
+Shower primary prediction accuracy: 1.0000
+Track fragment clustering accuracy: 1.0000
+Interaction grouping accuracy: 1.0000
+Particle ID accuracy: 1.0000
+Primary particle score accuracy: 1.0000
+96
+Deghosting Accuracy: 0.9811
+Segmentation Accuracy: 0.8363
+PPN Accuracy: 0.8398
+Shower fragment clustering accuracy: 0.9231
+Shower primary prediction accuracy: 1.0000
+Track fragment clustering accuracy: 0.9048
+Interaction grouping accuracy: 0.7051
+Particle ID accuracy: 1.0000
+Primary particle score accuracy: 0.5000
+97
+Deghosting Accuracy: 0.9798
+Segmentation Accuracy: 0.9937
+PPN Accuracy: 0.7813
+Shower fragment clustering accuracy: 0.6444
+Shower primary prediction accuracy: 1.0000
+Track fragment clustering accuracy: 1.0000
+Interaction grouping accuracy: 1.0000
+Particle ID accuracy: 0.6667
+Primary particle score accuracy: 0.6667
+98
+Deghosting Accuracy: 0.9695
+Segmentation Accuracy: 0.9967
+PPN Accuracy: 0.7326
+Shower fragment clustering accuracy: 0.8974
+Shower primary prediction accuracy: 1.0000
+Track fragment clustering accuracy: 1.0000
+Interaction grouping accuracy: 0.6524
+Particle ID accuracy: 0.8000
+Primary particle score accuracy: 0.9091
+99
+Deghosting Accuracy: 0.9904
+Segmentation Accuracy: 1.0000
+PPN Accuracy: 0.8725
+Shower fragment clustering accuracy: 1.0000
+Shower primary prediction accuracy: 1.0000
+Track fragment clustering accuracy: 1.0000
+Interaction grouping accuracy: 1.0000
+Particle ID accuracy: 1.0000
+Primary particle score accuracy: 1.0000
+100
+Deghosting Accuracy: 0.9968
+Segmentation Accuracy: 0.9964
+PPN Accuracy: 0.8874
+Shower fragment clustering accuracy: 1.0000
+Shower primary prediction accuracy: 1.0000
+Track fragment clustering accuracy: 0.9257
+Interaction grouping accuracy: 1.0000
+Particle ID accuracy: 1.0000
+Primary particle score accuracy: 1.0000
+101
+Deghosting Accuracy: 0.9896
+Segmentation Accuracy: 1.0000
+PPN Accuracy: 0.9619
+Shower fragment clustering accuracy: 1.0000
+Shower primary prediction accuracy: 1.0000
+Track fragment clustering accuracy: 1.0000
+Interaction grouping accuracy: 1.0000
+Particle ID accuracy: 0.0000
+Primary particle score accuracy: 1.0000
+102
+Deghosting Accuracy: 0.9647
+Segmentation Accuracy: 1.0000
+PPN Accuracy: 0.7776
+Shower fragment clustering accuracy: 1.0000
+Shower primary prediction accuracy: 1.0000
+Track fragment clustering accuracy: 0.7500
+Interaction grouping accuracy: 1.0000
+Particle ID accuracy: 1.0000
+Primary particle score accuracy: 0.0000
+103
+Deghosting Accuracy: 0.9733
+Segmentation Accuracy: 0.9981
+PPN Accuracy: 0.9102
+Shower fragment clustering accuracy: 1.0000
+Shower primary prediction accuracy: 1.0000
+Track fragment clustering accuracy: 0.8889
+Interaction grouping accuracy: 0.6000
+Particle ID accuracy: 1.0000
+Primary particle score accuracy: 1.0000
+104
+Deghosting Accuracy: 0.9856
+Segmentation Accuracy: 0.9865
+PPN Accuracy: 0.8428
+Shower fragment clustering accuracy: 1.0000
+Shower primary prediction accuracy: 1.0000
+Track fragment clustering accuracy: 0.8690
+Interaction grouping accuracy: 0.8667
+Particle ID accuracy: 0.5000
+Primary particle score accuracy: 0.8889
+105
+Deghosting Accuracy: 0.9534
+Segmentation Accuracy: 0.9991
+PPN Accuracy: 0.6839
+Shower fragment clustering accuracy: 1.0000
+Shower primary prediction accuracy: 1.0000
+Track fragment clustering accuracy: 1.0000
+Interaction grouping accuracy: 1.0000
+Particle ID accuracy: 1.0000
+Primary particle score accuracy: 0.6000
+106
+Deghosting Accuracy: 0.9584
+Segmentation Accuracy: 1.0000
+PPN Accuracy: 0.4099
+Shower fragment clustering accuracy: 1.0000
+Shower primary prediction accuracy: 1.0000
+Track fragment clustering accuracy: 1.0000
+Interaction grouping accuracy: 1.0000
+Particle ID accuracy: 0.5000
+Primary particle score accuracy: 0.5000
+107
+Deghosting Accuracy: 0.9681
+Segmentation Accuracy: 0.9899
+PPN Accuracy: 0.7203
+Shower fragment clustering accuracy: 0.7810
+Shower primary prediction accuracy: 1.0000
+Track fragment clustering accuracy: 0.8333
+Interaction grouping accuracy: 1.0000
+Particle ID accuracy: 0.5000
+Primary particle score accuracy: 1.0000
+108
+Deghosting Accuracy: 0.9862
+Segmentation Accuracy: 1.0000
+PPN Accuracy: 0.8259
+Shower fragment clustering accuracy: 1.0000
+Shower primary prediction accuracy: 1.0000
+Track fragment clustering accuracy: 1.0000
+Interaction grouping accuracy: 1.0000
+Particle ID accuracy: 0.0000
+Primary particle score accuracy: 0.7500
+109
+Deghosting Accuracy: 0.9823
+Segmentation Accuracy: 0.9980
+PPN Accuracy: 0.8904
+Shower fragment clustering accuracy: 0.6667
+Shower primary prediction accuracy: 1.0000
+Track fragment clustering accuracy: 1.0000
+Interaction grouping accuracy: 1.0000
+Particle ID accuracy: 1.0000
+Primary particle score accuracy: 1.0000
+110
+Deghosting Accuracy: 0.9662
+Segmentation Accuracy: 0.7179
+PPN Accuracy: 0.6812
+Shower fragment clustering accuracy: 1.0000
+Shower primary prediction accuracy: 1.0000
+Track fragment clustering accuracy: 1.0000
+Interaction grouping accuracy: 1.0000
+Particle ID accuracy: 1.0000
+Primary particle score accuracy: 1.0000
+111
+Deghosting Accuracy: 0.9818
+Segmentation Accuracy: 1.0000
+PPN Accuracy: 0.8916
+Shower fragment clustering accuracy: 1.0000
+Shower primary prediction accuracy: 1.0000
+Track fragment clustering accuracy: 1.0000
+Interaction grouping accuracy: 1.0000
+Particle ID accuracy: 1.0000
+Primary particle score accuracy: 1.0000
+112
+Deghosting Accuracy: 0.9642
+Segmentation Accuracy: 0.9813
+PPN Accuracy: 0.7006
+Shower fragment clustering accuracy: 0.9667
+Shower primary prediction accuracy: 1.0000
+Track fragment clustering accuracy: 1.0000
+Interaction grouping accuracy: 0.6250
+Particle ID accuracy: 1.0000
+Primary particle score accuracy: 0.7500
+113
+Deghosting Accuracy: 0.9779
+Segmentation Accuracy: 0.9940
+PPN Accuracy: 0.7891
+Shower fragment clustering accuracy: 0.8929
+Shower primary prediction accuracy: 1.0000
+Track fragment clustering accuracy: 0.7000
+Interaction grouping accuracy: 1.0000
+Particle ID accuracy: 1.0000
+Primary particle score accuracy: 1.0000
+114
+Deghosting Accuracy: 0.9754
+Segmentation Accuracy: 0.9782
+PPN Accuracy: 0.6022
+Shower fragment clustering accuracy: 1.0000
+Shower primary prediction accuracy: 1.0000
+Track fragment clustering accuracy: 1.0000
+Interaction grouping accuracy: 0.7000
+Particle ID accuracy: 1.0000
+Primary particle score accuracy: 1.0000
+115
+Deghosting Accuracy: 0.9785
+Segmentation Accuracy: 0.9960
+PPN Accuracy: 0.8032
+Shower fragment clustering accuracy: 1.0000
+Shower primary prediction accuracy: 1.0000
+Track fragment clustering accuracy: 1.0000
+Interaction grouping accuracy: 1.0000
+Particle ID accuracy: 1.0000
+Primary particle score accuracy: 0.7500
+116
+Deghosting Accuracy: 0.9834
+Segmentation Accuracy: 0.9991
+PPN Accuracy: 0.8136
+Shower fragment clustering accuracy: 0.6667
+Shower primary prediction accuracy: 1.0000
+Track fragment clustering accuracy: 0.8333
+Interaction grouping accuracy: 1.0000
+Particle ID accuracy: 0.5000
+Primary particle score accuracy: 1.0000
+117
+Deghosting Accuracy: 0.9894
+Segmentation Accuracy: 1.0000
+PPN Accuracy: 0.8371
+Shower fragment clustering accuracy: 1.0000
+Shower primary prediction accuracy: 0.6667
+Track fragment clustering accuracy: 1.0000
+Interaction grouping accuracy: 1.0000
+Particle ID accuracy: 0.3333
+Primary particle score accuracy: 0.6667
+118
+Deghosting Accuracy: 0.9819
+Segmentation Accuracy: 0.9951
+PPN Accuracy: 0.7263
+Shower fragment clustering accuracy: 1.0000
+Shower primary prediction accuracy: 1.0000
+Track fragment clustering accuracy: 0.9905
+Interaction grouping accuracy: 0.9762
+Particle ID accuracy: 0.7500
+Primary particle score accuracy: 1.0000
+119
+Deghosting Accuracy: 0.9759
+Segmentation Accuracy: 0.9955
+PPN Accuracy: 0.7984
+Shower fragment clustering accuracy: 1.0000
+Shower primary prediction accuracy: 1.0000
+Track fragment clustering accuracy: 1.0000
+Interaction grouping accuracy: 1.0000
+Particle ID accuracy: 0.0000
+Primary particle score accuracy: 0.7500
+120
+Deghosting Accuracy: 0.9968
+Segmentation Accuracy: 0.9953
+PPN Accuracy: 0.8303
+Shower fragment clustering accuracy: 0.8095
+Shower primary prediction accuracy: 1.0000
+Track fragment clustering accuracy: 1.0000
+Interaction grouping accuracy: 0.7917
+Particle ID accuracy: 1.0000
+Primary particle score accuracy: 0.7500
+121
+Deghosting Accuracy: 0.9873
+Segmentation Accuracy: 0.9821
+PPN Accuracy: 0.7634
+Shower fragment clustering accuracy: 1.0000
+Shower primary prediction accuracy: 1.0000
+Track fragment clustering accuracy: 1.0000
+Interaction grouping accuracy: 1.0000
+Particle ID accuracy: 1.0000
+Primary particle score accuracy: 1.0000
+122
+Deghosting Accuracy: 0.9753
+Segmentation Accuracy: 0.9947
+PPN Accuracy: 0.7757
+Shower fragment clustering accuracy: 1.0000
+Shower primary prediction accuracy: 1.0000
+Track fragment clustering accuracy: 1.0000
+Interaction grouping accuracy: 0.9444
+Particle ID accuracy: 1.0000
+Primary particle score accuracy: 0.7778
+123
+Deghosting Accuracy: 0.9736
+Segmentation Accuracy: 0.9814
+PPN Accuracy: 0.8739
+Shower fragment clustering accuracy: 1.0000
+Shower primary prediction accuracy: 1.0000
+Track fragment clustering accuracy: 0.8095
+Interaction grouping accuracy: 1.0000
+Particle ID accuracy: 0.0000
+Primary particle score accuracy: 1.0000
+124
+Deghosting Accuracy: 0.9936
+Segmentation Accuracy: 0.9973
+PPN Accuracy: 0.7604
+Shower fragment clustering accuracy: 1.0000
+Shower primary prediction accuracy: 1.0000
+Track fragment clustering accuracy: 0.8954
+Interaction grouping accuracy: 1.0000
+Particle ID accuracy: 1.0000
+Primary particle score accuracy: 0.8571
+125
+Deghosting Accuracy: 0.9690
+Segmentation Accuracy: 0.4000
+PPN Accuracy: 0.0000
+Shower fragment clustering accuracy: 1.0000
+Shower primary prediction accuracy: 1.0000
+Track fragment clustering accuracy: 1.0000
+Interaction grouping accuracy: 1.0000
+Particle ID accuracy: 1.0000
+Primary particle score accuracy: 1.0000
+126
+Deghosting Accuracy: 0.9905
+Segmentation Accuracy: 0.9938
+PPN Accuracy: 0.7163
+Shower fragment clustering accuracy: 1.0000
+Shower primary prediction accuracy: 1.0000
+Track fragment clustering accuracy: 1.0000
+Interaction grouping accuracy: 1.0000
+Particle ID accuracy: 1.0000
+Primary particle score accuracy: 1.0000
+127
+Deghosting Accuracy: 0.9717
+Segmentation Accuracy: 0.9795
+PPN Accuracy: 0.8511
+Shower fragment clustering accuracy: 1.0000
+Shower primary prediction accuracy: 1.0000
+Track fragment clustering accuracy: 1.0000
+Interaction grouping accuracy: 1.0000
+Particle ID accuracy: 1.0000
+Primary particle score accuracy: 1.0000
+128
+Deghosting Accuracy: 0.9772
+Segmentation Accuracy: 0.9994
+PPN Accuracy: 0.7780
+Shower fragment clustering accuracy: 1.0000
+Shower primary prediction accuracy: 1.0000
+Track fragment clustering accuracy: 1.0000
+Interaction grouping accuracy: 0.7000
+Particle ID accuracy: 1.0000
+Primary particle score accuracy: 0.6000
+129
+Deghosting Accuracy: 0.9703
+Segmentation Accuracy: 0.9981
+PPN Accuracy: 0.7716
+Shower fragment clustering accuracy: 1.0000
+Shower primary prediction accuracy: 1.0000
+Track fragment clustering accuracy: 1.0000
+Interaction grouping accuracy: 1.0000
+Particle ID accuracy: 1.0000
+Primary particle score accuracy: 1.0000
+130
+Deghosting Accuracy: 0.9718
+Segmentation Accuracy: 1.0000
+PPN Accuracy: 0.8934
+Shower fragment clustering accuracy: 1.0000
+Shower primary prediction accuracy: 1.0000
+Track fragment clustering accuracy: 1.0000
+Interaction grouping accuracy: 0.5000
+Particle ID accuracy: 1.0000
+Primary particle score accuracy: 0.8000
+131
+Deghosting Accuracy: 0.9733
+Segmentation Accuracy: 0.9873
+PPN Accuracy: 0.7957
+Shower fragment clustering accuracy: 1.0000
+Shower primary prediction accuracy: 1.0000
+Track fragment clustering accuracy: 0.8095
+Interaction grouping accuracy: 0.7909
+Particle ID accuracy: 1.0000
+Primary particle score accuracy: 0.8000
+132
+Deghosting Accuracy: 0.9976
+Segmentation Accuracy: 1.0000
+PPN Accuracy: 0.7857
+Shower fragment clustering accuracy: 1.0000
+Shower primary prediction accuracy: 1.0000
+Track fragment clustering accuracy: 1.0000
+Interaction grouping accuracy: 1.0000
+Particle ID accuracy: 0.0000
+Primary particle score accuracy: 1.0000
+133
+Deghosting Accuracy: 0.9676
+Segmentation Accuracy: 0.9774
+PPN Accuracy: 0.8677
+Shower fragment clustering accuracy: 1.0000
+Shower primary prediction accuracy: 0.0000
+Track fragment clustering accuracy: 1.0000
+Interaction grouping accuracy: 0.8333
+Particle ID accuracy: 1.0000
+Primary particle score accuracy: 1.0000
+134
+Deghosting Accuracy: 0.9824
+Segmentation Accuracy: 0.9966
+PPN Accuracy: 0.7949
+Shower fragment clustering accuracy: 1.0000
+Shower primary prediction accuracy: 1.0000
+Track fragment clustering accuracy: 1.0000
+Interaction grouping accuracy: 1.0000
+Particle ID accuracy: 1.0000
+Primary particle score accuracy: 1.0000
+135
+Deghosting Accuracy: 0.9256
+Segmentation Accuracy: 1.0000
+PPN Accuracy: 0.7849
+Shower fragment clustering accuracy: 1.0000
+Shower primary prediction accuracy: 1.0000
+Track fragment clustering accuracy: 1.0000
+Interaction grouping accuracy: 0.7000
+Particle ID accuracy: 1.0000
+Primary particle score accuracy: 0.0000
+136
+Deghosting Accuracy: 0.9857
+Segmentation Accuracy: 1.0000
+PPN Accuracy: 0.8625
+Shower fragment clustering accuracy: 1.0000
+Shower primary prediction accuracy: 1.0000
+Track fragment clustering accuracy: 0.6667
+Interaction grouping accuracy: 1.0000
+Particle ID accuracy: 1.0000
+Primary particle score accuracy: 1.0000
+137
+Deghosting Accuracy: 0.9447
+Segmentation Accuracy: 0.9916
+PPN Accuracy: 0.8740
+Shower fragment clustering accuracy: 1.0000
+Shower primary prediction accuracy: 1.0000
+Track fragment clustering accuracy: 1.0000
+Interaction grouping accuracy: 1.0000
+Particle ID accuracy: 1.0000
+Primary particle score accuracy: 1.0000
+138
+Deghosting Accuracy: 0.9816
+Segmentation Accuracy: 0.9912
+PPN Accuracy: 0.9069
+Shower fragment clustering accuracy: 1.0000
+Shower primary prediction accuracy: 0.6667
+Track fragment clustering accuracy: 0.8750
+Interaction grouping accuracy: 0.8000
+Particle ID accuracy: 1.0000
+Primary particle score accuracy: 0.0000
+139
+Deghosting Accuracy: 0.9860
+Segmentation Accuracy: 1.0000
+PPN Accuracy: 0.8189
+Shower fragment clustering accuracy: 1.0000
+Shower primary prediction accuracy: 1.0000
+Track fragment clustering accuracy: 1.0000
+Interaction grouping accuracy: 1.0000
+Particle ID accuracy: 0.5000
+Primary particle score accuracy: 0.5000
+140
+Deghosting Accuracy: 0.9792
+Segmentation Accuracy: 1.0000
+PPN Accuracy: 0.8433
+Shower fragment clustering accuracy: 1.0000
+Shower primary prediction accuracy: 1.0000
+Track fragment clustering accuracy: 1.0000
+Interaction grouping accuracy: 1.0000
+Particle ID accuracy: 1.0000
+Primary particle score accuracy: 0.5000
+141
+Deghosting Accuracy: 0.9629
+Segmentation Accuracy: 0.9881
+PPN Accuracy: 0.6301
+Shower fragment clustering accuracy: 1.0000
+Shower primary prediction accuracy: 0.7500
+Track fragment clustering accuracy: 1.0000
+Interaction grouping accuracy: 1.0000
+Particle ID accuracy: 0.7500
+Primary particle score accuracy: 0.5000
+142
+Deghosting Accuracy: 0.9790
+Segmentation Accuracy: 0.9982
+PPN Accuracy: 0.8909
+Shower fragment clustering accuracy: 1.0000
+Shower primary prediction accuracy: 1.0000
+Track fragment clustering accuracy: 1.0000
+Interaction grouping accuracy: 1.0000
+Particle ID accuracy: 1.0000
+Primary particle score accuracy: 0.7500
+143
+Deghosting Accuracy: 0.9785
+Segmentation Accuracy: 0.9912
+PPN Accuracy: 0.7171
+Shower fragment clustering accuracy: 1.0000
+Shower primary prediction accuracy: 1.0000
+Track fragment clustering accuracy: 0.7000
+Interaction grouping accuracy: 1.0000
+Particle ID accuracy: 1.0000
+Primary particle score accuracy: 1.0000
+144
+Deghosting Accuracy: 0.9882
+Segmentation Accuracy: 0.9909
+PPN Accuracy: 0.8702
+Shower fragment clustering accuracy: 1.0000
+Shower primary prediction accuracy: 1.0000
+Track fragment clustering accuracy: 0.9333
+Interaction grouping accuracy: 1.0000
+Particle ID accuracy: 1.0000
+Primary particle score accuracy: 1.0000
+145
+Deghosting Accuracy: 0.9829
+Segmentation Accuracy: 0.9949
+PPN Accuracy: 0.9079
+Shower fragment clustering accuracy: 1.0000
+Shower primary prediction accuracy: 1.0000
+Track fragment clustering accuracy: 1.0000
+Interaction grouping accuracy: 1.0000
+Particle ID accuracy: 1.0000
+Primary particle score accuracy: 1.0000
+146
+Deghosting Accuracy: 0.9739
+Segmentation Accuracy: 0.9945
+PPN Accuracy: 0.8119
+Shower fragment clustering accuracy: 1.0000
+Shower primary prediction accuracy: 1.0000
+Track fragment clustering accuracy: 0.8000
+Interaction grouping accuracy: 0.6556
+Particle ID accuracy: 0.5000
+Primary particle score accuracy: 1.0000
+147
+Deghosting Accuracy: 0.9718
+Segmentation Accuracy: 1.0000
+PPN Accuracy: 0.8069
+Shower fragment clustering accuracy: 0.8333
+Shower primary prediction accuracy: 1.0000
+Track fragment clustering accuracy: 1.0000
+Interaction grouping accuracy: 0.8500
+Particle ID accuracy: 1.0000
+Primary particle score accuracy: 0.6667
+148
+Deghosting Accuracy: 0.9881
+Segmentation Accuracy: 0.9970
+PPN Accuracy: 0.9123
+Shower fragment clustering accuracy: 1.0000
+Shower primary prediction accuracy: 1.0000
+Track fragment clustering accuracy: 1.0000
+Interaction grouping accuracy: 1.0000
+Particle ID accuracy: 1.0000
+Primary particle score accuracy: 0.7500
+149
+Deghosting Accuracy: 0.9788
+Segmentation Accuracy: 0.9853
+PPN Accuracy: 0.7922
+Shower fragment clustering accuracy: 0.7301
+Shower primary prediction accuracy: 1.0000
+Track fragment clustering accuracy: 0.6333
+Interaction grouping accuracy: 0.6404
+Particle ID accuracy: 1.0000
+Primary particle score accuracy: 0.3333
+150
+Deghosting Accuracy: 0.9857
+Segmentation Accuracy: 0.9990
+PPN Accuracy: 0.7875
+Shower fragment clustering accuracy: 0.9762
+Shower primary prediction accuracy: 1.0000
+Track fragment clustering accuracy: 0.7556
+Interaction grouping accuracy: 0.8791
+Particle ID accuracy: 1.0000
+Primary particle score accuracy: 0.8000
+151
+Deghosting Accuracy: 0.9821
+Segmentation Accuracy: 0.9837
+PPN Accuracy: 0.9339
+Shower fragment clustering accuracy: 1.0000
+Shower primary prediction accuracy: 1.0000
+Track fragment clustering accuracy: 1.0000
+Interaction grouping accuracy: 1.0000
+Particle ID accuracy: 1.0000
+Primary particle score accuracy: 1.0000
+152
+Deghosting Accuracy: 0.9625
+Segmentation Accuracy: 0.9960
+PPN Accuracy: 0.7371
+Shower fragment clustering accuracy: 1.0000
+Shower primary prediction accuracy: 1.0000
+Track fragment clustering accuracy: 1.0000
+Interaction grouping accuracy: 1.0000
+Particle ID accuracy: 1.0000
+Primary particle score accuracy: 0.5000
+153
+Deghosting Accuracy: 0.9728
+Segmentation Accuracy: 0.9938
+PPN Accuracy: 0.9100
+Shower fragment clustering accuracy: 1.0000
+Shower primary prediction accuracy: 1.0000
+Track fragment clustering accuracy: 1.0000
+Interaction grouping accuracy: 0.7500
+Particle ID accuracy: 1.0000
+Primary particle score accuracy: 1.0000
+154
+Deghosting Accuracy: 0.9681
+Segmentation Accuracy: 1.0000
+PPN Accuracy: 0.8485
+Shower fragment clustering accuracy: 1.0000
+Shower primary prediction accuracy: 1.0000
+Track fragment clustering accuracy: 1.0000
+Interaction grouping accuracy: 1.0000
+Particle ID accuracy: 1.0000
+Primary particle score accuracy: 0.3333
+155
+Deghosting Accuracy: 0.9813
+Segmentation Accuracy: 1.0000
+PPN Accuracy: 0.4931
+Shower fragment clustering accuracy: 1.0000
+Shower primary prediction accuracy: 1.0000
+Track fragment clustering accuracy: 1.0000
+Interaction grouping accuracy: 1.0000
+Particle ID accuracy: 1.0000
+Primary particle score accuracy: 0.5000
+156
+Deghosting Accuracy: 0.9753
+Segmentation Accuracy: 1.0000
+PPN Accuracy: 0.9182
+Shower fragment clustering accuracy: 1.0000
+Shower primary prediction accuracy: 1.0000
+Track fragment clustering accuracy: 1.0000
+Interaction grouping accuracy: 0.6667
+Particle ID accuracy: 1.0000
+Primary particle score accuracy: 1.0000
+157
+Deghosting Accuracy: 0.9953
+Segmentation Accuracy: 0.9905
+PPN Accuracy: 0.7939
+Shower fragment clustering accuracy: 0.8500
+Shower primary prediction accuracy: 1.0000
+Track fragment clustering accuracy: 0.9974
+Interaction grouping accuracy: 1.0000
+Particle ID accuracy: 1.0000
+Primary particle score accuracy: 1.0000
+158
+Deghosting Accuracy: 0.9757
+Segmentation Accuracy: 0.9963
+PPN Accuracy: 0.9474
+Shower fragment clustering accuracy: 1.0000
+Shower primary prediction accuracy: 1.0000
+Track fragment clustering accuracy: 0.9936
+Interaction grouping accuracy: 0.7111
+Particle ID accuracy: 0.8750
+Primary particle score accuracy: 0.7500
+159
+Deghosting Accuracy: 0.9787
+Segmentation Accuracy: 1.0000
+PPN Accuracy: 0.8525
+Shower fragment clustering accuracy: 1.0000
+Shower primary prediction accuracy: 1.0000
+Track fragment clustering accuracy: 0.6667
+Interaction grouping accuracy: 0.5000
+Particle ID accuracy: 1.0000
+Primary particle score accuracy: 0.0000
+160
+Deghosting Accuracy: 0.9786
+Segmentation Accuracy: 0.9977
+PPN Accuracy: 0.8333
+Shower fragment clustering accuracy: 0.9667
+Shower primary prediction accuracy: 1.0000
+Track fragment clustering accuracy: 1.0000
+Interaction grouping accuracy: 0.9762
+Particle ID accuracy: 1.0000
+Primary particle score accuracy: 1.0000
+161
+Deghosting Accuracy: 0.9782
+Segmentation Accuracy: 1.0000
+PPN Accuracy: 0.6265
+Shower fragment clustering accuracy: 1.0000
+Shower primary prediction accuracy: 1.0000
+Track fragment clustering accuracy: 1.0000
+Interaction grouping accuracy: 0.1667
+Particle ID accuracy: 1.0000
+Primary particle score accuracy: 1.0000
+162
+Deghosting Accuracy: 0.9877
+Segmentation Accuracy: 1.0000
+PPN Accuracy: 0.5141
+Shower fragment clustering accuracy: 1.0000
+Shower primary prediction accuracy: 1.0000
+Track fragment clustering accuracy: 1.0000
+Interaction grouping accuracy: 1.0000
+Particle ID accuracy: 0.6667
+Primary particle score accuracy: 0.6667
+163
+Deghosting Accuracy: 0.9696
+Segmentation Accuracy: 0.9214
+PPN Accuracy: 0.7013
+Shower fragment clustering accuracy: 0.8830
+Shower primary prediction accuracy: 1.0000
+Track fragment clustering accuracy: 1.0000
+Interaction grouping accuracy: 0.7273
+Particle ID accuracy: 0.5000
+Primary particle score accuracy: 1.0000
+164
+Deghosting Accuracy: 0.9854
+Segmentation Accuracy: 0.9990
+PPN Accuracy: 0.8344
+Shower fragment clustering accuracy: 1.0000
+Shower primary prediction accuracy: 1.0000
+Track fragment clustering accuracy: 0.8611
+Interaction grouping accuracy: 0.9722
+Particle ID accuracy: 1.0000
+Primary particle score accuracy: 0.7143
+165
+Deghosting Accuracy: 0.9593
+Segmentation Accuracy: 0.7849
+PPN Accuracy: 0.8770
+Shower fragment clustering accuracy: 1.0000
+Shower primary prediction accuracy: 1.0000
+Track fragment clustering accuracy: 1.0000
+Interaction grouping accuracy: 0.3333
+Particle ID accuracy: 1.0000
+Primary particle score accuracy: 0.3333
+166
+Deghosting Accuracy: 0.9790
+Segmentation Accuracy: 1.0000
+PPN Accuracy: 0.9584
+Shower fragment clustering accuracy: 1.0000
+Shower primary prediction accuracy: 1.0000
+Track fragment clustering accuracy: 1.0000
+Interaction grouping accuracy: 1.0000
+Particle ID accuracy: 1.0000
+Primary particle score accuracy: 0.5000
+167
+Deghosting Accuracy: 0.9817
+Segmentation Accuracy: 0.9939
+PPN Accuracy: 0.6498
+Shower fragment clustering accuracy: 0.8333
+Shower primary prediction accuracy: 1.0000
+Track fragment clustering accuracy: 0.5000
+Interaction grouping accuracy: 1.0000
+Particle ID accuracy: 0.0000
+Primary particle score accuracy: 1.0000
+168
+Deghosting Accuracy: 0.9893
+Segmentation Accuracy: 0.9594
+PPN Accuracy: 0.7885
+Shower fragment clustering accuracy: 1.0000
+Shower primary prediction accuracy: 1.0000
+Track fragment clustering accuracy: 0.9905
+Interaction grouping accuracy: 0.6528
+Particle ID accuracy: 1.0000
+Primary particle score accuracy: 0.8333
+169
+Deghosting Accuracy: 0.9829
+Segmentation Accuracy: 0.9988
+PPN Accuracy: 0.8474
+Shower fragment clustering accuracy: 1.0000
+Shower primary prediction accuracy: 1.0000
+Track fragment clustering accuracy: 0.0000
+Interaction grouping accuracy: 1.0000
+Particle ID accuracy: 1.0000
+Primary particle score accuracy: 1.0000
+170
+Deghosting Accuracy: 0.9779
+Segmentation Accuracy: 1.0000
+PPN Accuracy: 0.6025
+Shower fragment clustering accuracy: 1.0000
+Shower primary prediction accuracy: 1.0000
+Track fragment clustering accuracy: 0.9000
+Interaction grouping accuracy: 0.6333
+Particle ID accuracy: 1.0000
+Primary particle score accuracy: 0.5000
+171
+Deghosting Accuracy: 0.9756
+Segmentation Accuracy: 0.9964
+PPN Accuracy: 0.9134
+Shower fragment clustering accuracy: 1.0000
+Shower primary prediction accuracy: 1.0000
+Track fragment clustering accuracy: 0.0000
+Interaction grouping accuracy: 1.0000
+Particle ID accuracy: 1.0000
+Primary particle score accuracy: 1.0000
+172
+Deghosting Accuracy: 0.9836
+Segmentation Accuracy: 1.0000
+PPN Accuracy: 0.7490
+Shower fragment clustering accuracy: 1.0000
+Shower primary prediction accuracy: 1.0000
+Track fragment clustering accuracy: 1.0000
+Interaction grouping accuracy: 1.0000
+Particle ID accuracy: 0.6667
+Primary particle score accuracy: 0.3333
+173
+Deghosting Accuracy: 0.9928
+Segmentation Accuracy: 0.9866
+PPN Accuracy: 0.8649
+Shower fragment clustering accuracy: 1.0000
+Shower primary prediction accuracy: 1.0000
+Track fragment clustering accuracy: 0.7045
+Interaction grouping accuracy: 0.7000
+Particle ID accuracy: 1.0000
+Primary particle score accuracy: 0.5000
+174
+Deghosting Accuracy: 0.9819
+Segmentation Accuracy: 0.9801
+PPN Accuracy: 0.7216
+Shower fragment clustering accuracy: 0.9048
+Shower primary prediction accuracy: 1.0000
+Track fragment clustering accuracy: 0.9444
+Interaction grouping accuracy: 0.6061
+Particle ID accuracy: 0.6667
+Primary particle score accuracy: 1.0000
+175
+Deghosting Accuracy: 0.9883
+Segmentation Accuracy: 0.9958
+PPN Accuracy: 0.7754
+Shower fragment clustering accuracy: 1.0000
+Shower primary prediction accuracy: 1.0000
+Track fragment clustering accuracy: 0.6667
+Interaction grouping accuracy: 1.0000
+Particle ID accuracy: 1.0000
+Primary particle score accuracy: 0.0000
+176
+Deghosting Accuracy: 0.9705
+Segmentation Accuracy: 1.0000
+PPN Accuracy: 0.6667
+Shower fragment clustering accuracy: 1.0000
+Shower primary prediction accuracy: 1.0000
+Track fragment clustering accuracy: 1.0000
+Interaction grouping accuracy: 0.0000
+Particle ID accuracy: 1.0000
+Primary particle score accuracy: 0.0000
+177
+Deghosting Accuracy: 0.9783
+Segmentation Accuracy: 0.9705
+PPN Accuracy: 0.6687
+Shower fragment clustering accuracy: 0.9015
+Shower primary prediction accuracy: 1.0000
+Track fragment clustering accuracy: 1.0000
+Interaction grouping accuracy: 1.0000
+Particle ID accuracy: 0.6667
+Primary particle score accuracy: 0.6667
+178
+Deghosting Accuracy: 0.9912
+Segmentation Accuracy: 1.0000
+PPN Accuracy: 0.8286
+Shower fragment clustering accuracy: 1.0000
+Shower primary prediction accuracy: 1.0000
+Track fragment clustering accuracy: 0.9969
+Interaction grouping accuracy: 1.0000
+Particle ID accuracy: 1.0000
+Primary particle score accuracy: 1.0000
+179
+Deghosting Accuracy: 0.9945
+Segmentation Accuracy: 0.9932
+PPN Accuracy: 0.8970
+Shower fragment clustering accuracy: 1.0000
+Shower primary prediction accuracy: 1.0000
+Track fragment clustering accuracy: 0.9167
+Interaction grouping accuracy: 1.0000
+Particle ID accuracy: 1.0000
+Primary particle score accuracy: 0.8333
+180
+Deghosting Accuracy: 0.9907
+Segmentation Accuracy: 0.9986
+PPN Accuracy: 0.8299
+Shower fragment clustering accuracy: 0.9492
+Shower primary prediction accuracy: 1.0000
+Track fragment clustering accuracy: 0.6667
+Interaction grouping accuracy: 0.7500
+Particle ID accuracy: 0.6000
+Primary particle score accuracy: 1.0000
+181
+Deghosting Accuracy: 0.9823
+Segmentation Accuracy: 0.9322
+PPN Accuracy: 0.9429
+Shower fragment clustering accuracy: 1.0000
+Shower primary prediction accuracy: 1.0000
+Track fragment clustering accuracy: 1.0000
+Interaction grouping accuracy: 1.0000
+Particle ID accuracy: 1.0000
+Primary particle score accuracy: 0.0000
+182
+Deghosting Accuracy: 0.9759
+Segmentation Accuracy: 0.9973
+PPN Accuracy: 0.7325
+Shower fragment clustering accuracy: 0.8095
+Shower primary prediction accuracy: 1.0000
+Track fragment clustering accuracy: 0.8333
+Interaction grouping accuracy: 1.0000
+Particle ID accuracy: 0.6667
+Primary particle score accuracy: 0.6667
+183
+Deghosting Accuracy: 0.9797
+Segmentation Accuracy: 1.0000
+PPN Accuracy: 0.9020
+Shower fragment clustering accuracy: 1.0000
+Shower primary prediction accuracy: 1.0000
+Track fragment clustering accuracy: 1.0000
+Interaction grouping accuracy: 1.0000
+Particle ID accuracy: 1.0000
+Primary particle score accuracy: 1.0000
+184
+Deghosting Accuracy: 0.9638
+Segmentation Accuracy: 0.9753
+PPN Accuracy: 0.6353
+Shower fragment clustering accuracy: 0.3556
+Shower primary prediction accuracy: 1.0000
+Track fragment clustering accuracy: 1.0000
+Interaction grouping accuracy: 0.8333
+Particle ID accuracy: 0.0000
+Primary particle score accuracy: 1.0000
+185
+Deghosting Accuracy: 0.9726
+Segmentation Accuracy: 1.0000
+PPN Accuracy: 0.6560
+Shower fragment clustering accuracy: 1.0000
+Shower primary prediction accuracy: 1.0000
+Track fragment clustering accuracy: 1.0000
+Interaction grouping accuracy: 1.0000
+Particle ID accuracy: 0.5000
+Primary particle score accuracy: 0.5000
+186
+Deghosting Accuracy: 0.9758
+Segmentation Accuracy: 0.9992
+PPN Accuracy: 0.7078
+Shower fragment clustering accuracy: 1.0000
+Shower primary prediction accuracy: 1.0000
+Track fragment clustering accuracy: 1.0000
+Interaction grouping accuracy: 1.0000
+Particle ID accuracy: 1.0000
+Primary particle score accuracy: 1.0000
+187
+Deghosting Accuracy: 0.9785
+Segmentation Accuracy: 0.9944
+PPN Accuracy: 0.7823
+Shower fragment clustering accuracy: 0.6667
+Shower primary prediction accuracy: 1.0000
+Track fragment clustering accuracy: 0.0000
+Interaction grouping accuracy: 1.0000
+Particle ID accuracy: 1.0000
+Primary particle score accuracy: 1.0000
+188
+Deghosting Accuracy: 0.9942
+Segmentation Accuracy: 0.9953
+PPN Accuracy: 0.8251
+Shower fragment clustering accuracy: 1.0000
+Shower primary prediction accuracy: 1.0000
+Track fragment clustering accuracy: 0.9603
+Interaction grouping accuracy: 0.5000
+Particle ID accuracy: 1.0000
+Primary particle score accuracy: 1.0000
+189
+Deghosting Accuracy: 0.9841
+Segmentation Accuracy: 0.9977
+PPN Accuracy: 0.8050
+Shower fragment clustering accuracy: 1.0000
+Shower primary prediction accuracy: 1.0000
+Track fragment clustering accuracy: 1.0000
+Interaction grouping accuracy: 1.0000
+Particle ID accuracy: 1.0000
+Primary particle score accuracy: 1.0000
+190
+Deghosting Accuracy: 0.9801
+Segmentation Accuracy: 0.9936
+PPN Accuracy: 0.7149
+Shower fragment clustering accuracy: 0.8667
+Shower primary prediction accuracy: 1.0000
+Track fragment clustering accuracy: 0.9444
+Interaction grouping accuracy: 0.9487
+Particle ID accuracy: 1.0000
+Primary particle score accuracy: 1.0000
+191
+Deghosting Accuracy: 0.9372
+Segmentation Accuracy: 0.9479
+PPN Accuracy: 0.8069
+Shower fragment clustering accuracy: 1.0000
+Shower primary prediction accuracy: 1.0000
+Track fragment clustering accuracy: 1.0000
+Interaction grouping accuracy: 0.3333
+Particle ID accuracy: 0.5000
+Primary particle score accuracy: 0.3333
+192
+Deghosting Accuracy: 0.9919
+Segmentation Accuracy: 0.9948
+PPN Accuracy: 0.8613
+Shower fragment clustering accuracy: 1.0000
+Shower primary prediction accuracy: 1.0000
+Track fragment clustering accuracy: 0.6333
+Interaction grouping accuracy: 0.7857
+Particle ID accuracy: 1.0000
+Primary particle score accuracy: 1.0000
+193
+Deghosting Accuracy: 0.9796
+Segmentation Accuracy: 1.0000
+PPN Accuracy: 0.8275
+Shower fragment clustering accuracy: 1.0000
+Shower primary prediction accuracy: 1.0000
+Track fragment clustering accuracy: 1.0000
+Interaction grouping accuracy: 1.0000
+Particle ID accuracy: 1.0000
+Primary particle score accuracy: 0.5000
+194
+Deghosting Accuracy: 0.9727
+Segmentation Accuracy: 0.9975
+PPN Accuracy: 0.5372
+Shower fragment clustering accuracy: 0.7500
+Shower primary prediction accuracy: 1.0000
+Track fragment clustering accuracy: 1.0000
+Interaction grouping accuracy: 0.5667
+Particle ID accuracy: 0.0000
+Primary particle score accuracy: 0.0000
+195
+Deghosting Accuracy: 0.9750
+Segmentation Accuracy: 0.9955
+PPN Accuracy: 0.7659
+Shower fragment clustering accuracy: 1.0000
+Shower primary prediction accuracy: 1.0000
+Track fragment clustering accuracy: 1.0000
+Interaction grouping accuracy: 0.7667
+Particle ID accuracy: 1.0000
+Primary particle score accuracy: 1.0000
+196
+Deghosting Accuracy: 0.9889
+Segmentation Accuracy: 1.0000
+PPN Accuracy: 0.9182
+Shower fragment clustering accuracy: 1.0000
+Shower primary prediction accuracy: 1.0000
+Track fragment clustering accuracy: 1.0000
+Interaction grouping accuracy: 1.0000
+Particle ID accuracy: 0.0000
+Primary particle score accuracy: 1.0000
+197
+Deghosting Accuracy: 0.9829
+Segmentation Accuracy: 0.9916
+PPN Accuracy: 0.7678
+Shower fragment clustering accuracy: 0.8158
+Shower primary prediction accuracy: 1.0000
+Track fragment clustering accuracy: 0.6667
+Interaction grouping accuracy: 1.0000
+Particle ID accuracy: 0.5000
+Primary particle score accuracy: 0.6667
+198
+Deghosting Accuracy: 0.9707
+Segmentation Accuracy: 0.9646
+PPN Accuracy: 0.6921
+Shower fragment clustering accuracy: 1.0000
+Shower primary prediction accuracy: 1.0000
+Track fragment clustering accuracy: 1.0000
+Interaction grouping accuracy: 1.0000
+Particle ID accuracy: 1.0000
+Primary particle score accuracy: 1.0000
+199
+Deghosting Accuracy: 0.9693
+Segmentation Accuracy: 0.9859
+PPN Accuracy: 0.5074
+Shower fragment clustering accuracy: 1.0000
+Shower primary prediction accuracy: 1.0000
+Track fragment clustering accuracy: 1.0000
+Interaction grouping accuracy: 0.3333
+Particle ID accuracy: 1.0000
+Primary particle score accuracy: 0.5000
+200
+Deghosting Accuracy: 0.9814
+Segmentation Accuracy: 0.9944
+PPN Accuracy: 0.9278
+Shower fragment clustering accuracy: 1.0000
+Shower primary prediction accuracy: 1.0000
+Track fragment clustering accuracy: 0.8333
+Interaction grouping accuracy: 1.0000
+Particle ID accuracy: 1.0000
+Primary particle score accuracy: 1.0000
+201
+Deghosting Accuracy: 0.9847
+Segmentation Accuracy: 1.0000
+PPN Accuracy: 0.9438
+Shower fragment clustering accuracy: 1.0000
+Shower primary prediction accuracy: 1.0000
+Track fragment clustering accuracy: 0.4167
+Interaction grouping accuracy: 1.0000
+Particle ID accuracy: 1.0000
+Primary particle score accuracy: 1.0000
+202
+Deghosting Accuracy: 0.9404
+Segmentation Accuracy: 0.9697
+PPN Accuracy: 0.6504
+Shower fragment clustering accuracy: 1.0000
+Shower primary prediction accuracy: 1.0000
+Track fragment clustering accuracy: 1.0000
+Interaction grouping accuracy: 0.8000
+Particle ID accuracy: 0.5000
+Primary particle score accuracy: 0.5000
+203
+Deghosting Accuracy: 0.9789
+Segmentation Accuracy: 0.9899
+PPN Accuracy: 0.7215
+Shower fragment clustering accuracy: 0.9421
+Shower primary prediction accuracy: 1.0000
+Track fragment clustering accuracy: 1.0000
+Interaction grouping accuracy: 0.5000
+Particle ID accuracy: 0.5000
+Primary particle score accuracy: 0.8333
+204
+Deghosting Accuracy: 0.9810
+Segmentation Accuracy: 0.9982
+PPN Accuracy: 0.8605
+Shower fragment clustering accuracy: 1.0000
+Shower primary prediction accuracy: 1.0000
+Track fragment clustering accuracy: 1.0000
+Interaction grouping accuracy: 0.9500
+Particle ID accuracy: 1.0000
+Primary particle score accuracy: 0.6000
+205
+Deghosting Accuracy: 0.9877
+Segmentation Accuracy: 1.0000
+PPN Accuracy: 0.8761
+Shower fragment clustering accuracy: 1.0000
+Shower primary prediction accuracy: 1.0000
+Track fragment clustering accuracy: 1.0000
+Interaction grouping accuracy: 1.0000
+Particle ID accuracy: 0.5000
+Primary particle score accuracy: 0.5000
+206
+Deghosting Accuracy: 0.9750
+Segmentation Accuracy: 1.0000
+PPN Accuracy: 0.8261
+Shower fragment clustering accuracy: 1.0000
+Shower primary prediction accuracy: 1.0000
+Track fragment clustering accuracy: 0.6667
+Interaction grouping accuracy: 0.9167
+Particle ID accuracy: 1.0000
+Primary particle score accuracy: 0.5000
+207
+Deghosting Accuracy: 0.9805
+Segmentation Accuracy: 0.9932
+PPN Accuracy: 0.6584
+Shower fragment clustering accuracy: 1.0000
+Shower primary prediction accuracy: 1.0000
+Track fragment clustering accuracy: 1.0000
+Interaction grouping accuracy: 0.9524
+Particle ID accuracy: 1.0000
+Primary particle score accuracy: 1.0000
+208
+Deghosting Accuracy: 0.9789
+Segmentation Accuracy: 0.9777
+PPN Accuracy: 0.6753
+Shower fragment clustering accuracy: 0.8654
+Shower primary prediction accuracy: 1.0000
+Track fragment clustering accuracy: 0.9333
+Interaction grouping accuracy: 0.9945
+Particle ID accuracy: 0.8571
+Primary particle score accuracy: 0.6364
+209
+Deghosting Accuracy: 0.9844
+Segmentation Accuracy: 0.9979
+PPN Accuracy: 0.8807
+Shower fragment clustering accuracy: 1.0000
+Shower primary prediction accuracy: 1.0000
+Track fragment clustering accuracy: 0.8000
+Interaction grouping accuracy: 0.9667
+Particle ID accuracy: 1.0000
+Primary particle score accuracy: 0.3333
+210
+Deghosting Accuracy: 0.9731
+Segmentation Accuracy: 0.9909
+PPN Accuracy: 0.7857
+Shower fragment clustering accuracy: 1.0000
+Shower primary prediction accuracy: 1.0000
+Track fragment clustering accuracy: 1.0000
+Interaction grouping accuracy: 0.4464
+Particle ID accuracy: 1.0000
+Primary particle score accuracy: 0.7500
+211
+Deghosting Accuracy: 0.9655
+Segmentation Accuracy: 0.9936
+PPN Accuracy: 0.9318
+Shower fragment clustering accuracy: 1.0000
+Shower primary prediction accuracy: 1.0000
+Track fragment clustering accuracy: 1.0000
+Interaction grouping accuracy: 0.5000
+Particle ID accuracy: 1.0000
+Primary particle score accuracy: 1.0000
+212
+Deghosting Accuracy: 0.9749
+Segmentation Accuracy: 0.9993
+PPN Accuracy: 0.8490
+Shower fragment clustering accuracy: 0.9778
+Shower primary prediction accuracy: 1.0000
+Track fragment clustering accuracy: 0.9167
+Interaction grouping accuracy: 1.0000
+Particle ID accuracy: 1.0000
+Primary particle score accuracy: 1.0000
+213
+Deghosting Accuracy: 0.9525
+Segmentation Accuracy: 1.0000
+PPN Accuracy: 0.6613
+Shower fragment clustering accuracy: 1.0000
+Shower primary prediction accuracy: 1.0000
+Track fragment clustering accuracy: 1.0000
+Interaction grouping accuracy: 1.0000
+Particle ID accuracy: 1.0000
+Primary particle score accuracy: 1.0000
+214
+Deghosting Accuracy: 0.9783
+Segmentation Accuracy: 0.9899
+PPN Accuracy: 0.7602
+Shower fragment clustering accuracy: 1.0000
+Shower primary prediction accuracy: 1.0000
+Track fragment clustering accuracy: 1.0000
+Interaction grouping accuracy: 1.0000
+Particle ID accuracy: 1.0000
+Primary particle score accuracy: 1.0000
+215
+Deghosting Accuracy: 0.9726
+Segmentation Accuracy: 0.9844
+PPN Accuracy: 0.7514
+Shower fragment clustering accuracy: 1.0000
+Shower primary prediction accuracy: 1.0000
+Track fragment clustering accuracy: 1.0000
+Interaction grouping accuracy: 0.8333
+Particle ID accuracy: 1.0000
+Primary particle score accuracy: 0.8000
+216
+Deghosting Accuracy: 0.9679
+Segmentation Accuracy: 0.9858
+PPN Accuracy: 0.7727
+Shower fragment clustering accuracy: 1.0000
+Shower primary prediction accuracy: 1.0000
+Track fragment clustering accuracy: 0.4167
+Interaction grouping accuracy: 0.3333
+Particle ID accuracy: 1.0000
+Primary particle score accuracy: 1.0000
+217
+Deghosting Accuracy: 0.9530
+Segmentation Accuracy: 0.9967
+PPN Accuracy: 0.9435
+Shower fragment clustering accuracy: 1.0000
+Shower primary prediction accuracy: 1.0000
+Track fragment clustering accuracy: 0.0000
+Interaction grouping accuracy: 0.5000
+Particle ID accuracy: 1.0000
+Primary particle score accuracy: 1.0000
+218
+Deghosting Accuracy: 0.9796
+Segmentation Accuracy: 0.7692
+PPN Accuracy: 0.7005
+Shower fragment clustering accuracy: 1.0000
+Shower primary prediction accuracy: 1.0000
+Track fragment clustering accuracy: 1.0000
+Interaction grouping accuracy: 1.0000
+Particle ID accuracy: 0.5000
+Primary particle score accuracy: 0.5000
+219
+Deghosting Accuracy: 0.9844
+Segmentation Accuracy: 0.9960
+PPN Accuracy: 0.8923
+Shower fragment clustering accuracy: 1.0000
+Shower primary prediction accuracy: 1.0000
+Track fragment clustering accuracy: 0.5952
+Interaction grouping accuracy: 0.6786
+Particle ID accuracy: 1.0000
+Primary particle score accuracy: 1.0000
+220
+Deghosting Accuracy: 0.9788
+Segmentation Accuracy: 0.9992
+PPN Accuracy: 0.8427
+Shower fragment clustering accuracy: 1.0000
+Shower primary prediction accuracy: 1.0000
+Track fragment clustering accuracy: 1.0000
+Interaction grouping accuracy: 1.0000
+Particle ID accuracy: 1.0000
+Primary particle score accuracy: 0.6667
+221
+Deghosting Accuracy: 0.9938
+Segmentation Accuracy: 1.0000
+PPN Accuracy: 0.8527
+Shower fragment clustering accuracy: 1.0000
+Shower primary prediction accuracy: 1.0000
+Track fragment clustering accuracy: 0.7000
+Interaction grouping accuracy: 1.0000
+Particle ID accuracy: 1.0000
+Primary particle score accuracy: 0.0000
+222
+Deghosting Accuracy: 0.9577
+Segmentation Accuracy: 0.9919
+PPN Accuracy: 0.7994
+Shower fragment clustering accuracy: 0.8750
+Shower primary prediction accuracy: 1.0000
+Track fragment clustering accuracy: 1.0000
+Interaction grouping accuracy: 0.4000
+Particle ID accuracy: 0.7500
+Primary particle score accuracy: 1.0000
+223
+Deghosting Accuracy: 0.9956
+Segmentation Accuracy: 1.0000
+PPN Accuracy: 0.8959
+Shower fragment clustering accuracy: 1.0000
+Shower primary prediction accuracy: 1.0000
+Track fragment clustering accuracy: 1.0000
+Interaction grouping accuracy: 1.0000
+Particle ID accuracy: 1.0000
+Primary particle score accuracy: 1.0000
+224
+Deghosting Accuracy: 0.9785
+Segmentation Accuracy: 0.9952
+PPN Accuracy: 0.8351
+Shower fragment clustering accuracy: 1.0000
+Shower primary prediction accuracy: 1.0000
+Track fragment clustering accuracy: 0.3333
+Interaction grouping accuracy: 1.0000
+Particle ID accuracy: 1.0000
+Primary particle score accuracy: 1.0000
+225
+Deghosting Accuracy: 0.9768
+Segmentation Accuracy: 0.9846
+PPN Accuracy: 0.7545
+Shower fragment clustering accuracy: 1.0000
+Shower primary prediction accuracy: 1.0000
+Track fragment clustering accuracy: 1.0000
+Interaction grouping accuracy: 1.0000
+Particle ID accuracy: 1.0000
+Primary particle score accuracy: 0.8000
+226
+Deghosting Accuracy: 0.9788
+Segmentation Accuracy: 0.9975
+PPN Accuracy: 0.8029
+Shower fragment clustering accuracy: 1.0000
+Shower primary prediction accuracy: 1.0000
+Track fragment clustering accuracy: 1.0000
+Interaction grouping accuracy: 1.0000
+Particle ID accuracy: 1.0000
+Primary particle score accuracy: 0.5000
+227
+Deghosting Accuracy: 0.9854
+Segmentation Accuracy: 1.0000
+PPN Accuracy: 0.7889
+Shower fragment clustering accuracy: 1.0000
+Shower primary prediction accuracy: 1.0000
+Track fragment clustering accuracy: 1.0000
+Interaction grouping accuracy: 1.0000
+Particle ID accuracy: 0.5000
+Primary particle score accuracy: 0.5000
+228
+Deghosting Accuracy: 0.9904
+Segmentation Accuracy: 1.0000
+PPN Accuracy: 0.8778
+Shower fragment clustering accuracy: 1.0000
+Shower primary prediction accuracy: 1.0000
+Track fragment clustering accuracy: 1.0000
+Interaction grouping accuracy: 0.6667
+Particle ID accuracy: 1.0000
+Primary particle score accuracy: 0.3333
+229
+Deghosting Accuracy: 0.9957
+Segmentation Accuracy: 0.9444
+PPN Accuracy: 1.0000
+Shower fragment clustering accuracy: 1.0000
+Shower primary prediction accuracy: 1.0000
+Track fragment clustering accuracy: 1.0000
+Interaction grouping accuracy: 1.0000
+Particle ID accuracy: 0.0000
+Primary particle score accuracy: 1.0000
+230
+Deghosting Accuracy: 0.9948
+Segmentation Accuracy: 0.9969
+PPN Accuracy: 0.7275
+Shower fragment clustering accuracy: 1.0000
+Shower primary prediction accuracy: 1.0000
+Track fragment clustering accuracy: 1.0000
+Interaction grouping accuracy: 0.7500
+Particle ID accuracy: 1.0000
+Primary particle score accuracy: 0.7500
+231
+Deghosting Accuracy: 0.9661
+Segmentation Accuracy: 0.8939
+PPN Accuracy: 0.6298
+Shower fragment clustering accuracy: 1.0000
+Shower primary prediction accuracy: 1.0000
+Track fragment clustering accuracy: 0.9000
+Interaction grouping accuracy: 1.0000
+Particle ID accuracy: 0.3333
+Primary particle score accuracy: 0.0000
+232
+Deghosting Accuracy: 0.9875
+Segmentation Accuracy: 0.9897
+PPN Accuracy: 0.8785
+Shower fragment clustering accuracy: 1.0000
+Shower primary prediction accuracy: 1.0000
+Track fragment clustering accuracy: 1.0000
+Interaction grouping accuracy: 1.0000
+Particle ID accuracy: 0.5000
+Primary particle score accuracy: 0.8000
+233
+Deghosting Accuracy: 0.9773
+Segmentation Accuracy: 1.0000
+PPN Accuracy: 0.8742
+Shower fragment clustering accuracy: 1.0000
+Shower primary prediction accuracy: 1.0000
+Track fragment clustering accuracy: 1.0000
+Interaction grouping accuracy: 1.0000
+Particle ID accuracy: 1.0000
+Primary particle score accuracy: 1.0000
+234
+Deghosting Accuracy: 0.9880
+Segmentation Accuracy: 1.0000
+PPN Accuracy: 0.7861
+Shower fragment clustering accuracy: 1.0000
+Shower primary prediction accuracy: 1.0000
+Track fragment clustering accuracy: 0.7889
+Interaction grouping accuracy: 1.0000
+Particle ID accuracy: 1.0000
+Primary particle score accuracy: 1.0000
+235
+Deghosting Accuracy: 0.9688
+Segmentation Accuracy: 1.0000
+PPN Accuracy: 0.0000
+Shower fragment clustering accuracy: 1.0000
+Shower primary prediction accuracy: 1.0000
+Track fragment clustering accuracy: 1.0000
+Interaction grouping accuracy: 1.0000
+Particle ID accuracy: 1.0000
+Primary particle score accuracy: 1.0000
+236
+Deghosting Accuracy: 0.9649
+Segmentation Accuracy: 0.9942
+PPN Accuracy: 0.7222
+Shower fragment clustering accuracy: 1.0000
+Shower primary prediction accuracy: 1.0000
+Track fragment clustering accuracy: 1.0000
+Interaction grouping accuracy: 0.2500
+Particle ID accuracy: 0.5000
+Primary particle score accuracy: 0.3333
+237
+Deghosting Accuracy: 0.9449
+Segmentation Accuracy: 0.9853
+PPN Accuracy: 0.6629
+Shower fragment clustering accuracy: 0.9333
+Shower primary prediction accuracy: 1.0000
+Track fragment clustering accuracy: 0.9872
+Interaction grouping accuracy: 0.8056
+Particle ID accuracy: 1.0000
+Primary particle score accuracy: 0.6667
+238
+Deghosting Accuracy: 0.9720
+Segmentation Accuracy: 0.9990
+PPN Accuracy: 0.8317
+Shower fragment clustering accuracy: 1.0000
+Shower primary prediction accuracy: 1.0000
+Track fragment clustering accuracy: 1.0000
+Interaction grouping accuracy: 1.0000
+Particle ID accuracy: 1.0000
+Primary particle score accuracy: 1.0000
+239
+Deghosting Accuracy: 0.9567
+Segmentation Accuracy: 0.9990
+PPN Accuracy: 0.8501
+Shower fragment clustering accuracy: 0.7111
+Shower primary prediction accuracy: 1.0000
+Track fragment clustering accuracy: 1.0000
+Interaction grouping accuracy: 0.5000
+Particle ID accuracy: 0.5000
+Primary particle score accuracy: 0.3333
+240
+Deghosting Accuracy: 0.9797
+Segmentation Accuracy: 1.0000
+PPN Accuracy: 0.0000
+Shower fragment clustering accuracy: 1.0000
+Shower primary prediction accuracy: 1.0000
+Track fragment clustering accuracy: 1.0000
+Interaction grouping accuracy: 1.0000
+pixels 17
+241
+Deghosting Accuracy: 0.9956
+Segmentation Accuracy: 0.9970
+PPN Accuracy: 0.9169
+Shower fragment clustering accuracy: 0.9608
+Shower primary prediction accuracy: 1.0000
+Track fragment clustering accuracy: 0.8733
+Interaction grouping accuracy: 0.8810
+Particle ID accuracy: 1.0000
+Primary particle score accuracy: 1.0000
+242
+Deghosting Accuracy: 0.9867
+Segmentation Accuracy: 0.9916
+PPN Accuracy: 0.8397
+Shower fragment clustering accuracy: 1.0000
+Shower primary prediction accuracy: 1.0000
+Track fragment clustering accuracy: 0.0000
+Interaction grouping accuracy: 1.0000
+Particle ID accuracy: 0.0000
+Primary particle score accuracy: 0.5000
+243
+Deghosting Accuracy: 0.9880
+Segmentation Accuracy: 1.0000
+PPN Accuracy: 0.8930
+Shower fragment clustering accuracy: 1.0000
+Shower primary prediction accuracy: 1.0000
+Track fragment clustering accuracy: 1.0000
+Interaction grouping accuracy: 0.6667
+Particle ID accuracy: 1.0000
+Primary particle score accuracy: 0.3333
+244
+Deghosting Accuracy: 0.9745
+Segmentation Accuracy: 0.9793
+PPN Accuracy: 0.7444
+Shower fragment clustering accuracy: 0.9778
+Shower primary prediction accuracy: 1.0000
+Track fragment clustering accuracy: 1.0000
+Interaction grouping accuracy: 1.0000
+Particle ID accuracy: 0.5000
+Primary particle score accuracy: 0.5000
+245
+Deghosting Accuracy: 0.9527
+Segmentation Accuracy: 1.0000
+PPN Accuracy: 0.7817
+Shower fragment clustering accuracy: 1.0000
+Shower primary prediction accuracy: 1.0000
+Track fragment clustering accuracy: 1.0000
+Interaction grouping accuracy: 0.6667
+Particle ID accuracy: 1.0000
+Primary particle score accuracy: 0.0000
+246
+Deghosting Accuracy: 0.9814
+Segmentation Accuracy: 1.0000
+PPN Accuracy: 0.8963
+Shower fragment clustering accuracy: 1.0000
+Shower primary prediction accuracy: 1.0000
+Track fragment clustering accuracy: 0.6667
+Interaction grouping accuracy: 1.0000
+Particle ID accuracy: 1.0000
+Primary particle score accuracy: 0.0000
+247
+Deghosting Accuracy: 0.9889
+Segmentation Accuracy: 0.9976
+PPN Accuracy: 0.7916
+Shower fragment clustering accuracy: 1.0000
+Shower primary prediction accuracy: 1.0000
+Track fragment clustering accuracy: 1.0000
+Interaction grouping accuracy: 0.9500
+Particle ID accuracy: 1.0000
+Primary particle score accuracy: 1.0000
+248
+Deghosting Accuracy: 0.9885
+Segmentation Accuracy: 0.9919
+PPN Accuracy: 0.7957
+Shower fragment clustering accuracy: 1.0000
+Shower primary prediction accuracy: 1.0000
+Track fragment clustering accuracy: 0.9333
+Interaction grouping accuracy: 1.0000
+Particle ID accuracy: 1.0000
+Primary particle score accuracy: 0.7500
+249
+Deghosting Accuracy: 0.9625
+Segmentation Accuracy: 0.9213
+PPN Accuracy: 0.6490
+Shower fragment clustering accuracy: 1.0000
+Shower primary prediction accuracy: 1.0000
+Track fragment clustering accuracy: 1.0000
+Interaction grouping accuracy: 0.7500
+Particle ID accuracy: 1.0000
+Primary particle score accuracy: 1.0000
+250
+Deghosting Accuracy: 0.9535
+Segmentation Accuracy: 0.9000
+PPN Accuracy: 0.7667
+Shower fragment clustering accuracy: 1.0000
+Shower primary prediction accuracy: 1.0000
+Track fragment clustering accuracy: 1.0000
+Interaction grouping accuracy: 0.5000
+Particle ID accuracy: 1.0000
+Primary particle score accuracy: 0.5000
+251
+Deghosting Accuracy: 0.9906
+Segmentation Accuracy: 0.9991
+PPN Accuracy: 0.8617
+Shower fragment clustering accuracy: 1.0000
+Shower primary prediction accuracy: 1.0000
+Track fragment clustering accuracy: 0.6667
+Interaction grouping accuracy: 1.0000
+Particle ID accuracy: 1.0000
+Primary particle score accuracy: 1.0000
+252
+Deghosting Accuracy: 0.9700
+Segmentation Accuracy: 0.9824
+PPN Accuracy: 0.7212
+Shower fragment clustering accuracy: 1.0000
+Shower primary prediction accuracy: 1.0000
+Track fragment clustering accuracy: 0.6667
+Interaction grouping accuracy: 1.0000
+Particle ID accuracy: 1.0000
+Primary particle score accuracy: 1.0000
+253
+Deghosting Accuracy: 0.9927
+Segmentation Accuracy: 0.9838
+PPN Accuracy: 0.7357
+Shower fragment clustering accuracy: 0.9333
+Shower primary prediction accuracy: 1.0000
+Track fragment clustering accuracy: 0.9861
+Interaction grouping accuracy: 1.0000
+Particle ID accuracy: 1.0000
+Primary particle score accuracy: 1.0000
+254
+Deghosting Accuracy: 0.9817
+Segmentation Accuracy: 0.8868
+PPN Accuracy: 0.9385
+Shower fragment clustering accuracy: 1.0000
+Shower primary prediction accuracy: 1.0000
+Track fragment clustering accuracy: 0.0000
+Interaction grouping accuracy: 1.0000
+Particle ID accuracy: 1.0000
+Primary particle score accuracy: 0.0000
+255
+Deghosting Accuracy: 0.9798
+Segmentation Accuracy: 0.9891
+PPN Accuracy: 0.8109
+Shower fragment clustering accuracy: 1.0000
+Shower primary prediction accuracy: 1.0000
+Track fragment clustering accuracy: 1.0000
+Interaction grouping accuracy: 0.5000
+Particle ID accuracy: 1.0000
+Primary particle score accuracy: 1.0000
+256
+Deghosting Accuracy: 0.9768
+Segmentation Accuracy: 0.9970
+PPN Accuracy: 0.8054
+Shower fragment clustering accuracy: 1.0000
+Shower primary prediction accuracy: 1.0000
+Track fragment clustering accuracy: 1.0000
+Interaction grouping accuracy: 0.9167
+Particle ID accuracy: 1.0000
+Primary particle score accuracy: 1.0000
+257
+Deghosting Accuracy: 0.9733
+Segmentation Accuracy: 0.9984
+PPN Accuracy: 0.8157
+Shower fragment clustering accuracy: 1.0000
+Shower primary prediction accuracy: 1.0000
+Track fragment clustering accuracy: 0.6667
+Interaction grouping accuracy: 0.9286
+Particle ID accuracy: 1.0000
+Primary particle score accuracy: 1.0000
+258
+Deghosting Accuracy: 0.9806
+Segmentation Accuracy: 0.9806
+PPN Accuracy: 0.7272
+Shower fragment clustering accuracy: 0.9767
+Shower primary prediction accuracy: 1.0000
+Track fragment clustering accuracy: 1.0000
+Interaction grouping accuracy: 0.9242
+Particle ID accuracy: 0.8750
+Primary particle score accuracy: 0.8333
+259
+Deghosting Accuracy: 0.9843
+Segmentation Accuracy: 0.9878
+PPN Accuracy: 0.6953
+Shower fragment clustering accuracy: 0.3333
+Shower primary prediction accuracy: 1.0000
+Track fragment clustering accuracy: 1.0000
+Interaction grouping accuracy: 1.0000
+Particle ID accuracy: 1.0000
+Primary particle score accuracy: 1.0000
+260
+Deghosting Accuracy: 0.9863
+Segmentation Accuracy: 0.9961
+PPN Accuracy: 0.6903
+Shower fragment clustering accuracy: 1.0000
+Shower primary prediction accuracy: 1.0000
+Track fragment clustering accuracy: 0.9000
+Interaction grouping accuracy: 0.9286
+Particle ID accuracy: 0.0000
+Primary particle score accuracy: 1.0000
+261
+Deghosting Accuracy: 0.9932
+Segmentation Accuracy: 1.0000
+PPN Accuracy: 0.5813
+Shower fragment clustering accuracy: 1.0000
+Shower primary prediction accuracy: 1.0000
+Track fragment clustering accuracy: 1.0000
+Interaction grouping accuracy: 1.0000
+Particle ID accuracy: 0.0000
+Primary particle score accuracy: 1.0000
+262
+Deghosting Accuracy: 0.9770
+Segmentation Accuracy: 0.9825
+PPN Accuracy: 0.9328
+Shower fragment clustering accuracy: 1.0000
+Shower primary prediction accuracy: 1.0000
+Track fragment clustering accuracy: 0.9722
+Interaction grouping accuracy: 1.0000
+Particle ID accuracy: 1.0000
+Primary particle score accuracy: 1.0000
+263
+Deghosting Accuracy: 0.9743
+Segmentation Accuracy: 0.9982
+PPN Accuracy: 0.8287
+Shower fragment clustering accuracy: 1.0000
+Shower primary prediction accuracy: 1.0000
+Track fragment clustering accuracy: 0.9000
+Interaction grouping accuracy: 0.8500
+Particle ID accuracy: 0.5000
+Primary particle score accuracy: 0.3333
+264
+Deghosting Accuracy: 0.9831
+Segmentation Accuracy: 0.9968
+PPN Accuracy: 0.9459
+Shower fragment clustering accuracy: 1.0000
+Shower primary prediction accuracy: 1.0000
+Track fragment clustering accuracy: 1.0000
+Interaction grouping accuracy: 1.0000
+Particle ID accuracy: 1.0000
+Primary particle score accuracy: 1.0000
+265
+Deghosting Accuracy: 0.9681
+Segmentation Accuracy: 0.9980
+PPN Accuracy: 0.9325
+Shower fragment clustering accuracy: 1.0000
+Shower primary prediction accuracy: 1.0000
+Track fragment clustering accuracy: 0.8571
+Interaction grouping accuracy: 1.0000
+Particle ID accuracy: 1.0000
+Primary particle score accuracy: 1.0000
+266
+Deghosting Accuracy: 0.9989
+Segmentation Accuracy: 1.0000
+PPN Accuracy: 0.8627
+Shower fragment clustering accuracy: 1.0000
+Shower primary prediction accuracy: 1.0000
+Track fragment clustering accuracy: 1.0000
+Interaction grouping accuracy: 0.0000
+Particle ID accuracy: 1.0000
+Primary particle score accuracy: 1.0000
+267
+Deghosting Accuracy: 0.9917
+Segmentation Accuracy: 1.0000
+PPN Accuracy: 0.7500
+Shower fragment clustering accuracy: 1.0000
+Shower primary prediction accuracy: 1.0000
+Track fragment clustering accuracy: 1.0000
+Interaction grouping accuracy: 1.0000
+Particle ID accuracy: 0.0000
+Primary particle score accuracy: 1.0000
+268
+Deghosting Accuracy: 0.9685
+Segmentation Accuracy: 0.9917
+PPN Accuracy: 0.7562
+Shower fragment clustering accuracy: 1.0000
+Shower primary prediction accuracy: 1.0000
+Track fragment clustering accuracy: 0.8333
+Interaction grouping accuracy: 1.0000
+Particle ID accuracy: 1.0000
+Primary particle score accuracy: 0.6667
+269
+Deghosting Accuracy: 0.9707
+Segmentation Accuracy: 1.0000
+PPN Accuracy: 0.8851
+Shower fragment clustering accuracy: 1.0000
+Shower primary prediction accuracy: 1.0000
+Track fragment clustering accuracy: 1.0000
+Interaction grouping accuracy: 1.0000
+Particle ID accuracy: 1.0000
+Primary particle score accuracy: 0.5000
+270
+Deghosting Accuracy: 0.9920
+Segmentation Accuracy: 0.9962
+PPN Accuracy: 0.8670
+Shower fragment clustering accuracy: 1.0000
+Shower primary prediction accuracy: 1.0000
+Track fragment clustering accuracy: 0.8056
+Interaction grouping accuracy: 0.6556
+Particle ID accuracy: 1.0000
+Primary particle score accuracy: 0.6667
+271
+Deghosting Accuracy: 0.9716
+Segmentation Accuracy: 0.9696
+PPN Accuracy: 0.5734
+Shower fragment clustering accuracy: 1.0000
+Shower primary prediction accuracy: 0.0000
+Track fragment clustering accuracy: 0.8333
+Interaction grouping accuracy: 1.0000
+Particle ID accuracy: 0.5000
+Primary particle score accuracy: 0.7500
+272
+Deghosting Accuracy: 0.9967
+Segmentation Accuracy: 1.0000
+PPN Accuracy: 0.8871
+Shower fragment clustering accuracy: 1.0000
+Shower primary prediction accuracy: 1.0000
+Track fragment clustering accuracy: 1.0000
+Interaction grouping accuracy: 1.0000
+Particle ID accuracy: 0.0000
+Primary particle score accuracy: 1.0000
+273
+Deghosting Accuracy: 0.9841
+Segmentation Accuracy: 0.9987
+PPN Accuracy: 0.9066
+Shower fragment clustering accuracy: 1.0000
+Shower primary prediction accuracy: 1.0000
+Track fragment clustering accuracy: 0.0000
+Interaction grouping accuracy: 1.0000
+Particle ID accuracy: 1.0000
+Primary particle score accuracy: 1.0000
+274
+Deghosting Accuracy: 0.9862
+Segmentation Accuracy: 0.9971
+PPN Accuracy: 0.8568
+Shower fragment clustering accuracy: 1.0000
+Shower primary prediction accuracy: 1.0000
+Track fragment clustering accuracy: 1.0000
+Interaction grouping accuracy: 0.5000
+Particle ID accuracy: 1.0000
+Primary particle score accuracy: 0.6667
+275
+Deghosting Accuracy: 0.9861
+Segmentation Accuracy: 1.0000
+PPN Accuracy: 0.8403
+Shower fragment clustering accuracy: 1.0000
+Shower primary prediction accuracy: 1.0000
+Track fragment clustering accuracy: 1.0000
+Interaction grouping accuracy: 1.0000
+Particle ID accuracy: 0.0000
+Primary particle score accuracy: 1.0000
+276
+Deghosting Accuracy: 0.9857
+Segmentation Accuracy: 0.9974
+PPN Accuracy: 0.7089
+Shower fragment clustering accuracy: 1.0000
+Shower primary prediction accuracy: 1.0000
+Track fragment clustering accuracy: 1.0000
+Interaction grouping accuracy: 0.8333
+Particle ID accuracy: 0.0000
+Primary particle score accuracy: 0.6667
+277
+Deghosting Accuracy: 0.9718
+Segmentation Accuracy: 0.9936
+PPN Accuracy: 0.8908
+Shower fragment clustering accuracy: 0.6667
+Shower primary prediction accuracy: 1.0000
+Track fragment clustering accuracy: 0.7333
+Interaction grouping accuracy: 1.0000
+Particle ID accuracy: 1.0000
+Primary particle score accuracy: 0.3333
+278
+Deghosting Accuracy: 0.9760
+Segmentation Accuracy: 0.9802
+PPN Accuracy: 0.8248
+Shower fragment clustering accuracy: 1.0000
+Shower primary prediction accuracy: 1.0000
+Track fragment clustering accuracy: 1.0000
+Interaction grouping accuracy: 1.0000
+Particle ID accuracy: 0.5000
+Primary particle score accuracy: 0.6667
+279
+Deghosting Accuracy: 0.9821
+Segmentation Accuracy: 0.9897
+PPN Accuracy: 0.7030
+Shower fragment clustering accuracy: 1.0000
+Shower primary prediction accuracy: 1.0000
+Track fragment clustering accuracy: 1.0000
+Interaction grouping accuracy: 1.0000
+Particle ID accuracy: 0.0000
+Primary particle score accuracy: 0.0000
+280
+Deghosting Accuracy: 0.9807
+Segmentation Accuracy: 0.9657
+PPN Accuracy: 0.7912
+Shower fragment clustering accuracy: 0.7000
+Shower primary prediction accuracy: 1.0000
+Track fragment clustering accuracy: 0.9000
+Interaction grouping accuracy: 0.6222
+Particle ID accuracy: 0.5000
+Primary particle score accuracy: 1.0000
+281
+Deghosting Accuracy: 0.9566
+Segmentation Accuracy: 0.9972
+PPN Accuracy: 0.8352
+Shower fragment clustering accuracy: 1.0000
+Shower primary prediction accuracy: 1.0000
+Track fragment clustering accuracy: 0.6667
+Interaction grouping accuracy: 0.6944
+Particle ID accuracy: 1.0000
+Primary particle score accuracy: 0.0000
+282
+Deghosting Accuracy: 0.9775
+Segmentation Accuracy: 0.9995
+PPN Accuracy: 0.9370
+Shower fragment clustering accuracy: 1.0000
+Shower primary prediction accuracy: 1.0000
+Track fragment clustering accuracy: 1.0000
+Interaction grouping accuracy: 1.0000
+Particle ID accuracy: 1.0000
+Primary particle score accuracy: 1.0000
+283
+Deghosting Accuracy: 0.9773
+Segmentation Accuracy: 0.9927
+PPN Accuracy: 0.7763
+Shower fragment clustering accuracy: 0.9952
+Shower primary prediction accuracy: 1.0000
+Track fragment clustering accuracy: 0.9167
+Interaction grouping accuracy: 1.0000
+Particle ID accuracy: 0.8000
+Primary particle score accuracy: 1.0000
+284
+Deghosting Accuracy: 0.9798
+Segmentation Accuracy: 0.9952
+PPN Accuracy: 0.8507
+Shower fragment clustering accuracy: 0.9000
+Shower primary prediction accuracy: 1.0000
+Track fragment clustering accuracy: 0.5000
+Interaction grouping accuracy: 0.8750
+Particle ID accuracy: 1.0000
+Primary particle score accuracy: 1.0000
+285
+Deghosting Accuracy: 0.9792
+Segmentation Accuracy: 1.0000
+PPN Accuracy: 0.9176
+Shower fragment clustering accuracy: 1.0000
+Shower primary prediction accuracy: 1.0000
+Track fragment clustering accuracy: 1.0000
+Interaction grouping accuracy: 0.7500
+Particle ID accuracy: 1.0000
+Primary particle score accuracy: 1.0000
+286
+Deghosting Accuracy: 0.9879
+Segmentation Accuracy: 1.0000
+PPN Accuracy: 0.7621
+Shower fragment clustering accuracy: 1.0000
+Shower primary prediction accuracy: 1.0000
+Track fragment clustering accuracy: 1.0000
+Interaction grouping accuracy: 1.0000
+Particle ID accuracy: 1.0000
+Primary particle score accuracy: 0.5000
+287
+Deghosting Accuracy: 0.9785
+Segmentation Accuracy: 1.0000
+PPN Accuracy: 0.7992
+Shower fragment clustering accuracy: 1.0000
+Shower primary prediction accuracy: 1.0000
+Track fragment clustering accuracy: 1.0000
+Interaction grouping accuracy: 1.0000
+Particle ID accuracy: 1.0000
+Primary particle score accuracy: 0.5000
+288
+Deghosting Accuracy: 0.9724
+Segmentation Accuracy: 0.9939
+PPN Accuracy: 0.7359
+Shower fragment clustering accuracy: 1.0000
+Shower primary prediction accuracy: 1.0000
+Track fragment clustering accuracy: 1.0000
+Interaction grouping accuracy: 1.0000
+Particle ID accuracy: 1.0000
+Primary particle score accuracy: 1.0000
+289
+Deghosting Accuracy: 0.9566
+Segmentation Accuracy: 0.9632
+PPN Accuracy: 0.8447
+Shower fragment clustering accuracy: 0.6000
+Shower primary prediction accuracy: 1.0000
+Track fragment clustering accuracy: 1.0000
+Interaction grouping accuracy: 0.8333
+Particle ID accuracy: 0.0000
+Primary particle score accuracy: 0.5000
+290
+Deghosting Accuracy: 0.9824
+Segmentation Accuracy: 0.9897
+PPN Accuracy: 0.6950
+Shower fragment clustering accuracy: 1.0000
+Shower primary prediction accuracy: 1.0000
+Track fragment clustering accuracy: 1.0000
+Interaction grouping accuracy: 1.0000
+Particle ID accuracy: 0.5000
+Primary particle score accuracy: 0.6667
+291
+Deghosting Accuracy: 0.9901
+Segmentation Accuracy: 1.0000
+PPN Accuracy: 0.6183
+Shower fragment clustering accuracy: 1.0000
+Shower primary prediction accuracy: 1.0000
+Track fragment clustering accuracy: 1.0000
+Interaction grouping accuracy: 1.0000
+Particle ID accuracy: 0.0000
+Primary particle score accuracy: 1.0000
+292
+Deghosting Accuracy: 0.9778
+Segmentation Accuracy: 0.9963
+PPN Accuracy: 0.7393
+Shower fragment clustering accuracy: 1.0000
+Shower primary prediction accuracy: 1.0000
+Track fragment clustering accuracy: 0.7619
+Interaction grouping accuracy: 1.0000
+Particle ID accuracy: 1.0000
+Primary particle score accuracy: 1.0000
+293
+Deghosting Accuracy: 0.9526
+Segmentation Accuracy: 0.9512
+PPN Accuracy: 0.8103
+Shower fragment clustering accuracy: 0.0000
+Shower primary prediction accuracy: 1.0000
+Track fragment clustering accuracy: 1.0000
+Interaction grouping accuracy: 1.0000
+Particle ID accuracy: 1.0000
+Primary particle score accuracy: 0.0000
+294
+Deghosting Accuracy: 0.9852
+Segmentation Accuracy: 0.9990
+PPN Accuracy: 0.6929
+Shower fragment clustering accuracy: 0.9000
+Shower primary prediction accuracy: 1.0000
+Track fragment clustering accuracy: 1.0000
+Interaction grouping accuracy: 0.7857
+Particle ID accuracy: 1.0000
+Primary particle score accuracy: 0.5000
+295
+Deghosting Accuracy: 0.9885
+Segmentation Accuracy: 0.9985
+PPN Accuracy: 0.8306
+Shower fragment clustering accuracy: 1.0000
+Shower primary prediction accuracy: 1.0000
+Track fragment clustering accuracy: 0.8929
+Interaction grouping accuracy: 1.0000
+Particle ID accuracy: 1.0000
+Primary particle score accuracy: 0.3333
+296
+Deghosting Accuracy: 0.9735
+Segmentation Accuracy: 0.9938
+PPN Accuracy: 0.9291
+Shower fragment clustering accuracy: 1.0000
+Shower primary prediction accuracy: 1.0000
+Track fragment clustering accuracy: 1.0000
+Interaction grouping accuracy: 0.5000
+Particle ID accuracy: 1.0000
+Primary particle score accuracy: 0.5000
+297
+Deghosting Accuracy: 0.9696
+Segmentation Accuracy: 0.9952
+PPN Accuracy: 0.8016
+Shower fragment clustering accuracy: 0.9722
+Shower primary prediction accuracy: 1.0000
+Track fragment clustering accuracy: 0.6667
+Interaction grouping accuracy: 1.0000
+Particle ID accuracy: 1.0000
+Primary particle score accuracy: 1.0000
+298
+Deghosting Accuracy: 0.9772
+Segmentation Accuracy: 0.9986
+PPN Accuracy: 0.8288
+Shower fragment clustering accuracy: 1.0000
+Shower primary prediction accuracy: 1.0000
+Track fragment clustering accuracy: 0.8333
+Interaction grouping accuracy: 0.6667
+Particle ID accuracy: 1.0000
+Primary particle score accuracy: 1.0000
+299
+Deghosting Accuracy: 0.9757
+Segmentation Accuracy: 0.9542
+PPN Accuracy: 0.8154
+Shower fragment clustering accuracy: 1.0000
+Shower primary prediction accuracy: 1.0000
+Track fragment clustering accuracy: 0.9571
+Interaction grouping accuracy: 0.7679
+Particle ID accuracy: 0.6667
+Primary particle score accuracy: 1.0000
+300
+Deghosting Accuracy: 0.9561
+Segmentation Accuracy: 0.9856
+PPN Accuracy: 0.8724
+Shower fragment clustering accuracy: 1.0000
+Shower primary prediction accuracy: 1.0000
+Track fragment clustering accuracy: 0.9722
+Interaction grouping accuracy: 0.8654
+Particle ID accuracy: 1.0000
+Primary particle score accuracy: 0.4286
+301
+Deghosting Accuracy: 0.9784
+Segmentation Accuracy: 0.9986
+PPN Accuracy: 0.8170
+Shower fragment clustering accuracy: 1.0000
+Shower primary prediction accuracy: 1.0000
+Track fragment clustering accuracy: 1.0000
+Interaction grouping accuracy: 1.0000
+Particle ID accuracy: 0.3333
+Primary particle score accuracy: 0.6667
+302
+Deghosting Accuracy: 0.9897
+Segmentation Accuracy: 0.9959
+PPN Accuracy: 0.8130
+Shower fragment clustering accuracy: 0.9818
+Shower primary prediction accuracy: 1.0000
+Track fragment clustering accuracy: 1.0000
+Interaction grouping accuracy: 0.7348
+Particle ID accuracy: 1.0000
+Primary particle score accuracy: 0.9000
+303
+Deghosting Accuracy: 0.9702
+Segmentation Accuracy: 0.9922
+PPN Accuracy: 0.8114
+Shower fragment clustering accuracy: 1.0000
+Shower primary prediction accuracy: 1.0000
+Track fragment clustering accuracy: 1.0000
+Interaction grouping accuracy: 0.7857
+Particle ID accuracy: 1.0000
+Primary particle score accuracy: 0.8000
+304
+Deghosting Accuracy: 0.9712
+Segmentation Accuracy: 0.9968
+PPN Accuracy: 0.7553
+Shower fragment clustering accuracy: 0.9861
+Shower primary prediction accuracy: 1.0000
+Track fragment clustering accuracy: 1.0000
+Interaction grouping accuracy: 0.4000
+Particle ID accuracy: 0.0000
+Primary particle score accuracy: 1.0000
+305
+Deghosting Accuracy: 0.9836
+Segmentation Accuracy: 0.9919
+PPN Accuracy: 0.7787
+Shower fragment clustering accuracy: 0.7000
+Shower primary prediction accuracy: 1.0000
+Track fragment clustering accuracy: 0.8000
+Interaction grouping accuracy: 1.0000
+Particle ID accuracy: 1.0000
+Primary particle score accuracy: 1.0000
+306
+Deghosting Accuracy: 0.9884
+Segmentation Accuracy: 0.9993
+PPN Accuracy: 0.9035
+Shower fragment clustering accuracy: 1.0000
+Shower primary prediction accuracy: 1.0000
+Track fragment clustering accuracy: 0.5000
+Interaction grouping accuracy: 0.9000
+Particle ID accuracy: 1.0000
+Primary particle score accuracy: 1.0000
+307
+Deghosting Accuracy: 0.9649
+Segmentation Accuracy: 0.9880
+PPN Accuracy: 0.8706
+Shower fragment clustering accuracy: 0.9861
+Shower primary prediction accuracy: 1.0000
+Track fragment clustering accuracy: 1.0000
+Interaction grouping accuracy: 0.7473
+Particle ID accuracy: 1.0000
+Primary particle score accuracy: 0.2857
+308
+Deghosting Accuracy: 0.9834
+Segmentation Accuracy: 0.9992
+PPN Accuracy: 0.9477
+Shower fragment clustering accuracy: 1.0000
+Shower primary prediction accuracy: 1.0000
+Track fragment clustering accuracy: 1.0000
+Interaction grouping accuracy: 1.0000
+Particle ID accuracy: 1.0000
+Primary particle score accuracy: 0.5000
+309
+Deghosting Accuracy: 0.9637
+Segmentation Accuracy: 0.9799
+PPN Accuracy: 0.8528
+Shower fragment clustering accuracy: 1.0000
+Shower primary prediction accuracy: 1.0000
+Track fragment clustering accuracy: 1.0000
+Interaction grouping accuracy: 0.6000
+Particle ID accuracy: 1.0000
+Primary particle score accuracy: 1.0000
+310
+Deghosting Accuracy: 0.9792
+Segmentation Accuracy: 0.9962
+PPN Accuracy: 0.7959
+Shower fragment clustering accuracy: 0.9176
+Shower primary prediction accuracy: 1.0000
+Track fragment clustering accuracy: 1.0000
+Interaction grouping accuracy: 1.0000
+Particle ID accuracy: 0.6667
+Primary particle score accuracy: 1.0000
+311
+Deghosting Accuracy: 0.9650
+Segmentation Accuracy: 0.9861
+PPN Accuracy: 0.6996
+Shower fragment clustering accuracy: 1.0000
+Shower primary prediction accuracy: 1.0000
+Track fragment clustering accuracy: 1.0000
+Interaction grouping accuracy: 0.5000
+Particle ID accuracy: 0.0000
+Primary particle score accuracy: 0.6667
+312
+Deghosting Accuracy: 0.9875
+Segmentation Accuracy: 0.9987
+PPN Accuracy: 0.8998
+Shower fragment clustering accuracy: 0.6667
+Shower primary prediction accuracy: 1.0000
+Track fragment clustering accuracy: 1.0000
+Interaction grouping accuracy: 0.7500
+Particle ID accuracy: 1.0000
+Primary particle score accuracy: 1.0000
+313
+Deghosting Accuracy: 0.9789
+Segmentation Accuracy: 0.9482
+PPN Accuracy: 0.6777
+Shower fragment clustering accuracy: 0.8333
+Shower primary prediction accuracy: 0.5000
+Track fragment clustering accuracy: 1.0000
+Interaction grouping accuracy: 1.0000
+Particle ID accuracy: 1.0000
+Primary particle score accuracy: 1.0000
+314
+Deghosting Accuracy: 0.9726
+Segmentation Accuracy: 0.9825
+PPN Accuracy: 0.7086
+Shower fragment clustering accuracy: 1.0000
+Shower primary prediction accuracy: 1.0000
+Track fragment clustering accuracy: 1.0000
+Interaction grouping accuracy: 0.7639
+Particle ID accuracy: 0.7500
+Primary particle score accuracy: 0.6000
+315
+Deghosting Accuracy: 0.9910
+Segmentation Accuracy: 1.0000
+PPN Accuracy: 0.8406
+Shower fragment clustering accuracy: 1.0000
+Shower primary prediction accuracy: 1.0000
+Track fragment clustering accuracy: 1.0000
+Interaction grouping accuracy: 0.7857
+Particle ID accuracy: 1.0000
+Primary particle score accuracy: 0.8571
+316
+Deghosting Accuracy: 0.9766
+Segmentation Accuracy: 0.9881
+PPN Accuracy: 0.8630
+Shower fragment clustering accuracy: 0.9611
+Shower primary prediction accuracy: 1.0000
+Track fragment clustering accuracy: 0.8333
+Interaction grouping accuracy: 0.6333
+Particle ID accuracy: 1.0000
+Primary particle score accuracy: 0.5000
+317
+Deghosting Accuracy: 0.9933
+Segmentation Accuracy: 1.0000
+PPN Accuracy: 0.0000
+Shower fragment clustering accuracy: 1.0000
+Shower primary prediction accuracy: 1.0000
+Track fragment clustering accuracy: 1.0000
+Interaction grouping accuracy: 1.0000
+Particle ID accuracy: 0.0000
+Primary particle score accuracy: 1.0000
+318
+Deghosting Accuracy: 0.9826
+Segmentation Accuracy: 0.9878
+PPN Accuracy: 0.8225
+Shower fragment clustering accuracy: 1.0000
+Shower primary prediction accuracy: 1.0000
+Track fragment clustering accuracy: 0.6667
+Interaction grouping accuracy: 0.6000
+Particle ID accuracy: 1.0000
+Primary particle score accuracy: 1.0000
+319
+Deghosting Accuracy: 0.9557
+Segmentation Accuracy: 0.9881
+PPN Accuracy: 0.8290
+Shower fragment clustering accuracy: 1.0000
+Shower primary prediction accuracy: 1.0000
+Track fragment clustering accuracy: 0.9524
+Interaction grouping accuracy: 0.4861
+Particle ID accuracy: 1.0000
+Primary particle score accuracy: 0.8000
+320
+Deghosting Accuracy: 0.9632
+Segmentation Accuracy: 0.6538
+PPN Accuracy: 0.8276
+Shower fragment clustering accuracy: 1.0000
+Shower primary prediction accuracy: 1.0000
+Track fragment clustering accuracy: 0.0000
+Interaction grouping accuracy: 1.0000
+Particle ID accuracy: 1.0000
+Primary particle score accuracy: 1.0000
+321
+Deghosting Accuracy: 0.9825
+Segmentation Accuracy: 0.9952
+PPN Accuracy: 0.9258
+Shower fragment clustering accuracy: 1.0000
+Shower primary prediction accuracy: 1.0000
+Track fragment clustering accuracy: 1.0000
+Interaction grouping accuracy: 0.2500
+Particle ID accuracy: 1.0000
+Primary particle score accuracy: 0.6000
+322
+Deghosting Accuracy: 0.9846
+Segmentation Accuracy: 0.9954
+PPN Accuracy: 0.9163
+Shower fragment clustering accuracy: 1.0000
+Shower primary prediction accuracy: 1.0000
+Track fragment clustering accuracy: 0.8333
+Interaction grouping accuracy: 0.5476
+Particle ID accuracy: 1.0000
+Primary particle score accuracy: 0.3333
+323
+Deghosting Accuracy: 0.9721
+Segmentation Accuracy: 0.9766
+PPN Accuracy: 0.8455
+Shower fragment clustering accuracy: 1.0000
+Shower primary prediction accuracy: 1.0000
+Track fragment clustering accuracy: 0.9958
+Interaction grouping accuracy: 0.7500
+Particle ID accuracy: 1.0000
+Primary particle score accuracy: 0.5000
+324
+Deghosting Accuracy: 0.9904
+Segmentation Accuracy: 0.9978
+PPN Accuracy: 0.7924
+Shower fragment clustering accuracy: 0.9396
+Shower primary prediction accuracy: 1.0000
+Track fragment clustering accuracy: 1.0000
+Interaction grouping accuracy: 1.0000
+Particle ID accuracy: 0.8000
+Primary particle score accuracy: 1.0000
+325
+Deghosting Accuracy: 0.9826
+Segmentation Accuracy: 0.9864
+PPN Accuracy: 0.7560
+Shower fragment clustering accuracy: 0.9524
+Shower primary prediction accuracy: 1.0000
+Track fragment clustering accuracy: 0.9167
+Interaction grouping accuracy: 0.7714
+Particle ID accuracy: 0.5000
+Primary particle score accuracy: 0.6250
+326
+Deghosting Accuracy: 0.9782
+Segmentation Accuracy: 0.9949
+PPN Accuracy: 0.9037
+Shower fragment clustering accuracy: 1.0000
+Shower primary prediction accuracy: 1.0000
+Track fragment clustering accuracy: 1.0000
+Interaction grouping accuracy: 1.0000
+Particle ID accuracy: 1.0000
+Primary particle score accuracy: 0.6667
+327
+Deghosting Accuracy: 0.9808
+Segmentation Accuracy: 0.9970
+PPN Accuracy: 0.8888
+Shower fragment clustering accuracy: 0.9167
+Shower primary prediction accuracy: 1.0000
+Track fragment clustering accuracy: 1.0000
+Interaction grouping accuracy: 0.6000
+Particle ID accuracy: 1.0000
+Primary particle score accuracy: 0.5000
+328
+Deghosting Accuracy: 0.9363
+Segmentation Accuracy: 0.9956
+PPN Accuracy: 0.7395
+Shower fragment clustering accuracy: 1.0000
+Shower primary prediction accuracy: 1.0000
+Track fragment clustering accuracy: 1.0000
+Interaction grouping accuracy: 0.3810
+Particle ID accuracy: 1.0000
+Primary particle score accuracy: 1.0000
+329
+Deghosting Accuracy: 0.9655
+Segmentation Accuracy: 0.9902
+PPN Accuracy: 0.6489
+Shower fragment clustering accuracy: 0.8910
+Shower primary prediction accuracy: 1.0000
+Track fragment clustering accuracy: 0.6667
+Interaction grouping accuracy: 0.6333
+Particle ID accuracy: 0.6667
+Primary particle score accuracy: 0.0000
+330
+Deghosting Accuracy: 0.9692
+Segmentation Accuracy: 0.9938
+PPN Accuracy: 0.7352
+Shower fragment clustering accuracy: 1.0000
+Shower primary prediction accuracy: 1.0000
+Track fragment clustering accuracy: 1.0000
+Interaction grouping accuracy: 0.7321
+Particle ID accuracy: 0.8333
+Primary particle score accuracy: 0.6667
+331
+Deghosting Accuracy: 0.9792
+Segmentation Accuracy: 0.9850
+PPN Accuracy: 0.6881
+Shower fragment clustering accuracy: 1.0000
+Shower primary prediction accuracy: 1.0000
+Track fragment clustering accuracy: 1.0000
+Interaction grouping accuracy: 1.0000
+Particle ID accuracy: 1.0000
+Primary particle score accuracy: 1.0000
+332
+Deghosting Accuracy: 0.9708
+Segmentation Accuracy: 0.9905
+PPN Accuracy: 0.5685
+Shower fragment clustering accuracy: 0.9861
+Shower primary prediction accuracy: 1.0000
+Track fragment clustering accuracy: 1.0000
+Interaction grouping accuracy: 1.0000
+Particle ID accuracy: 1.0000
+Primary particle score accuracy: 1.0000
+333
+Deghosting Accuracy: 0.9827
+Segmentation Accuracy: 0.9971
+PPN Accuracy: 0.8718
+Shower fragment clustering accuracy: 0.8333
+Shower primary prediction accuracy: 1.0000
+Track fragment clustering accuracy: 1.0000
+Interaction grouping accuracy: 1.0000
+Particle ID accuracy: 1.0000
+Primary particle score accuracy: 1.0000
+334
+Deghosting Accuracy: 0.9901
+Segmentation Accuracy: 0.9768
+PPN Accuracy: 0.8366
+Shower fragment clustering accuracy: 1.0000
+Shower primary prediction accuracy: 0.7500
+Track fragment clustering accuracy: 1.0000
+Interaction grouping accuracy: 1.0000
+Particle ID accuracy: 0.2500
+Primary particle score accuracy: 0.6000
+335
+Deghosting Accuracy: 0.9729
+Segmentation Accuracy: 0.9904
+PPN Accuracy: 0.7020
+Shower fragment clustering accuracy: 1.0000
+Shower primary prediction accuracy: 1.0000
+Track fragment clustering accuracy: 0.9926
+Interaction grouping accuracy: 1.0000
+Particle ID accuracy: 1.0000
+Primary particle score accuracy: 0.4286
+336
+Deghosting Accuracy: 0.9659
+Segmentation Accuracy: 0.9912
+PPN Accuracy: 0.9323
+Shower fragment clustering accuracy: 1.0000
+Shower primary prediction accuracy: 1.0000
+Track fragment clustering accuracy: 1.0000
+Interaction grouping accuracy: 0.5833
+Particle ID accuracy: 1.0000
+Primary particle score accuracy: 0.6667
+337
+Deghosting Accuracy: 0.9781
+Segmentation Accuracy: 0.9944
+PPN Accuracy: 0.7971
+Shower fragment clustering accuracy: 0.8818
+Shower primary prediction accuracy: 1.0000
+Track fragment clustering accuracy: 1.0000
+Interaction grouping accuracy: 1.0000
+Particle ID accuracy: 1.0000
+Primary particle score accuracy: 0.8750
+338
+Deghosting Accuracy: 0.9806
+Segmentation Accuracy: 0.9458
+PPN Accuracy: 0.8239
+Shower fragment clustering accuracy: 1.0000
+Shower primary prediction accuracy: 1.0000
+Track fragment clustering accuracy: 1.0000
+Interaction grouping accuracy: 1.0000
+Particle ID accuracy: 1.0000
+Primary particle score accuracy: 0.5000
+339
+Deghosting Accuracy: 0.9918
+Segmentation Accuracy: 0.9764
+PPN Accuracy: 0.7688
+Shower fragment clustering accuracy: 0.0000
+Shower primary prediction accuracy: 1.0000
+Track fragment clustering accuracy: 1.0000
+Interaction grouping accuracy: 1.0000
+Particle ID accuracy: 1.0000
+Primary particle score accuracy: 1.0000
+340
+Deghosting Accuracy: 0.9852
+Segmentation Accuracy: 0.9598
+PPN Accuracy: 0.7684
+Shower fragment clustering accuracy: 0.7790
+Shower primary prediction accuracy: 1.0000
+Track fragment clustering accuracy: 0.8333
+Interaction grouping accuracy: 0.5636
+Particle ID accuracy: 0.8000
+Primary particle score accuracy: 0.3333
+341
+Deghosting Accuracy: 0.9849
+Segmentation Accuracy: 0.9874
+PPN Accuracy: 0.6961
+Shower fragment clustering accuracy: 1.0000
+Shower primary prediction accuracy: 1.0000
+Track fragment clustering accuracy: 1.0000
+Interaction grouping accuracy: 0.7143
+Particle ID accuracy: 0.6667
+Primary particle score accuracy: 0.8571
+342
+Deghosting Accuracy: 0.9772
+Segmentation Accuracy: 1.0000
+PPN Accuracy: 0.9260
+Shower fragment clustering accuracy: 1.0000
+Shower primary prediction accuracy: 1.0000
+Track fragment clustering accuracy: 0.9000
+Interaction grouping accuracy: 1.0000
+Particle ID accuracy: 1.0000
+Primary particle score accuracy: 1.0000
+343
+Deghosting Accuracy: 0.9925
+Segmentation Accuracy: 1.0000
+PPN Accuracy: 0.7833
+Shower fragment clustering accuracy: 1.0000
+Shower primary prediction accuracy: 1.0000
+Track fragment clustering accuracy: 1.0000
+Interaction grouping accuracy: 1.0000
+Particle ID accuracy: 0.5000
+Primary particle score accuracy: 0.5000
+344
+Deghosting Accuracy: 0.9611
+Segmentation Accuracy: 0.9990
+PPN Accuracy: 0.7029
+Shower fragment clustering accuracy: 1.0000
+Shower primary prediction accuracy: 1.0000
+Track fragment clustering accuracy: 1.0000
+Interaction grouping accuracy: 1.0000
+Particle ID accuracy: 1.0000
+Primary particle score accuracy: 1.0000
+345
+Deghosting Accuracy: 0.9675
+Segmentation Accuracy: 0.9755
+PPN Accuracy: 0.7759
+Shower fragment clustering accuracy: 1.0000
+Shower primary prediction accuracy: 1.0000
+Track fragment clustering accuracy: 0.9000
+Interaction grouping accuracy: 0.9286
+Particle ID accuracy: 0.5000
+Primary particle score accuracy: 0.3333
+346
+Deghosting Accuracy: 0.9736
+Segmentation Accuracy: 1.0000
+PPN Accuracy: 0.5629
+Shower fragment clustering accuracy: 0.9762
+Shower primary prediction accuracy: 1.0000
+Track fragment clustering accuracy: 1.0000
+Interaction grouping accuracy: 0.9524
+Particle ID accuracy: 0.8000
+Primary particle score accuracy: 1.0000
+347
+Deghosting Accuracy: 0.9746
+Segmentation Accuracy: 0.9900
+PPN Accuracy: 0.8010
+Shower fragment clustering accuracy: 1.0000
+Shower primary prediction accuracy: 1.0000
+Track fragment clustering accuracy: 1.0000
+Interaction grouping accuracy: 1.0000
+Particle ID accuracy: 1.0000
+Primary particle score accuracy: 0.3333
+348
+Deghosting Accuracy: 0.9887
+Segmentation Accuracy: 0.9944
+PPN Accuracy: 0.7765
+Shower fragment clustering accuracy: 0.9900
+Shower primary prediction accuracy: 1.0000
+Track fragment clustering accuracy: 1.0000
+Interaction grouping accuracy: 0.9804
+Particle ID accuracy: 1.0000
+Primary particle score accuracy: 0.9412
+349
+Deghosting Accuracy: 0.9686
+Segmentation Accuracy: 1.0000
+PPN Accuracy: 0.5333
+Shower fragment clustering accuracy: 1.0000
+Shower primary prediction accuracy: 1.0000
+Track fragment clustering accuracy: 1.0000
+Interaction grouping accuracy: 1.0000
+Particle ID accuracy: 1.0000
+Primary particle score accuracy: 1.0000
+350
+Deghosting Accuracy: 0.9714
+Segmentation Accuracy: 0.9986
+PPN Accuracy: 0.9217
+Shower fragment clustering accuracy: 1.0000
+Shower primary prediction accuracy: 1.0000
+Track fragment clustering accuracy: 0.7000
+Interaction grouping accuracy: 0.8571
+Particle ID accuracy: 1.0000
+Primary particle score accuracy: 0.6667
+351
+Deghosting Accuracy: 0.9695
+Segmentation Accuracy: 0.9905
+PPN Accuracy: 0.7560
+Shower fragment clustering accuracy: 1.0000
+Shower primary prediction accuracy: 1.0000
+Track fragment clustering accuracy: 1.0000
+Interaction grouping accuracy: 0.6000
+Particle ID accuracy: 1.0000
+Primary particle score accuracy: 1.0000
+352
+Deghosting Accuracy: 0.9809
+Segmentation Accuracy: 0.9993
+PPN Accuracy: 0.7522
+Shower fragment clustering accuracy: 1.0000
+Shower primary prediction accuracy: 1.0000
+Track fragment clustering accuracy: 0.9643
+Interaction grouping accuracy: 0.7619
+Particle ID accuracy: 0.5000
+Primary particle score accuracy: 0.8000
+353
+Deghosting Accuracy: 0.9965
+Segmentation Accuracy: 1.0000
+PPN Accuracy: 0.4167
+Shower fragment clustering accuracy: 1.0000
+Shower primary prediction accuracy: 1.0000
+Track fragment clustering accuracy: 1.0000
+Interaction grouping accuracy: 1.0000
+Particle ID accuracy: 1.0000
+Primary particle score accuracy: 1.0000
+354
+Deghosting Accuracy: 0.9634
+Segmentation Accuracy: 0.9696
+PPN Accuracy: 0.7445
+Shower fragment clustering accuracy: 0.8611
+Shower primary prediction accuracy: 1.0000
+Track fragment clustering accuracy: 1.0000
+Interaction grouping accuracy: 0.5972
+Particle ID accuracy: 1.0000
+Primary particle score accuracy: 0.8571
+355
+Deghosting Accuracy: 0.9901
+Segmentation Accuracy: 0.9926
+PPN Accuracy: 0.8257
+Shower fragment clustering accuracy: 0.9708
+Shower primary prediction accuracy: 1.0000
+Track fragment clustering accuracy: 0.9421
+Interaction grouping accuracy: 0.6172
+Particle ID accuracy: 0.5000
+Primary particle score accuracy: 0.8182
+356
+Deghosting Accuracy: 0.9910
+Segmentation Accuracy: 1.0000
+PPN Accuracy: 0.5143
+Shower fragment clustering accuracy: 1.0000
+Shower primary prediction accuracy: 1.0000
+Track fragment clustering accuracy: 1.0000
+Interaction grouping accuracy: 1.0000
+Particle ID accuracy: 1.0000
+Primary particle score accuracy: 1.0000
+357
+Deghosting Accuracy: 0.9864
+Segmentation Accuracy: 0.9986
+PPN Accuracy: 0.6388
+Shower fragment clustering accuracy: 0.8333
+Shower primary prediction accuracy: 0.5000
+Track fragment clustering accuracy: 1.0000
+Interaction grouping accuracy: 1.0000
+Particle ID accuracy: 1.0000
+Primary particle score accuracy: 1.0000
+358
+Deghosting Accuracy: 0.9927
+Segmentation Accuracy: 1.0000
+PPN Accuracy: 0.8011
+Shower fragment clustering accuracy: 1.0000
+Shower primary prediction accuracy: 1.0000
+Track fragment clustering accuracy: 1.0000
+Interaction grouping accuracy: 1.0000
+Particle ID accuracy: 1.0000
+Primary particle score accuracy: 0.5000
+359
+Deghosting Accuracy: 0.9919
+Segmentation Accuracy: 0.9665
+PPN Accuracy: 0.8391
+Shower fragment clustering accuracy: 0.9853
+Shower primary prediction accuracy: 1.0000
+Track fragment clustering accuracy: 0.9165
+Interaction grouping accuracy: 0.5490
+Particle ID accuracy: 0.6000
+Primary particle score accuracy: 0.8000
+360
+Deghosting Accuracy: 0.9877
+Segmentation Accuracy: 0.9983
+PPN Accuracy: 0.8551
+Shower fragment clustering accuracy: 0.9167
+Shower primary prediction accuracy: 1.0000
+Track fragment clustering accuracy: 1.0000
+Interaction grouping accuracy: 1.0000
+Particle ID accuracy: 1.0000
+Primary particle score accuracy: 1.0000
+361
+Deghosting Accuracy: 0.9775
+Segmentation Accuracy: 0.9798
+PPN Accuracy: 0.8079
+Shower fragment clustering accuracy: 0.9443
+Shower primary prediction accuracy: 1.0000
+Track fragment clustering accuracy: 0.0000
+Interaction grouping accuracy: 0.8393
+Particle ID accuracy: 1.0000
+Primary particle score accuracy: 1.0000
+362
+Deghosting Accuracy: 0.9789
+Segmentation Accuracy: 0.9965
+PPN Accuracy: 0.8495
+Shower fragment clustering accuracy: 0.9167
+Shower primary prediction accuracy: 1.0000
+Track fragment clustering accuracy: 0.8095
+Interaction grouping accuracy: 0.8056
+Particle ID accuracy: 1.0000
+Primary particle score accuracy: 0.8000
+363
+Deghosting Accuracy: 0.9872
+Segmentation Accuracy: 0.9986
+PPN Accuracy: 0.9063
+Shower fragment clustering accuracy: 1.0000
+Shower primary prediction accuracy: 1.0000
+Track fragment clustering accuracy: 0.0000
+Interaction grouping accuracy: 1.0000
+Particle ID accuracy: 1.0000
+Primary particle score accuracy: 1.0000
+364
+Deghosting Accuracy: 0.9744
+Segmentation Accuracy: 0.9919
+PPN Accuracy: 0.8745
+Shower fragment clustering accuracy: 1.0000
+Shower primary prediction accuracy: 1.0000
+Track fragment clustering accuracy: 0.9556
+Interaction grouping accuracy: 0.7179
+Particle ID accuracy: 1.0000
+Primary particle score accuracy: 0.4286
+365
+Deghosting Accuracy: 0.9817
+Segmentation Accuracy: 0.9856
+PPN Accuracy: 0.6955
+Shower fragment clustering accuracy: 0.8897
+Shower primary prediction accuracy: 1.0000
+Track fragment clustering accuracy: 0.8000
+Interaction grouping accuracy: 1.0000
+Particle ID accuracy: 0.5000
+Primary particle score accuracy: 1.0000
+366
+Deghosting Accuracy: 0.9782
+Segmentation Accuracy: 0.9400
+PPN Accuracy: 0.6847
+Shower fragment clustering accuracy: 1.0000
+Shower primary prediction accuracy: 1.0000
+Track fragment clustering accuracy: 0.6667
+Interaction grouping accuracy: 0.6000
+Particle ID accuracy: 1.0000
+Primary particle score accuracy: 1.0000
+367
+Deghosting Accuracy: 0.9975
+Segmentation Accuracy: 1.0000
+PPN Accuracy: 0.4839
+Shower fragment clustering accuracy: 1.0000
+Shower primary prediction accuracy: 1.0000
+Track fragment clustering accuracy: 1.0000
+Interaction grouping accuracy: 1.0000
+Particle ID accuracy: 0.0000
+Primary particle score accuracy: 1.0000
+368
+Deghosting Accuracy: 0.9549
+Segmentation Accuracy: 0.9209
+PPN Accuracy: 0.8429
+Shower fragment clustering accuracy: 1.0000
+Shower primary prediction accuracy: 1.0000
+Track fragment clustering accuracy: 1.0000
+Interaction grouping accuracy: 0.6500
+Particle ID accuracy: 1.0000
+Primary particle score accuracy: 0.0000
+369
+Deghosting Accuracy: 0.9788
+Segmentation Accuracy: 1.0000
+PPN Accuracy: 0.8461
+Shower fragment clustering accuracy: 1.0000
+Shower primary prediction accuracy: 1.0000
+Track fragment clustering accuracy: 0.9222
+Interaction grouping accuracy: 1.0000
+Particle ID accuracy: 0.0000
+Primary particle score accuracy: 0.5000
+370
+Deghosting Accuracy: 0.9824
+Segmentation Accuracy: 0.9925
+PPN Accuracy: 0.9061
+Shower fragment clustering accuracy: 0.6000
+Shower primary prediction accuracy: 1.0000
+Track fragment clustering accuracy: 0.7857
+Interaction grouping accuracy: 0.8750
+Particle ID accuracy: 1.0000
+Primary particle score accuracy: 1.0000
+371
+Deghosting Accuracy: 0.9559
+Segmentation Accuracy: 0.9367
+PPN Accuracy: 0.5348
+Shower fragment clustering accuracy: 1.0000
+Shower primary prediction accuracy: 1.0000
+Track fragment clustering accuracy: 1.0000
+Interaction grouping accuracy: 0.3333
+Particle ID accuracy: 0.5000
+Primary particle score accuracy: 0.3333
+372
+Deghosting Accuracy: 0.9781
+Segmentation Accuracy: 0.9306
+PPN Accuracy: 0.8629
+Shower fragment clustering accuracy: 1.0000
+Shower primary prediction accuracy: 1.0000
+Track fragment clustering accuracy: 0.9048
+Interaction grouping accuracy: 1.0000
+Particle ID accuracy: 1.0000
+Primary particle score accuracy: 0.7500
+373
+Deghosting Accuracy: 0.9931
+Segmentation Accuracy: 0.9938
+PPN Accuracy: 0.7626
+Shower fragment clustering accuracy: 0.9167
+Shower primary prediction accuracy: 1.0000
+Track fragment clustering accuracy: 0.9000
+Interaction grouping accuracy: 0.6944
+Particle ID accuracy: 0.5000
+Primary particle score accuracy: 1.0000
+374
+Deghosting Accuracy: 0.9526
+Segmentation Accuracy: 0.9974
+PPN Accuracy: 0.7750
+Shower fragment clustering accuracy: 1.0000
+Shower primary prediction accuracy: 1.0000
+Track fragment clustering accuracy: 1.0000
+Interaction grouping accuracy: 0.6667
+Particle ID accuracy: 1.0000
+Primary particle score accuracy: 0.5000
+375
+Deghosting Accuracy: 0.9857
+Segmentation Accuracy: 1.0000
+PPN Accuracy: 0.8886
+Shower fragment clustering accuracy: 1.0000
+Shower primary prediction accuracy: 1.0000
+Track fragment clustering accuracy: 1.0000
+Interaction grouping accuracy: 1.0000
+Particle ID accuracy: 0.5000
+Primary particle score accuracy: 0.5000
+376
+Deghosting Accuracy: 0.9739
+Segmentation Accuracy: 0.8530
+PPN Accuracy: 0.7884
+Shower fragment clustering accuracy: 0.9762
+Shower primary prediction accuracy: 1.0000
+Track fragment clustering accuracy: 1.0000
+Interaction grouping accuracy: 1.0000
+Particle ID accuracy: 0.7500
+Primary particle score accuracy: 0.5000
+377
+Deghosting Accuracy: 0.9605
+Segmentation Accuracy: 0.9098
+PPN Accuracy: 0.6476
+Shower fragment clustering accuracy: 1.0000
+Shower primary prediction accuracy: 1.0000
+Track fragment clustering accuracy: 1.0000
+Interaction grouping accuracy: 0.4000
+Particle ID accuracy: 0.5000
+Primary particle score accuracy: 0.5000
+378
+Deghosting Accuracy: 0.9650
+Segmentation Accuracy: 1.0000
+PPN Accuracy: 0.8836
+Shower fragment clustering accuracy: 0.6667
+Shower primary prediction accuracy: 1.0000
+Track fragment clustering accuracy: 1.0000
+Interaction grouping accuracy: 0.9000
+Particle ID accuracy: 1.0000
+Primary particle score accuracy: 0.7500
+379
+Deghosting Accuracy: 0.9830
+Segmentation Accuracy: 0.9922
+PPN Accuracy: 0.6915
+Shower fragment clustering accuracy: 1.0000
+Shower primary prediction accuracy: 1.0000
+Track fragment clustering accuracy: 1.0000
+Interaction grouping accuracy: 1.0000
+Particle ID accuracy: 0.0000
+Primary particle score accuracy: 1.0000
+380
+Deghosting Accuracy: 0.9810
+Segmentation Accuracy: 0.9976
+PPN Accuracy: 0.7519
+Shower fragment clustering accuracy: 1.0000
+Shower primary prediction accuracy: 1.0000
+Track fragment clustering accuracy: 1.0000
+Interaction grouping accuracy: 0.8333
+Particle ID accuracy: 1.0000
+Primary particle score accuracy: 1.0000
+381
+Deghosting Accuracy: 0.9950
+Segmentation Accuracy: 1.0000
+PPN Accuracy: 0.9130
+Shower fragment clustering accuracy: 1.0000
+Shower primary prediction accuracy: 1.0000
+Track fragment clustering accuracy: 1.0000
+Interaction grouping accuracy: 1.0000
+Particle ID accuracy: 0.0000
+Primary particle score accuracy: 1.0000
+382
+Deghosting Accuracy: 0.9799
+Segmentation Accuracy: 0.9955
+PPN Accuracy: 0.8028
+Shower fragment clustering accuracy: 1.0000
+Shower primary prediction accuracy: 1.0000
+Track fragment clustering accuracy: 1.0000
+Interaction grouping accuracy: 1.0000
+Particle ID accuracy: 1.0000
+Primary particle score accuracy: 1.0000
+383
+Deghosting Accuracy: 0.9785
+Segmentation Accuracy: 0.9973
+PPN Accuracy: 0.7940
+Shower fragment clustering accuracy: 1.0000
+Shower primary prediction accuracy: 1.0000
+Track fragment clustering accuracy: 0.6667
+Interaction grouping accuracy: 1.0000
+Particle ID accuracy: 1.0000
+Primary particle score accuracy: 1.0000
+384
+Deghosting Accuracy: 0.9588
+Segmentation Accuracy: 1.0000
+PPN Accuracy: 0.8833
+Shower fragment clustering accuracy: 1.0000
+Shower primary prediction accuracy: 1.0000
+Track fragment clustering accuracy: 1.0000
+Interaction grouping accuracy: 0.6667
+Particle ID accuracy: 1.0000
+Primary particle score accuracy: 0.0000
+385
+Deghosting Accuracy: 0.9894
+Segmentation Accuracy: 0.9766
+PPN Accuracy: 0.7610
+Shower fragment clustering accuracy: 0.8333
+Shower primary prediction accuracy: 1.0000
+Track fragment clustering accuracy: 0.0000
+Interaction grouping accuracy: 0.6000
+Particle ID accuracy: 1.0000
+Primary particle score accuracy: 1.0000
+386
+Deghosting Accuracy: 0.9712
+Segmentation Accuracy: 0.9887
+PPN Accuracy: 0.7031
+Shower fragment clustering accuracy: 1.0000
+Shower primary prediction accuracy: 1.0000
+Track fragment clustering accuracy: 1.0000
+Interaction grouping accuracy: 0.5000
+Particle ID accuracy: 0.6667
+Primary particle score accuracy: 0.6667
+387
+Deghosting Accuracy: 0.9778
+Segmentation Accuracy: 0.9915
+PPN Accuracy: 0.7188
+Shower fragment clustering accuracy: 0.9778
+Shower primary prediction accuracy: 1.0000
+Track fragment clustering accuracy: 0.6667
+Interaction grouping accuracy: 0.7545
+Particle ID accuracy: 1.0000
+Primary particle score accuracy: 0.0000
+388
+Deghosting Accuracy: 0.9783
+Segmentation Accuracy: 0.9867
+PPN Accuracy: 0.7341
+Shower fragment clustering accuracy: 0.9383
+Shower primary prediction accuracy: 1.0000
+Track fragment clustering accuracy: 1.0000
+Interaction grouping accuracy: 0.7143
+Particle ID accuracy: 1.0000
+Primary particle score accuracy: 1.0000
+389
+Deghosting Accuracy: 0.9676
+Segmentation Accuracy: 0.9944
+PPN Accuracy: 0.8322
+Shower fragment clustering accuracy: 1.0000
+Shower primary prediction accuracy: 1.0000
+Track fragment clustering accuracy: 1.0000
+Interaction grouping accuracy: 0.6833
+Particle ID accuracy: 0.6667
+Primary particle score accuracy: 0.9091
+390
+Deghosting Accuracy: 0.9774
+Segmentation Accuracy: 1.0000
+PPN Accuracy: 0.8257
+Shower fragment clustering accuracy: 1.0000
+Shower primary prediction accuracy: 1.0000
+Track fragment clustering accuracy: 1.0000
+Interaction grouping accuracy: 0.0000
+Particle ID accuracy: 1.0000
+Primary particle score accuracy: 0.5000
+391
+Deghosting Accuracy: 0.9692
+Segmentation Accuracy: 0.9907
+PPN Accuracy: 0.9349
+Shower fragment clustering accuracy: 1.0000
+Shower primary prediction accuracy: 1.0000
+Track fragment clustering accuracy: 1.0000
+Interaction grouping accuracy: 1.0000
+Particle ID accuracy: 1.0000
+Primary particle score accuracy: 1.0000
+392
+Deghosting Accuracy: 0.9794
+Segmentation Accuracy: 1.0000
+PPN Accuracy: 0.7646
+Shower fragment clustering accuracy: 0.9200
+Shower primary prediction accuracy: 1.0000
+Track fragment clustering accuracy: 1.0000
+Interaction grouping accuracy: 0.9167
+Particle ID accuracy: 0.5000
+Primary particle score accuracy: 0.5000
+393
+Deghosting Accuracy: 0.9858
+Segmentation Accuracy: 0.9982
+PPN Accuracy: 0.8903
+Shower fragment clustering accuracy: 1.0000
+Shower primary prediction accuracy: 1.0000
+Track fragment clustering accuracy: 0.6667
+Interaction grouping accuracy: 0.9000
+Particle ID accuracy: 1.0000
+Primary particle score accuracy: 0.6667
+394
+Deghosting Accuracy: 0.9916
+Segmentation Accuracy: 0.9917
+PPN Accuracy: 0.7673
+Shower fragment clustering accuracy: 0.9619
+Shower primary prediction accuracy: 1.0000
+Track fragment clustering accuracy: 0.8214
+Interaction grouping accuracy: 0.6818
+Particle ID accuracy: 1.0000
+Primary particle score accuracy: 0.8750
+395
+Deghosting Accuracy: 0.9680
+Segmentation Accuracy: 1.0000
+PPN Accuracy: 0.8512
+Shower fragment clustering accuracy: 1.0000
+Shower primary prediction accuracy: 1.0000
+Track fragment clustering accuracy: 1.0000
+Interaction grouping accuracy: 1.0000
+Particle ID accuracy: 0.0000
+Primary particle score accuracy: 1.0000
+396
+Deghosting Accuracy: 0.9670
+Segmentation Accuracy: 0.9945
+PPN Accuracy: 0.8754
+Shower fragment clustering accuracy: 0.3667
+Shower primary prediction accuracy: 1.0000
+Track fragment clustering accuracy: 1.0000
+Interaction grouping accuracy: 0.5000
+Particle ID accuracy: 0.5000
+Primary particle score accuracy: 0.5000
+397
+Deghosting Accuracy: 0.9830
+Segmentation Accuracy: 0.9975
+PPN Accuracy: 0.8619
+Shower fragment clustering accuracy: 0.9667
+Shower primary prediction accuracy: 1.0000
+Track fragment clustering accuracy: 0.9333
+Interaction grouping accuracy: 0.9909
+Particle ID accuracy: 1.0000
+Primary particle score accuracy: 1.0000
+398
+Deghosting Accuracy: 0.9856
+Segmentation Accuracy: 1.0000
+PPN Accuracy: 0.9413
+Shower fragment clustering accuracy: 1.0000
+Shower primary prediction accuracy: 1.0000
+Track fragment clustering accuracy: 0.6667
+Interaction grouping accuracy: 1.0000
+Particle ID accuracy: 1.0000
+Primary particle score accuracy: 1.0000
+399
+Deghosting Accuracy: 0.9886
+Segmentation Accuracy: 0.9941
+PPN Accuracy: 0.8478
+Shower fragment clustering accuracy: 0.9048
+Shower primary prediction accuracy: 0.6667
+Track fragment clustering accuracy: 0.8889
+Interaction grouping accuracy: 0.8333
+Particle ID accuracy: 1.0000
+Primary particle score accuracy: 0.6667
+400
+Deghosting Accuracy: 0.9853
+Segmentation Accuracy: 0.9983
+PPN Accuracy: 0.9549
+Shower fragment clustering accuracy: 0.0000
+Shower primary prediction accuracy: 1.0000
+Track fragment clustering accuracy: 1.0000
+Interaction grouping accuracy: 1.0000
+Particle ID accuracy: 1.0000
+Primary particle score accuracy: 1.0000
+401
+Deghosting Accuracy: 0.9965
+Segmentation Accuracy: 1.0000
+PPN Accuracy: 0.7128
+Shower fragment clustering accuracy: 1.0000
+Shower primary prediction accuracy: 1.0000
+Track fragment clustering accuracy: 1.0000
+Interaction grouping accuracy: 1.0000
+Particle ID accuracy: 0.5000
+Primary particle score accuracy: 0.5000
+402
+Deghosting Accuracy: 0.9753
+Segmentation Accuracy: 0.9928
+PPN Accuracy: 0.8404
+Shower fragment clustering accuracy: 0.6786
+Shower primary prediction accuracy: 1.0000
+Track fragment clustering accuracy: 1.0000
+Interaction grouping accuracy: 0.7381
+Particle ID accuracy: 1.0000
+Primary particle score accuracy: 1.0000
+403
+Deghosting Accuracy: 0.9861
+Segmentation Accuracy: 0.9976
+PPN Accuracy: 0.8675
+Shower fragment clustering accuracy: 0.6667
+Shower primary prediction accuracy: 1.0000
+Track fragment clustering accuracy: 0.6667
+Interaction grouping accuracy: 0.8667
+Particle ID accuracy: 1.0000
+Primary particle score accuracy: 1.0000
+404
+Deghosting Accuracy: 0.9652
+Segmentation Accuracy: 0.9954
+PPN Accuracy: 0.9529
+Shower fragment clustering accuracy: 1.0000
+Shower primary prediction accuracy: 1.0000
+Track fragment clustering accuracy: 0.9456
+Interaction grouping accuracy: 0.3333
+Particle ID accuracy: 1.0000
+Primary particle score accuracy: 1.0000
+405
+Deghosting Accuracy: 0.9886
+Segmentation Accuracy: 0.9843
+PPN Accuracy: 0.8213
+Shower fragment clustering accuracy: 1.0000
+Shower primary prediction accuracy: 1.0000
+Track fragment clustering accuracy: 0.9717
+Interaction grouping accuracy: 0.7679
+Particle ID accuracy: 0.5000
+Primary particle score accuracy: 0.8000
+406
+Deghosting Accuracy: 0.9307
+Segmentation Accuracy: 0.9942
+PPN Accuracy: 0.5944
+Shower fragment clustering accuracy: 1.0000
+Shower primary prediction accuracy: 1.0000
+Track fragment clustering accuracy: 1.0000
+Interaction grouping accuracy: 1.0000
+Particle ID accuracy: 1.0000
+Primary particle score accuracy: 0.5000
+407
+Deghosting Accuracy: 0.9718
+Segmentation Accuracy: 0.9968
+PPN Accuracy: 0.8112
+Shower fragment clustering accuracy: 1.0000
+Shower primary prediction accuracy: 1.0000
+Track fragment clustering accuracy: 1.0000
+Interaction grouping accuracy: 0.8393
+Particle ID accuracy: 1.0000
+Primary particle score accuracy: 0.8571
+408
+Deghosting Accuracy: 0.9848
+Segmentation Accuracy: 0.9888
+PPN Accuracy: 0.7931
+Shower fragment clustering accuracy: 1.0000
+Shower primary prediction accuracy: 1.0000
+Track fragment clustering accuracy: 0.9333
+Interaction grouping accuracy: 1.0000
+Particle ID accuracy: 0.5000
+Primary particle score accuracy: 1.0000
+409
+Deghosting Accuracy: 0.9786
+Segmentation Accuracy: 0.9964
+PPN Accuracy: 0.8839
+Shower fragment clustering accuracy: 1.0000
+Shower primary prediction accuracy: 1.0000
+Track fragment clustering accuracy: 0.7500
+Interaction grouping accuracy: 1.0000
+Particle ID accuracy: 1.0000
+Primary particle score accuracy: 0.0000
+410
+Deghosting Accuracy: 0.9928
+Segmentation Accuracy: 1.0000
+PPN Accuracy: 0.5854
+Shower fragment clustering accuracy: 1.0000
+Shower primary prediction accuracy: 1.0000
+Track fragment clustering accuracy: 0.3333
+Interaction grouping accuracy: 1.0000
+Particle ID accuracy: 1.0000
+Primary particle score accuracy: 1.0000
+411
+Deghosting Accuracy: 0.9757
+Segmentation Accuracy: 0.5385
+PPN Accuracy: 0.7222
+Shower fragment clustering accuracy: 1.0000
+Shower primary prediction accuracy: 1.0000
+Track fragment clustering accuracy: 1.0000
+Interaction grouping accuracy: 1.0000
+Particle ID accuracy: 1.0000
+Primary particle score accuracy: 0.0000
+412
+Deghosting Accuracy: 0.9294
+Segmentation Accuracy: 0.9716
+PPN Accuracy: 0.5101
+Shower fragment clustering accuracy: 0.9048
+Shower primary prediction accuracy: 1.0000
+Track fragment clustering accuracy: 1.0000
+Interaction grouping accuracy: 1.0000
+Particle ID accuracy: 0.0000
+Primary particle score accuracy: 1.0000
+413
+Deghosting Accuracy: 0.9561
+Segmentation Accuracy: 0.9892
+PPN Accuracy: 0.7123
+Shower fragment clustering accuracy: 1.0000
+Shower primary prediction accuracy: 1.0000
+Track fragment clustering accuracy: 1.0000
+Interaction grouping accuracy: 1.0000
+Particle ID accuracy: 1.0000
+Primary particle score accuracy: 1.0000
+414
+Deghosting Accuracy: 0.9557
+Segmentation Accuracy: 0.9919
+PPN Accuracy: 0.7776
+Shower fragment clustering accuracy: 0.9274
+Shower primary prediction accuracy: 1.0000
+Track fragment clustering accuracy: 1.0000
+Interaction grouping accuracy: 0.3333
+Particle ID accuracy: 1.0000
+Primary particle score accuracy: 1.0000
+415
+Deghosting Accuracy: 0.9653
+Segmentation Accuracy: 0.9962
+PPN Accuracy: 0.8384
+Shower fragment clustering accuracy: 1.0000
+Shower primary prediction accuracy: 1.0000
+Track fragment clustering accuracy: 1.0000
+Interaction grouping accuracy: 1.0000
+Particle ID accuracy: 1.0000
+Primary particle score accuracy: 1.0000
+416
+Deghosting Accuracy: 0.9725
+Segmentation Accuracy: 0.9957
+PPN Accuracy: 0.9112
+Shower fragment clustering accuracy: 1.0000
+Shower primary prediction accuracy: 1.0000
+Track fragment clustering accuracy: 1.0000
+Interaction grouping accuracy: 0.5000
+Particle ID accuracy: 1.0000
+Primary particle score accuracy: 0.7500
+417
+Deghosting Accuracy: 0.9775
+Segmentation Accuracy: 0.9889
+PPN Accuracy: 0.7279
+Shower fragment clustering accuracy: 1.0000
+Shower primary prediction accuracy: 1.0000
+Track fragment clustering accuracy: 1.0000
+Interaction grouping accuracy: 1.0000
+Particle ID accuracy: 1.0000
+Primary particle score accuracy: 1.0000
+418
+Deghosting Accuracy: 0.9765
+Segmentation Accuracy: 0.9974
+PPN Accuracy: 0.6683
+Shower fragment clustering accuracy: 1.0000
+Shower primary prediction accuracy: 1.0000
+Track fragment clustering accuracy: 1.0000
+Interaction grouping accuracy: 1.0000
+Particle ID accuracy: 1.0000
+Primary particle score accuracy: 0.5000
+419
+Deghosting Accuracy: 0.9758
+Segmentation Accuracy: 0.9922
+PPN Accuracy: 0.7908
+Shower fragment clustering accuracy: 0.9821
+Shower primary prediction accuracy: 1.0000
+Track fragment clustering accuracy: 0.8333
+Interaction grouping accuracy: 0.9444
+Particle ID accuracy: 1.0000
+Primary particle score accuracy: 1.0000
+420
+Deghosting Accuracy: 0.9840
+Segmentation Accuracy: 1.0000
+PPN Accuracy: 0.1966
+Shower fragment clustering accuracy: 1.0000
+Shower primary prediction accuracy: 1.0000
+Track fragment clustering accuracy: 1.0000
+Interaction grouping accuracy: 1.0000
+Particle ID accuracy: 0.0000
+Primary particle score accuracy: 1.0000
+421
+Deghosting Accuracy: 0.9784
+Segmentation Accuracy: 1.0000
+PPN Accuracy: 0.8776
+Shower fragment clustering accuracy: 1.0000
+Shower primary prediction accuracy: 1.0000
+Track fragment clustering accuracy: 1.0000
+Interaction grouping accuracy: 1.0000
+Particle ID accuracy: 1.0000
+Primary particle score accuracy: 0.6667
+422
+Deghosting Accuracy: 0.9662
+Segmentation Accuracy: 0.8043
+PPN Accuracy: 0.0000
+Shower fragment clustering accuracy: 1.0000
+Shower primary prediction accuracy: 1.0000
+Track fragment clustering accuracy: 1.0000
+Interaction grouping accuracy: 0.0000
+Particle ID accuracy: 1.0000
+Primary particle score accuracy: 0.0000
+423
+Deghosting Accuracy: 0.9858
+Segmentation Accuracy: 0.9987
+PPN Accuracy: 0.7023
+Shower fragment clustering accuracy: 0.7316
+Shower primary prediction accuracy: 1.0000
+Track fragment clustering accuracy: 0.8611
+Interaction grouping accuracy: 1.0000
+Particle ID accuracy: 0.8000
+Primary particle score accuracy: 1.0000
+424
+Deghosting Accuracy: 0.9607
+Segmentation Accuracy: 0.9903
+PPN Accuracy: 0.8360
+Shower fragment clustering accuracy: 1.0000
+Shower primary prediction accuracy: 1.0000
+Track fragment clustering accuracy: 0.7000
+Interaction grouping accuracy: 0.5952
+Particle ID accuracy: 1.0000
+Primary particle score accuracy: 0.5000
+425
+Deghosting Accuracy: 0.9171
+Segmentation Accuracy: 0.9630
+PPN Accuracy: 0.8065
+Shower fragment clustering accuracy: 0.8333
+Shower primary prediction accuracy: 1.0000
+Track fragment clustering accuracy: 1.0000
+Interaction grouping accuracy: 0.7000
+Particle ID accuracy: 1.0000
+Primary particle score accuracy: 0.4000
+426
+Deghosting Accuracy: 0.9854
+Segmentation Accuracy: 0.9996
+PPN Accuracy: 0.8136
+Shower fragment clustering accuracy: 1.0000
+Shower primary prediction accuracy: 1.0000
+Track fragment clustering accuracy: 1.0000
+Interaction grouping accuracy: 0.5000
+Particle ID accuracy: 0.3333
+Primary particle score accuracy: 1.0000
+427
+Deghosting Accuracy: 0.9406
+Segmentation Accuracy: 0.9194
+PPN Accuracy: 0.8250
+Shower fragment clustering accuracy: 1.0000
+Shower primary prediction accuracy: 1.0000
+Track fragment clustering accuracy: 1.0000
+Interaction grouping accuracy: 0.5000
+Particle ID accuracy: 1.0000
+Primary particle score accuracy: 0.0000
+428
+Deghosting Accuracy: 0.9852
+Segmentation Accuracy: 0.9707
+PPN Accuracy: 0.6719
+Shower fragment clustering accuracy: 1.0000
+Shower primary prediction accuracy: 1.0000
+Track fragment clustering accuracy: 1.0000
+Interaction grouping accuracy: 0.5000
+Particle ID accuracy: 1.0000
+Primary particle score accuracy: 0.6667
+429
+Deghosting Accuracy: 0.9795
+Segmentation Accuracy: 0.9957
+PPN Accuracy: 0.8039
+Shower fragment clustering accuracy: 0.9896
+Shower primary prediction accuracy: 1.0000
+Track fragment clustering accuracy: 0.8333
+Interaction grouping accuracy: 0.5667
+Particle ID accuracy: 0.5000
+Primary particle score accuracy: 1.0000
+430
+Deghosting Accuracy: 0.9743
+Segmentation Accuracy: 0.9926
+PPN Accuracy: 0.7959
+Shower fragment clustering accuracy: 0.9643
+Shower primary prediction accuracy: 1.0000
+Track fragment clustering accuracy: 1.0000
+Interaction grouping accuracy: 1.0000
+Particle ID accuracy: 1.0000
+Primary particle score accuracy: 1.0000
+431
+Deghosting Accuracy: 0.9677
+Segmentation Accuracy: 0.9958
+PPN Accuracy: 0.7888
+Shower fragment clustering accuracy: 0.9667
+Shower primary prediction accuracy: 1.0000
+Track fragment clustering accuracy: 1.0000
+Interaction grouping accuracy: 0.7500
+Particle ID accuracy: 1.0000
+Primary particle score accuracy: 1.0000
+432
+Deghosting Accuracy: 0.9786
+Segmentation Accuracy: 0.9916
+PPN Accuracy: 0.8533
+Shower fragment clustering accuracy: 1.0000
+Shower primary prediction accuracy: 1.0000
+Track fragment clustering accuracy: 0.6667
+Interaction grouping accuracy: 0.3500
+Particle ID accuracy: 1.0000
+Primary particle score accuracy: 0.0000
+433
+Deghosting Accuracy: 0.9885
+Segmentation Accuracy: 0.9929
+PPN Accuracy: 0.9452
+Shower fragment clustering accuracy: 1.0000
+Shower primary prediction accuracy: 1.0000
+Track fragment clustering accuracy: 0.6667
+Interaction grouping accuracy: 1.0000
+Particle ID accuracy: 1.0000
+Primary particle score accuracy: 0.5000
+434
+Deghosting Accuracy: 0.9815
+Segmentation Accuracy: 0.9788
+PPN Accuracy: 0.8125
+Shower fragment clustering accuracy: 1.0000
+Shower primary prediction accuracy: 1.0000
+Track fragment clustering accuracy: 1.0000
+Interaction grouping accuracy: 0.7667
+Particle ID accuracy: 0.5000
+Primary particle score accuracy: 0.5000
+435
+Deghosting Accuracy: 0.9942
+Segmentation Accuracy: 0.9898
+PPN Accuracy: 0.8139
+Shower fragment clustering accuracy: 1.0000
+Shower primary prediction accuracy: 1.0000
+Track fragment clustering accuracy: 0.4889
+Interaction grouping accuracy: 1.0000
+Particle ID accuracy: 1.0000
+Primary particle score accuracy: 0.0000
+436
+Deghosting Accuracy: 0.9911
+Segmentation Accuracy: 1.0000
+PPN Accuracy: 0.8750
+Shower fragment clustering accuracy: 1.0000
+Shower primary prediction accuracy: 1.0000
+Track fragment clustering accuracy: 1.0000
+Interaction grouping accuracy: 1.0000
+Particle ID accuracy: 0.0000
+Primary particle score accuracy: 1.0000
+437
+Deghosting Accuracy: 0.9651
+Segmentation Accuracy: 0.9903
+PPN Accuracy: 0.7973
+Shower fragment clustering accuracy: 1.0000
+Shower primary prediction accuracy: 1.0000
+Track fragment clustering accuracy: 0.9854
+Interaction grouping accuracy: 0.6273
+Particle ID accuracy: 1.0000
+Primary particle score accuracy: 0.6667
+438
+Deghosting Accuracy: 0.9870
+Segmentation Accuracy: 1.0000
+PPN Accuracy: 0.7002
+Shower fragment clustering accuracy: 1.0000
+Shower primary prediction accuracy: 1.0000
+Track fragment clustering accuracy: 1.0000
+Interaction grouping accuracy: 1.0000
+Particle ID accuracy: 0.5000
+Primary particle score accuracy: 0.5000
+439
+Deghosting Accuracy: 0.9800
+Segmentation Accuracy: 0.9980
+PPN Accuracy: 0.7079
+Shower fragment clustering accuracy: 0.6667
+Shower primary prediction accuracy: 1.0000
+Track fragment clustering accuracy: 0.8500
+Interaction grouping accuracy: 0.8333
+Particle ID accuracy: 1.0000
+Primary particle score accuracy: 0.6667
+440
+Deghosting Accuracy: 0.9424
+Segmentation Accuracy: 0.9753
+PPN Accuracy: 0.8328
+Shower fragment clustering accuracy: 0.8667
+Shower primary prediction accuracy: 1.0000
+Track fragment clustering accuracy: 1.0000
+Interaction grouping accuracy: 0.8571
+Particle ID accuracy: 0.6667
+Primary particle score accuracy: 0.2000
+441
+Deghosting Accuracy: 0.9855
+Segmentation Accuracy: 1.0000
+PPN Accuracy: 0.8498
+Shower fragment clustering accuracy: 1.0000
+Shower primary prediction accuracy: 1.0000
+Track fragment clustering accuracy: 1.0000
+Interaction grouping accuracy: 1.0000
+Particle ID accuracy: 0.0000
+Primary particle score accuracy: 1.0000
+442
+Deghosting Accuracy: 0.9823
+Segmentation Accuracy: 0.9927
+PPN Accuracy: 0.7863
+Shower fragment clustering accuracy: 0.9524
+Shower primary prediction accuracy: 1.0000
+Track fragment clustering accuracy: 1.0000
+Interaction grouping accuracy: 1.0000
+Particle ID accuracy: 1.0000
+Primary particle score accuracy: 1.0000
+443
+Deghosting Accuracy: 0.9985
+Segmentation Accuracy: 1.0000
+PPN Accuracy: 0.6923
+Shower fragment clustering accuracy: 1.0000
+Shower primary prediction accuracy: 1.0000
+Track fragment clustering accuracy: 1.0000
+Interaction grouping accuracy: 1.0000
+Particle ID accuracy: 1.0000
+Primary particle score accuracy: 1.0000
+444
+Deghosting Accuracy: 0.9129
+Segmentation Accuracy: 0.8056
+PPN Accuracy: 0.9115
+Shower fragment clustering accuracy: 1.0000
+Shower primary prediction accuracy: 1.0000
+Track fragment clustering accuracy: 1.0000
+Interaction grouping accuracy: 1.0000
+Particle ID accuracy: 1.0000
+Primary particle score accuracy: 0.0000
+445
+Deghosting Accuracy: 0.9566
+Segmentation Accuracy: 0.9834
+PPN Accuracy: 0.5798
+Shower fragment clustering accuracy: 0.8909
+Shower primary prediction accuracy: 1.0000
+Track fragment clustering accuracy: 1.0000
+Interaction grouping accuracy: 0.8333
+Particle ID accuracy: 0.0000
+Primary particle score accuracy: 1.0000
+446
+Deghosting Accuracy: 0.9587
+Segmentation Accuracy: 0.9708
+PPN Accuracy: 0.7547
+Shower fragment clustering accuracy: 1.0000
+Shower primary prediction accuracy: 1.0000
+Track fragment clustering accuracy: 0.9556
+Interaction grouping accuracy: 0.8545
+Particle ID accuracy: 0.7500
+Primary particle score accuracy: 0.4000
+447
+Deghosting Accuracy: 0.9697
+Segmentation Accuracy: 1.0000
+PPN Accuracy: 0.6500
+Shower fragment clustering accuracy: 1.0000
+Shower primary prediction accuracy: 1.0000
+Track fragment clustering accuracy: 1.0000
+Interaction grouping accuracy: 1.0000
+Particle ID accuracy: 1.0000
+Primary particle score accuracy: 1.0000
+448
+Deghosting Accuracy: 0.9551
+Segmentation Accuracy: 0.9773
+PPN Accuracy: 0.7771
+Shower fragment clustering accuracy: 1.0000
+Shower primary prediction accuracy: 1.0000
+Track fragment clustering accuracy: 0.8333
+Interaction grouping accuracy: 0.6667
+Particle ID accuracy: 1.0000
+Primary particle score accuracy: 1.0000
+449
+Deghosting Accuracy: 0.9727
+Segmentation Accuracy: 0.9986
+PPN Accuracy: 0.8398
+Shower fragment clustering accuracy: 1.0000
+Shower primary prediction accuracy: 1.0000
+Track fragment clustering accuracy: 0.9000
+Interaction grouping accuracy: 0.6500
+Particle ID accuracy: 1.0000
+Primary particle score accuracy: 0.5000
+450
+Deghosting Accuracy: 0.9671
+Segmentation Accuracy: 0.9863
+PPN Accuracy: 0.7685
+Shower fragment clustering accuracy: 0.8341
+Shower primary prediction accuracy: 1.0000
+Track fragment clustering accuracy: 0.9872
+Interaction grouping accuracy: 0.8571
+Particle ID accuracy: 1.0000
+Primary particle score accuracy: 1.0000
+451
+Deghosting Accuracy: 0.9804
+Segmentation Accuracy: 0.9992
+PPN Accuracy: 0.8879
+Shower fragment clustering accuracy: 1.0000
+Shower primary prediction accuracy: 1.0000
+Track fragment clustering accuracy: 0.6667
+Interaction grouping accuracy: 1.0000
+Particle ID accuracy: 1.0000
+Primary particle score accuracy: 0.0000
+452
+Deghosting Accuracy: 0.9821
+Segmentation Accuracy: 0.9968
+PPN Accuracy: 0.8119
+Shower fragment clustering accuracy: 1.0000
+Shower primary prediction accuracy: 1.0000
+Track fragment clustering accuracy: 1.0000
+Interaction grouping accuracy: 1.0000
+Particle ID accuracy: 0.5000
+Primary particle score accuracy: 0.0000
+453
+Deghosting Accuracy: 0.9856
+Segmentation Accuracy: 0.9990
+PPN Accuracy: 0.7634
+Shower fragment clustering accuracy: 1.0000
+Shower primary prediction accuracy: 1.0000
+Track fragment clustering accuracy: 0.9643
+Interaction grouping accuracy: 1.0000
+Particle ID accuracy: 1.0000
+Primary particle score accuracy: 1.0000
+454
+Deghosting Accuracy: 0.9717
+Segmentation Accuracy: 0.9829
+PPN Accuracy: 0.7122
+Shower fragment clustering accuracy: 0.0000
+Shower primary prediction accuracy: 1.0000
+Track fragment clustering accuracy: 0.8095
+Interaction grouping accuracy: 1.0000
+Particle ID accuracy: 1.0000
+Primary particle score accuracy: 1.0000
+455
+Deghosting Accuracy: 0.9767
+Segmentation Accuracy: 1.0000
+PPN Accuracy: 0.8370
+Shower fragment clustering accuracy: 1.0000
+Shower primary prediction accuracy: 1.0000
+Track fragment clustering accuracy: 1.0000
+Interaction grouping accuracy: 0.6905
+Particle ID accuracy: 1.0000
+Primary particle score accuracy: 0.8333
+456
+Deghosting Accuracy: 0.9884
+Segmentation Accuracy: 1.0000
+PPN Accuracy: 0.0000
+Shower fragment clustering accuracy: 1.0000
+Shower primary prediction accuracy: 1.0000
+Track fragment clustering accuracy: 1.0000
+Interaction grouping accuracy: 1.0000
+Particle ID accuracy: 0.0000
+Primary particle score accuracy: 1.0000
+457
+Deghosting Accuracy: 0.9949
+Segmentation Accuracy: 0.9914
+PPN Accuracy: 0.7929
+Shower fragment clustering accuracy: 0.9222
+Shower primary prediction accuracy: 1.0000
+Track fragment clustering accuracy: 1.0000
+Interaction grouping accuracy: 0.8222
+Particle ID accuracy: 1.0000
+Primary particle score accuracy: 1.0000
+458
+Deghosting Accuracy: 0.9986
+Segmentation Accuracy: 1.0000
+PPN Accuracy: 0.6000
+Shower fragment clustering accuracy: 1.0000
+Shower primary prediction accuracy: 1.0000
+Track fragment clustering accuracy: 1.0000
+Interaction grouping accuracy: 1.0000
+Particle ID accuracy: 1.0000
+Primary particle score accuracy: 1.0000
+459
+Deghosting Accuracy: 0.9388
+Segmentation Accuracy: 1.0000
+PPN Accuracy: 0.7346
+Shower fragment clustering accuracy: 1.0000
+Shower primary prediction accuracy: 1.0000
+Track fragment clustering accuracy: 0.0000
+Interaction grouping accuracy: 0.3333
+Particle ID accuracy: 1.0000
+Primary particle score accuracy: 1.0000
+460
+Deghosting Accuracy: 0.9764
+Segmentation Accuracy: 0.9947
+PPN Accuracy: 0.8248
+Shower fragment clustering accuracy: 1.0000
+Shower primary prediction accuracy: 1.0000
+Track fragment clustering accuracy: 0.9167
+Interaction grouping accuracy: 1.0000
+Particle ID accuracy: 1.0000
+Primary particle score accuracy: 1.0000
+461
+Deghosting Accuracy: 0.9736
+Segmentation Accuracy: 0.9861
+PPN Accuracy: 0.7253
+Shower fragment clustering accuracy: 0.9545
+Shower primary prediction accuracy: 1.0000
+Track fragment clustering accuracy: 1.0000
+Interaction grouping accuracy: 1.0000
+Particle ID accuracy: 0.3333
+Primary particle score accuracy: 0.6667
+462
+Deghosting Accuracy: 0.9490
+Segmentation Accuracy: 0.9644
+PPN Accuracy: 0.8145
+Shower fragment clustering accuracy: 1.0000
+Shower primary prediction accuracy: 1.0000
+Track fragment clustering accuracy: 1.0000
+Interaction grouping accuracy: 1.0000
+Particle ID accuracy: 1.0000
+Primary particle score accuracy: 1.0000
+463
+Deghosting Accuracy: 0.9960
+Segmentation Accuracy: 0.9929
+PPN Accuracy: 0.8888
+Shower fragment clustering accuracy: 0.9000
+Shower primary prediction accuracy: 1.0000
+Track fragment clustering accuracy: 0.9190
+Interaction grouping accuracy: 0.8750
+Particle ID accuracy: 1.0000
+Primary particle score accuracy: 1.0000
+464
+Deghosting Accuracy: 0.9770
+Segmentation Accuracy: 0.9993
+PPN Accuracy: 0.8803
+Shower fragment clustering accuracy: 0.8333
+Shower primary prediction accuracy: 1.0000
+Track fragment clustering accuracy: 1.0000
+Interaction grouping accuracy: 0.9000
+Particle ID accuracy: 1.0000
+Primary particle score accuracy: 1.0000
+465
+Deghosting Accuracy: 0.9782
+Segmentation Accuracy: 0.9964
+PPN Accuracy: 0.8516
+Shower fragment clustering accuracy: 1.0000
+Shower primary prediction accuracy: 1.0000
+Track fragment clustering accuracy: 1.0000
+Interaction grouping accuracy: 0.7639
+Particle ID accuracy: 1.0000
+Primary particle score accuracy: 1.0000
+466
+Deghosting Accuracy: 0.9800
+Segmentation Accuracy: 0.9981
+PPN Accuracy: 0.9088
+Shower fragment clustering accuracy: 1.0000
+Shower primary prediction accuracy: 1.0000
+Track fragment clustering accuracy: 0.8333
+Interaction grouping accuracy: 1.0000
+Particle ID accuracy: 1.0000
+Primary particle score accuracy: 0.5000
+467
+Deghosting Accuracy: 0.9912
+Segmentation Accuracy: 0.9898
+PPN Accuracy: 0.8437
+Shower fragment clustering accuracy: 0.8333
+Shower primary prediction accuracy: 1.0000
+Track fragment clustering accuracy: 1.0000
+Interaction grouping accuracy: 1.0000
+Particle ID accuracy: 1.0000
+Primary particle score accuracy: 1.0000
+468
+Deghosting Accuracy: 0.9696
+Segmentation Accuracy: 0.9967
+PPN Accuracy: 0.8854
+Shower fragment clustering accuracy: 1.0000
+Shower primary prediction accuracy: 1.0000
+Track fragment clustering accuracy: 1.0000
+Interaction grouping accuracy: 1.0000
+Particle ID accuracy: 1.0000
+Primary particle score accuracy: 0.2500
+469
+Deghosting Accuracy: 0.9784
+Segmentation Accuracy: 1.0000
+PPN Accuracy: 0.7086
+Shower fragment clustering accuracy: 1.0000
+Shower primary prediction accuracy: 1.0000
+Track fragment clustering accuracy: 0.8333
+Interaction grouping accuracy: 1.0000
+Particle ID accuracy: 1.0000
+Primary particle score accuracy: 1.0000
+470
+Deghosting Accuracy: 0.9804
+Segmentation Accuracy: 0.9912
+PPN Accuracy: 0.7589
+Shower fragment clustering accuracy: 1.0000
+Shower primary prediction accuracy: 1.0000
+Track fragment clustering accuracy: 0.5000
+Interaction grouping accuracy: 1.0000
+Particle ID accuracy: 1.0000
+Primary particle score accuracy: 0.0000
+471
+Deghosting Accuracy: 0.9930
+Segmentation Accuracy: 0.9588
+PPN Accuracy: 0.8585
+Shower fragment clustering accuracy: 0.9367
+Shower primary prediction accuracy: 1.0000
+Track fragment clustering accuracy: 0.9936
+Interaction grouping accuracy: 1.0000
+Particle ID accuracy: 0.7143
+Primary particle score accuracy: 0.7778
+472
+Deghosting Accuracy: 0.9666
+Segmentation Accuracy: 0.9610
+PPN Accuracy: 0.2995
+Shower fragment clustering accuracy: 1.0000
+Shower primary prediction accuracy: 1.0000
+Track fragment clustering accuracy: 1.0000
+Interaction grouping accuracy: 0.3333
+Particle ID accuracy: 1.0000
+Primary particle score accuracy: 1.0000
+473
+Deghosting Accuracy: 0.9835
+Segmentation Accuracy: 1.0000
+PPN Accuracy: 0.7975
+Shower fragment clustering accuracy: 1.0000
+Shower primary prediction accuracy: 1.0000
+Track fragment clustering accuracy: 0.6667
+Interaction grouping accuracy: 1.0000
+Particle ID accuracy: 0.6667
+Primary particle score accuracy: 0.6667
+474
+Deghosting Accuracy: 0.9914
+Segmentation Accuracy: 0.9995
+PPN Accuracy: 0.8126
+Shower fragment clustering accuracy: 1.0000
+Shower primary prediction accuracy: 1.0000
+Track fragment clustering accuracy: 1.0000
+Interaction grouping accuracy: 0.8333
+Particle ID accuracy: 1.0000
+Primary particle score accuracy: 1.0000
+475
+Deghosting Accuracy: 0.9824
+Segmentation Accuracy: 0.9967
+PPN Accuracy: 0.6839
+Shower fragment clustering accuracy: 1.0000
+Shower primary prediction accuracy: 1.0000
+Track fragment clustering accuracy: 1.0000
+Interaction grouping accuracy: 1.0000
+Particle ID accuracy: 1.0000
+Primary particle score accuracy: 1.0000
+476
+Deghosting Accuracy: 0.9770
+Segmentation Accuracy: 0.9965
+PPN Accuracy: 0.8768
+Shower fragment clustering accuracy: 1.0000
+Shower primary prediction accuracy: 1.0000
+Track fragment clustering accuracy: 0.8333
+Interaction grouping accuracy: 1.0000
+Particle ID accuracy: 1.0000
+Primary particle score accuracy: 1.0000
+477
+Deghosting Accuracy: 0.9692
+Segmentation Accuracy: 0.9979
+PPN Accuracy: 0.8702
+Shower fragment clustering accuracy: 0.8333
+Shower primary prediction accuracy: 1.0000
+Track fragment clustering accuracy: 0.5500
+Interaction grouping accuracy: 0.5238
+Particle ID accuracy: 1.0000
+Primary particle score accuracy: 0.5000
+478
+Deghosting Accuracy: 0.9941
+Segmentation Accuracy: 0.9923
+PPN Accuracy: 0.8408
+Shower fragment clustering accuracy: 0.9615
+Shower primary prediction accuracy: 1.0000
+Track fragment clustering accuracy: 1.0000
+Interaction grouping accuracy: 1.0000
+Particle ID accuracy: 1.0000
+Primary particle score accuracy: 1.0000
+479
+Deghosting Accuracy: 0.9877
+Segmentation Accuracy: 0.9948
+PPN Accuracy: 0.8505
+Shower fragment clustering accuracy: 0.8500
+Shower primary prediction accuracy: 0.0000
+Track fragment clustering accuracy: 0.8889
+Interaction grouping accuracy: 0.9306
+Particle ID accuracy: 1.0000
+Primary particle score accuracy: 0.8000
+480
+Deghosting Accuracy: 0.9948
+Segmentation Accuracy: 0.9862
+PPN Accuracy: 0.8883
+Shower fragment clustering accuracy: 1.0000
+Shower primary prediction accuracy: 1.0000
+Track fragment clustering accuracy: 0.9239
+Interaction grouping accuracy: 0.7500
+Particle ID accuracy: 1.0000
+Primary particle score accuracy: 0.3333
+481
+Deghosting Accuracy: 0.9825
+Segmentation Accuracy: 0.9830
+PPN Accuracy: 0.7576
+Shower fragment clustering accuracy: 1.0000
+Shower primary prediction accuracy: 1.0000
+Track fragment clustering accuracy: 1.0000
+Interaction grouping accuracy: 0.8333
+Particle ID accuracy: 1.0000
+Primary particle score accuracy: 1.0000
+482
+Deghosting Accuracy: 0.9777
+Segmentation Accuracy: 0.9918
+PPN Accuracy: 0.8898
+Shower fragment clustering accuracy: 1.0000
+Shower primary prediction accuracy: 1.0000
+Track fragment clustering accuracy: 1.0000
+Interaction grouping accuracy: 1.0000
+Particle ID accuracy: 1.0000
+Primary particle score accuracy: 1.0000
+483
+Deghosting Accuracy: 0.9756
+Segmentation Accuracy: 0.9960
+PPN Accuracy: 0.6421
+Shower fragment clustering accuracy: 1.0000
+Shower primary prediction accuracy: 1.0000
+Track fragment clustering accuracy: 0.8333
+Interaction grouping accuracy: 1.0000
+Particle ID accuracy: 1.0000
+Primary particle score accuracy: 0.5000
+484
+Deghosting Accuracy: 0.9817
+Segmentation Accuracy: 0.9735
+PPN Accuracy: 0.8407
+Shower fragment clustering accuracy: 1.0000
+Shower primary prediction accuracy: 0.5000
+Track fragment clustering accuracy: 0.8333
+Interaction grouping accuracy: 1.0000
+Particle ID accuracy: 0.5000
+Primary particle score accuracy: 1.0000
+485
+Deghosting Accuracy: 0.9140
+Segmentation Accuracy: 0.7717
+PPN Accuracy: 0.6089
+Shower fragment clustering accuracy: 1.0000
+Shower primary prediction accuracy: 1.0000
+Track fragment clustering accuracy: 1.0000
+Interaction grouping accuracy: 0.6000
+Particle ID accuracy: 1.0000
+Primary particle score accuracy: 0.0000
+486
+Deghosting Accuracy: 0.9563
+Segmentation Accuracy: 0.9863
+PPN Accuracy: 0.8575
+Shower fragment clustering accuracy: 1.0000
+Shower primary prediction accuracy: 1.0000
+Track fragment clustering accuracy: 0.8333
+Interaction grouping accuracy: 0.8333
+Particle ID accuracy: 1.0000
+Primary particle score accuracy: 0.6667
+487
+Deghosting Accuracy: 0.9924
+Segmentation Accuracy: 1.0000
+PPN Accuracy: 0.6364
+Shower fragment clustering accuracy: 1.0000
+Shower primary prediction accuracy: 1.0000
+Track fragment clustering accuracy: 1.0000
+Interaction grouping accuracy: 1.0000
+Particle ID accuracy: 1.0000
+Primary particle score accuracy: 1.0000
+488
+Deghosting Accuracy: 0.9670
+Segmentation Accuracy: 0.8931
+PPN Accuracy: 0.6626
+Shower fragment clustering accuracy: 1.0000
+Shower primary prediction accuracy: 1.0000
+Track fragment clustering accuracy: 1.0000
+Interaction grouping accuracy: 0.6667
+Particle ID accuracy: 0.7500
+Primary particle score accuracy: 0.8000
+489
+Deghosting Accuracy: 0.9704
+Segmentation Accuracy: 0.9847
+PPN Accuracy: 0.8857
+Shower fragment clustering accuracy: 1.0000
+Shower primary prediction accuracy: 1.0000
+Track fragment clustering accuracy: 1.0000
+Interaction grouping accuracy: 1.0000
+Particle ID accuracy: 1.0000
+Primary particle score accuracy: 0.6667
+490
+Deghosting Accuracy: 0.9754
+Segmentation Accuracy: 0.9897
+PPN Accuracy: 0.9244
+Shower fragment clustering accuracy: 1.0000
+Shower primary prediction accuracy: 1.0000
+Track fragment clustering accuracy: 0.5000
+Interaction grouping accuracy: 1.0000
+Particle ID accuracy: 1.0000
+Primary particle score accuracy: 0.0000
+491
+Deghosting Accuracy: 0.9753
+Segmentation Accuracy: 1.0000
+PPN Accuracy: 0.9637
+Shower fragment clustering accuracy: 1.0000
+Shower primary prediction accuracy: 1.0000
+Track fragment clustering accuracy: 0.6667
+Interaction grouping accuracy: 0.5000
+Particle ID accuracy: 1.0000
+Primary particle score accuracy: 1.0000
+492
+Deghosting Accuracy: 0.9721
+Segmentation Accuracy: 0.9908
+PPN Accuracy: 0.8321
+Shower fragment clustering accuracy: 1.0000
+Shower primary prediction accuracy: 1.0000
+Track fragment clustering accuracy: 1.0000
+Interaction grouping accuracy: 0.1333
+Particle ID accuracy: 1.0000
+Primary particle score accuracy: 0.3333
+493
+Deghosting Accuracy: 0.9718
+Segmentation Accuracy: 0.9963
+PPN Accuracy: 0.8073
+Shower fragment clustering accuracy: 1.0000
+Shower primary prediction accuracy: 1.0000
+Track fragment clustering accuracy: 1.0000
+Interaction grouping accuracy: 0.8333
+Particle ID accuracy: 1.0000
+Primary particle score accuracy: 1.0000
+494
+Deghosting Accuracy: 0.9688
+Segmentation Accuracy: 0.9946
+PPN Accuracy: 0.7857
+Shower fragment clustering accuracy: 0.9286
+Shower primary prediction accuracy: 1.0000
+Track fragment clustering accuracy: 0.9722
+Interaction grouping accuracy: 1.0000
+Particle ID accuracy: 0.6667
+Primary particle score accuracy: 1.0000
+495
+Deghosting Accuracy: 0.9643
+Segmentation Accuracy: 0.9915
+PPN Accuracy: 0.8150
+Shower fragment clustering accuracy: 1.0000
+Shower primary prediction accuracy: 1.0000
+Track fragment clustering accuracy: 1.0000
+Interaction grouping accuracy: 1.0000
+Particle ID accuracy: 1.0000
+Primary particle score accuracy: 0.5000
+496
+Deghosting Accuracy: 0.9910
+Segmentation Accuracy: 1.0000
+PPN Accuracy: 0.8729
+Shower fragment clustering accuracy: 1.0000
+Shower primary prediction accuracy: 1.0000
+Track fragment clustering accuracy: 1.0000
+Interaction grouping accuracy: 1.0000
+Particle ID accuracy: 0.5000
+Primary particle score accuracy: 0.5000
+497
+Deghosting Accuracy: 0.9916
+Segmentation Accuracy: 0.9941
+PPN Accuracy: 0.8024
+Shower fragment clustering accuracy: 0.9222
+Shower primary prediction accuracy: 1.0000
+Track fragment clustering accuracy: 0.9958
+Interaction grouping accuracy: 1.0000
+Particle ID accuracy: 1.0000
+Primary particle score accuracy: 1.0000
+498
+Deghosting Accuracy: 0.9855
+Segmentation Accuracy: 0.9878
+PPN Accuracy: 0.7350
+Shower fragment clustering accuracy: 0.7500
+Shower primary prediction accuracy: 1.0000
+Track fragment clustering accuracy: 1.0000
+Interaction grouping accuracy: 0.7143
+Particle ID accuracy: 0.7500
+Primary particle score accuracy: 0.7500
+499
+Deghosting Accuracy: 0.9874
+Segmentation Accuracy: 1.0000
+PPN Accuracy: 0.6231
+Shower fragment clustering accuracy: 1.0000
+Shower primary prediction accuracy: 1.0000
+Track fragment clustering accuracy: 1.0000
+Interaction grouping accuracy: 1.0000
+Particle ID accuracy: 0.0000
+Primary particle score accuracy: 1.0000
+done.

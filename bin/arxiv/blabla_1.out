@@ -1,0 +1,68 @@
+hello. nue200
+
+Config processed at: Linux ampt008 3.10.0-1160.42.2.el7.x86_64 #1 SMP Tue Sep 7 14:49:57 UTC 2021 x86_64 x86_64 x86_64 GNU/Linux
+
+$CUDA_VISIBLE_DEVICES="0"
+
+209 files loaded
+Loading tree sparse3d_reco
+Loading tree sparse3d_reco_chi2
+Loading tree sparse3d_reco_nhits
+Loading tree sparse3d_reco_hit_charge0
+Loading tree sparse3d_reco_hit_charge1
+Loading tree sparse3d_reco_hit_charge2
+Loading tree sparse3d_reco_hit_key0
+Loading tree sparse3d_reco_hit_key1
+Loading tree sparse3d_reco_hit_key2
+Loading tree sparse3d_pcluster_semantics_ghost
+Loading tree cluster3d_pcluster
+Loading tree particle_pcluster
+Loading tree sparse3d_pcluster_semantics
+Loading tree sparse3d_pcluster
+Loading tree particle_corrected
+Loading tree cluster3d_sed
+Found 16720 events in file(s)
+Shower GNN: True
+Track GNN: True
+Particle GNN: False
+Interaction GNN: True
+Kinematics GNN: False
+Cosmic GNN: False
+
+            Since one of the GNNs are turned on, process_fragments is turned ON.
+            
+
+        Fragment processing is turned ON. When training CNN models from
+         scratch, we recommend turning fragment processing OFF as without
+         reliable segmentation and/or cnn clustering outputs this could take
+         prohibitively large training iterations.
+        
+Shower GNN: True
+Track GNN: True
+Particle GNN: False
+Interaction GNN: True
+Kinematics GNN: False
+Cosmic GNN: False
+
+            Since one of the GNNs are turned on, process_fragments is turned ON.
+            
+
+        Fragment processing is turned ON. When training CNN models from
+         scratch, we recommend turning fragment processing OFF as without
+         reliable segmentation and/or cnn clustering outputs this could take
+         prohibitively large training iterations.
+        
+Restoring weights for  from /sdf/group/neutrino/drielsma/me/train/icarus_newk/weights/full_chain/grappa_inter_fix/snapshot-14749.ckpt...
+Done.
+Restoring weights for ppn from /sdf/group/neutrino/drielsma/me/train/icarus_newk/weights/full_chain/uresnet_ppn_3feats/snapshot-57499.ckpt...
+Done.
+Restoring weights for uresnet_lonely from /sdf/group/neutrino/drielsma/me/train/icarus_newk/weights/full_chain/uresnet_ppn_3feats/snapshot-57499.ckpt...
+Done.
+Restoring weights for uresnet_deghost from /sdf/group/neutrino/drielsma/me/train/icarus_newk/weights/full_chain/uresnet_ppn_3feats/snapshot-57499.ckpt...
+Done.
+0
+/usr/local/lib/python3.8/dist-packages/MinkowskiEngine/__init__.py:36: UserWarning: The environment variable `OMP_NUM_THREADS` not set. MinkowskiEngine will automatically set `OMP_NUM_THREADS=16`. If you want to set `OMP_NUM_THREADS` manually, please export it on the command line before running a python script. e.g. `export OMP_NUM_THREADS=12; python your_program.py`. It is recommended to set it below 24.
+  warnings.warn(
+TClass::Init:0: RuntimeWarning: no dictionary for class larcv::EventNeutrino is available
+TClass::Init:0: RuntimeWarning: no dictionary for class larcv::NeutrinoSet is available
+TClass::Init:0: RuntimeWarning: no dictionary for class larcv::Neutrino is available
