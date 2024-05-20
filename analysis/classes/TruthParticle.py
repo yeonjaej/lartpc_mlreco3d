@@ -1,10 +1,8 @@
 import numpy as np
-from larcv import larcv
 from typing import Counter, List, Union
 
 from . import Particle
 
-from mlreco.utils import pixel_to_cm
 from mlreco.utils.globals import PDG_TO_PID, TRACK_SHP, SHAPE_LABELS, \
         PID_LABELS, PID_MASSES
 from mlreco.utils.decorators import inherit_docstring
@@ -46,6 +44,8 @@ class TruthParticle(Particle):
     _COORD_ATTRS = Particle._COORD_ATTRS +\
 	['truth_points', 'sed_points', 'position', 'end_position',\
 	'parent_position', 'ancestor_position', 'first_step', 'last_step']
+    _TRUTH_COORD_ATTRS = ['position', 'end_position', 'parent_position',
+                          'ancestor_position', 'first_step', 'last_step']
 
     def __init__(self,
                  *args,
@@ -60,8 +60,8 @@ class TruthParticle(Particle):
                  truth_momentum: np.ndarray = np.full(3, -np.inf, dtype=np.float32),
                  truth_end_momentum: np.ndarray = np.full(3, -np.inf, dtype=np.float32),
                  truth_start_dir: np.ndarray = np.full(3, -np.inf, dtype=np.float32),
-                 particle_asis: object = larcv.Particle(),
                  children_counts: np.ndarray = np.zeros(len(SHAPE_LABELS), dtype=np.int64),
+                 particle_asis: object = None,
                  **kwargs):
 
         # Set the attributes of the parent Particle class

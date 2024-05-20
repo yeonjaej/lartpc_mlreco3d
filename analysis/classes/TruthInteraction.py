@@ -1,5 +1,4 @@
 import numpy as np
-from larcv import larcv
 import sys
 
 from typing import List
@@ -9,7 +8,6 @@ from functools import cached_property
 from . import Interaction, TruthParticle
 from .Interaction import _process_interaction_attributes
 
-from mlreco.utils import pixel_to_cm
 from mlreco.utils.globals import PID_LABELS
 from mlreco.utils.decorators import inherit_docstring
 
@@ -46,6 +44,7 @@ class TruthInteraction(Interaction):
     # Attributes that specify coordinates
     _COORD_ATTRS = Interaction._COORD_ATTRS +\
 	['truth_points', 'sed_points', 'truth_vertex']
+    _TRUTH_COORD_ATTRS = ['truth_vertex']
  
     # Define placeholder values (-np.inf for float, -sys.maxsize for int)
     _SCALAR_KEYS = {'bjorken_x': -np.inf, 

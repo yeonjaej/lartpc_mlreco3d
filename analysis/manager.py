@@ -149,9 +149,9 @@ class AnaToolsManager:
         # Load the full chain configuration, if it is provided
         self.chain_config = chain_config
         if chain_config is not None:
-            #cfg = yaml.safe_load(open(chain_config, 'r').read())
-            process_config(chain_config, verbose=False)
-            self.chain_config = chain_config
+            cfg = yaml.safe_load(open(chain_config, 'r').read())
+            process_config(cfg, verbose=False)
+            self.chain_config = cfg
 
         # Initialize data product builders
         self.builders = {}
@@ -181,7 +181,8 @@ class AnaToolsManager:
         # Initialize the data loading scheme
         if reader is not None:
             # If there is a reader configuration, load reconstructed data
-            reader['to_larcv'] = True # Expected by post-processors
+            if 'to_larcv' not in reader:
+                reader['to_larcv'] = True # Expected by post-processors
             self._data_reader   = reader_factory(reader)
             self.reader_state  = 'file'
             self._set_iteration(self._data_reader)
@@ -365,6 +366,7 @@ class AnaToolsManager:
             'input_data', 'segment_label',
             'particles_label', 'cluster_label', 'kinematics_label', 'sed'
         ])
+
         result_has_voxels = set([
             'input_rescaled',
             'cluster_label_adapted',
@@ -388,10 +390,10 @@ class AnaToolsManager:
 
         for key, val in data.items():
             if key in data_has_voxels:
-                data[key] = [self._pixel_to_cm(arr, meta) for arr in val]
+                data[key] = [self._pixel_to_cm(arr, meta, center=True) for arr in val]
         for key, val in result.items():
             if key in result_has_voxels:
-                result[key] = [self._pixel_to_cm(arr, meta) for arr in val]
+                result[key] = [self._pixel_to_cm(arr, meta, center=True) for arr in val]
             if key in data_products:
                 for plist in val:
                     for p in plist:
@@ -672,7 +674,7 @@ class AnaToolsManager:
         assert self.max_iteration <= len(dataset)
 
     @staticmethod
-    def _pixel_to_cm(arr, meta):
+    def _pixel_to_cm(arr, meta, center=False):
         '''
         Converts tensor pixel coordinates to detector coordinates
 
@@ -682,6 +684,9 @@ class AnaToolsManager:
             Tensor of which to convert the coordinate columns
         meta : np.ndarray
             Metadata information to operate the translation
+        center : bool, default False
+            Whether to place the coordinates at the center of the pixel or not.
+            Provides a unbiased estimate for true pixel coordinates
         '''
-        arr[:, COORD_COLS] = pixel_to_cm(arr[:, COORD_COLS], meta)
+        arr[:, COORD_COLS] = pixel_to_cm(arr[:, COORD_COLS], meta, center=center)
         return arr

@@ -1,11 +1,16 @@
 import os
+import sys
 import yaml
 import h5py
 import inspect
 import numpy as np
 from collections import defaultdict
-from larcv import larcv
 from analysis import classes as analysis
+
+try:
+    from larcv import larcv
+except:
+    print("Failed to import larcv, cannot store those products.")
 
 from mlreco.utils.globals import SHAPE_LABELS, PID_LABELS, NU_CURR_TYPE, NU_INT_TYPE
 
@@ -50,10 +55,6 @@ class HDF5Writer:
     ]
 
     SKIP_ATTRS = {
-        larcv.Particle: LARCV_SKIP_ATTRS,
-        larcv.Neutrino: LARCV_SKIP_ATTRS,
-        larcv.Flash:    ['wireCenters', 'wireWidths'],
-        larcv.CRTHit:   ['feb_id', 'pesmap'],
         analysis.ParticleFragment:      ANA_SKIP_ATTRS,
         analysis.TruthParticleFragment: ANA_SKIP_ATTRS,
         analysis.Particle:              ANA_SKIP_ATTRS,
@@ -61,8 +62,15 @@ class HDF5Writer:
         analysis.Interaction:           ANA_SKIP_ATTRS + ['index', 'truth_index', 'sed_index'],
         analysis.TruthInteraction:      ANA_SKIP_ATTRS + ['index', 'truth_index', 'sed_index']
     }
-    if hasattr(larcv, 'Trigger'): # TMP until a new singularity
-        SKIP_ATTRS.update({larcv.Trigger:  ['clear']})
+    if 'larcv' in sys.modules:
+        SKIP_ATTRS.update({
+            larcv.Particle: LARCV_SKIP_ATTRS,
+            larcv.Neutrino: LARCV_SKIP_ATTRS,
+            larcv.Flash:    ['wireCenters', 'wireWidths'],
+            larcv.CRTHit:   ['feb_id', 'pesmap']
+        })
+        if hasattr(larcv, 'Trigger'): # TMP until a new singularity
+            SKIP_ATTRS.update({larcv.Trigger:  ['clear']})
 
     # Output with default types. TODO: move this, make it not name-dependant
     DEFAULT_OBJS = {
@@ -71,15 +79,20 @@ class HDF5Writer:
         'interactions':       analysis.Interaction(),
         'truth_interactions': analysis.TruthInteraction(),
     }
+    if 'larcv' in sys.modules:
+        DEFAULT_OBJS['truth_particles'] = analysis.TruthParticle(particle_asis=larcv.Particle())
+        DEFAULT_OBJS['truth_interactions'] = analysis.TruthInteraction(neutrino=larcv.Neutrino())
 
     # Outputs that have a fixed number of tensors. #TODO: Inherit from unwrap rules
     TENSOR_LISTS = ['encoderTensors', 'decoderTensors', 'ppn_masks', 'ppn_layers', 'ppn_coords']
 
     # List of recognized objects
     DATA_OBJS  = tuple(list(SKIP_ATTRS.keys()))
-    LARCV_OBJS = [larcv.Particle, larcv.Neutrino, larcv.Flash, larcv.CRTHit]
-    if hasattr(larcv, 'Trigger'): # TMP until a new singularity
-        LARCV_OBJS.append(larcv.Trigger)
+    LARCV_OBJS = []
+    if 'larcv' in sys.modules:
+        LARCV_OBJS = [larcv.Particle, larcv.Neutrino, larcv.Flash, larcv.CRTHit]
+        if hasattr(larcv, 'Trigger'): # TMP until a new singularity
+            LARCV_OBJS.append(larcv.Trigger)
     LARCV_OBJS = tuple(LARCV_OBJS)
 
     def __init__(self,
@@ -88,6 +101,7 @@ class HDF5Writer:
                  skip_input_keys: list = [],
                  result_keys: list = None,
                  skip_result_keys: list = [],
+                 dummy_keys: list = [],
                  append_file: bool = False,
                  merge_groups: bool = False):
         '''
@@ -116,6 +130,7 @@ class HDF5Writer:
         self.skip_input_keys  = skip_input_keys
         self.result_keys      = result_keys
         self.skip_result_keys = skip_result_keys
+        self.dummy_keys       = dummy_keys
         self.append_file      = append_file
         self.merge_groups     = merge_groups
         self.ready            = False
@@ -160,6 +175,13 @@ class HDF5Writer:
                 self.result_keys.remove(key)
         for key in self.result_keys:
             self.register_key(result_blob, key, 'result')
+
+        # If requested, add dummy datasets for some requested keys
+        for key in self.dummy_keys:
+            assert key not in self.key_dict, (
+                    "Dummy key exists in the requested keys already, abort.")
+            dummy_blob = {key: [np.empty(0, dtype=np.float32)]}
+            self.register_key(dummy_blob, key, 'result')
 
         # Initialize the output HDF5 file
         with h5py.File(self.file_name, 'w') as out_file:
@@ -211,6 +233,9 @@ class HDF5Writer:
                     ref_obj = blob[key][ref_id][0]
                 elif key in self.DEFAULT_OBJS.keys():
                     ref_obj = self.DEFAULT_OBJS[key]
+                elif isinstance(blob[key][0], np.ndarray):
+                    ref_id = 0
+                    ref_obj = blob[key][ref_id]
                 else:
                     msg = f'Cannot infer the dtype of a list of empty lists ({key}) and hence cannot initialize the output HDF5 file'
                     raise AssertionError(msg) # TODO: In this case, fall back on a default dtype specified elsewhere
@@ -234,7 +259,7 @@ class HDF5Writer:
                     # List containing a single list of scalars per batch ID
                     self.key_dict[key]['dtype'] = type(ref_obj)
 
-                elif not isinstance(blob[key][ref_id], list) and not blob[key][ref_id].dtype == np.object:
+                elif not isinstance(blob[key][ref_id], list) and not blob[key][ref_id].dtype == object:
                     # List containing a single ndarray of scalars per batch ID
                     self.key_dict[key]['dtype'] = blob[key][ref_id].dtype
                     self.key_dict[key]['width'] = blob[key][ref_id].shape[1] if len(blob[key][ref_id].shape) == 2 else 0
@@ -395,6 +420,8 @@ class HDF5Writer:
                 subgroup.create_dataset('elements', shape, maxshape=maxshape, dtype=val['dtype'])
                 subgroup.create_dataset('index', (0,), maxshape=(None,), dtype=ref_dtype)
 
+            group[key].attrs['category'] = val['category']
+
         out_file.create_dataset('events', (0,), maxshape=(None,), dtype=self.event_dtype)
 
     def append(self, data_blob=None, result_blob=None, cfg=None):
@@ -415,8 +442,14 @@ class HDF5Writer:
             self.create(data_blob, result_blob, cfg)
             self.ready = True
 
-        # Append file
+        # Create a dummy blob to fill dummy keys with
         self.batch_size = len(data_blob['index'])
+        if self.dummy_keys:
+            dummy_blob = {}
+            for key in self.dummy_keys:
+                dummy_blob[key] = [np.empty(0, dtype=np.float32) for b in range(self.batch_size)]
+
+        # Append file
         with h5py.File(self.file_name, 'a') as out_file:
             # Loop over batch IDs
             for batch_id in range(self.batch_size):
@@ -430,6 +463,8 @@ class HDF5Writer:
                     self.append_key(out_file, event, data_blob, key, batch_id)
                 for key in self.result_keys:
                     self.append_key(out_file, event, result_blob, key, batch_id)
+                for key in self.dummy_keys:
+                    self.append_key(out_file, event, dummy_blob, key, batch_id)
 
                 # Append event
                 event_id  = len(out_file['events'])
