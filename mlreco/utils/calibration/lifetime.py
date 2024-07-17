@@ -50,21 +50,25 @@ class LifetimeCalibrator:
             self.use_db = False
 
             # Inititalize lifetime
-            if np.issclar(lifetime):
+            if np.isscalar(lifetime):
                 self.lifetime = np.full(num_tpcs, lifetime)
             else:
                 assert len(lifetime) == num_tpcs, \
                         '`lifetime` list must provide one value per TPC'
                 self.lifetime = lifetime
 
+            #print("cp20: ", driftv, len(driftv), num_tpcs)
             # Initialize electron drift velocity
             if np.isscalar(driftv):
                 self.driftv = np.full(num_tpcs, driftv)
             else:
                 assert len(driftv) == num_tpcs, \
                         '`driftv` list must provide one value per TPC'
-                self.drift = driftv
+                
+                self.driftv = driftv
 
+            #print("cp21: ", self.driftv)
+                
         # If databases are provided, load them in
         if lifetime_db:
             # Set the method

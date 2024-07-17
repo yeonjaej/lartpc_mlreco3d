@@ -22,6 +22,7 @@ class CalibrationManager:
             Path to the analysis tools configuration file
         '''
         # Initialize the geometry model shared across all modules
+        #print("cp4: ", cfg.keys())
         assert 'geometry' in cfg, \
                 'Must provide a geometry configuration to apply calibrations.'
         self.geo = Geometry(**cfg.pop('geometry'))
@@ -84,7 +85,9 @@ class CalibrationManager:
 
         # Create a mask for each of the TPC volume in the detector
         if sources is not None:
+        
             tpc_indexes = []
+            #print("cp11: ", sources)
             for t in range(self.geo.num_tpcs):
                 # Get the set of points associated with this TPC
                 module_id = t // self.geo.num_modules
@@ -94,17 +97,24 @@ class CalibrationManager:
         else:
             assert points is not None, \
                     'If sources are not given, must provide points instead'
+            #print("cp10: ", points)
             tpc_indexes = self.geo.get_closest_tpc_indexes(points)
 
         # Loop over the TPCs, apply the relevant calibration corrections
         new_values = np.copy(values)
+
+        #print("cp8: ", self.geo.num_tpcs)
+        
         for t in range(self.geo.num_tpcs):
             # Restrict to the TPC of interest
+            #print("cp9: ", tpc_indexes, tpc_indexes[t])
             if not len(tpc_indexes[t]):
                 continue
             tpc_points = points[tpc_indexes[t]]
             tpc_values = values[tpc_indexes[t]]
 
+            #print("cp7: ", self.modules, t)
+            
             # Apply the transparency correction
             if 'transparency' in self.modules:
                 assert run_id is not None, \
@@ -119,8 +129,9 @@ class CalibrationManager:
 
             # Apply the gain correction
             if 'gain' in self.modules:
+                #print("cp5: ", tpc_values)
                 tpc_values = self.modules['gain'].process(tpc_values, t) # e-
-
+                #print("cp6: ", tpc_values)
             # Apply the recombination
             if 'recombination' in self.modules:
                 tpc_values = self.modules['recombination'].process(tpc_values,

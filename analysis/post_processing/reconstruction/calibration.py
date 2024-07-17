@@ -66,15 +66,18 @@ class CalibrationProcessor(PostProcessor):
                 points = self.get_points(p)
                 if not len(points):
                     continue
-
+                #print("calibration cp1", p.sources)
                 # Apply calibration
                 if not self.do_tracking or p.semantic_type != TRACK_SHP:
                     depositions = self.calibrator.process(
-                            points, p.depositions, p.sources, run_id, self.dedx)
+                            points, p.depositions, None, run_id, self.dedx)
+                    #print("calibration cp2")
                 else:
                     depositions = self.calibrator.process(
-                            points, p.depositions, p.sources, run_id, track=True)
-
+                            points, p.depositions, None, run_id, track=True)
+                    #print("calibration cp3")
+                #print(p.depositions)
+                #print(depositions)
                 p.depositions = depositions
 
         return {}, {}
